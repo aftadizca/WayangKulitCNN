@@ -83,18 +83,10 @@ export default class Camera extends Component {
 			.unlink(`${RNFetchBlob.fs.dirs.CacheDir}/Camera`)
 			.catch(err => console.log('Deleting File'));
 		if (this.camera) {
-			const options = { quality: 0.5, base64: true, doNotSave: true };
+			const options = { quality: 0.5 };
 			const data = await this.camera.takePictureAsync(options);
-			const path = `${
-				RNFetchBlob.fs.dirs.CacheDir
-				}/Camera/${new Date().getTime()}.jpg`;
+			this.props.navigation.navigate('Pic', { uri: 'file://' + data.uri });
 
-			RNFetchBlob.fs
-				.writeFile(path, data.base64, 'base64')
-				.then(() => {
-					this.props.navigation.navigate('Pic', { uri: 'file://' + path });
-				})
-				.catch(err => console.log(err));
 		}
 		this.setState({ focusPointChange: false });
 	};

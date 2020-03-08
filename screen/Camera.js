@@ -91,19 +91,7 @@ export default class Camera extends Component {
 		this.setState({ focusPointChange: false });
 	};
 
-	// _onCameraReady = async () => {
-	// 	if (this.camera) {
-	// 		const ratios = await this.camera.getSupportedRatiosAsync();
-	// 		console.log(ratios);
-
-	// 		const ratio = ratios.find(x => x === DEFAULT_RATIO) || ratios[ratios.length - 1]
-	// 		this.setState({ ratio });
-
-	// 	}
-	// }
-
 	render() {
-		console.log("gg", this.state);
 		return (
 			<Container style={styles.container}>
 				<RNCamera

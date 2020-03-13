@@ -12,8 +12,7 @@ export default class Hello extends Component {
 			<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 				<Image
 					resizeMode='cover'
-					key={() => new Date().getTime()}
-					source={{ uri: this.props.route.params.uri }}
+					source={{ uri: this.props.route.params.uri + '?' + +new Date() }}
 					style={{
 						width: '100%',
 						height: '100%'

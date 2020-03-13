@@ -11,6 +11,7 @@ import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
 import { Container, Button, Icon } from 'native-base';
 import { colors, icons, DEFAULT_RATIO } from '../config';
+import IImageConverter from 'react-native-image-converter';
 
 export default class Camera extends Component {
 	constructor(props) {
@@ -54,7 +55,7 @@ export default class Camera extends Component {
 				}, 3000);
 				console.log('timerId', timerId);
 			},
-			onPanResponderMove: (evt, gestureState) => { },
+			onPanResponderMove: (evt, gestureState) => {},
 			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: (evt, gestureState) => {
 				// The user has released all touches while this view is the
@@ -83,10 +84,19 @@ export default class Camera extends Component {
 			.unlink(`${RNFetchBlob.fs.dirs.CacheDir}/Camera`)
 			.catch(err => console.log('Deleting File'));
 		if (this.camera) {
-			const options = { quality: 0.5 };
+			const options = { quality: 1.0 };
 			const data = await this.camera.takePictureAsync(options);
 			this.props.navigation.navigate('Pic', { uri: 'file://' + data.uri });
-
+			const param = {
+				path: data.uri,
+				grayscale: true, // or true
+				base64: false, // or true
+				widtha: '128',
+				height: '128', // 1.0 is origin value
+				imageQuality: 1.0 // 1.0 is max quality value
+			};
+			const a = await IImageConverter.convert(param);
+			console.log(a);
 		}
 		this.setState({ focusPointChange: false });
 	};

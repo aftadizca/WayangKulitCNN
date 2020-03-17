@@ -6,7 +6,7 @@
 		"android": "react-native run-android",
 		"watch-need-help": "echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances && echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events && echo 65536 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && watchman shutdown-server",
 		"ios": "react-native run-ios",
-		"start": "react-native start",
+		"start": "npm run watch-need-help | react-native start",
 		"test": "jest",
 		"lint": "eslint ."
 	},
@@ -21,6 +21,8 @@
 		"react-native-camera": "^3.18.0",
 		"react-native-easy-grid": "^0.2.2",
 		"react-native-gesture-handler": "^1.6.0",
+		"react-native-image-converter": "git+https://github.com/aftadizca/react-native-image-converter.git",
+		"react-native-image-resizer": "git+https://github.com/aftadizca/react-native-image-resizer.git",
 		"react-native-reanimated": "^1.7.0",
 		"react-native-rename": "^2.4.1",
 		"react-native-safe-area-context": "^0.7.3",

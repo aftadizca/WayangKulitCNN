@@ -10,7 +10,7 @@ import {
 import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
 import { Container, Button, Icon } from 'native-base';
-import { colors, icons, DEFAULT_RATIO } from '../config';
+import { colors, icons } from '../config';
 //import IImageConverter from 'react-native-image-converter';
 import ImageEditor from '@react-native-community/image-editor';
 
@@ -21,7 +21,7 @@ export default class Camera extends Component {
 			focusPoint: { x: 0.5, y: 0.5 },
 			focusLocation: { x: 0, y: 0 },
 			focusPointChange: false,
-			flashMode: false
+			flashMode: RNCamera.Constants.FlashMode.off
 		};
 
 		const w = Dimensions.get('screen').width;
@@ -76,7 +76,7 @@ export default class Camera extends Component {
 
 	_onPressFlashMode = () => {
 		this.setState((state, props) => {
-			return { flashMode: !state.flashMode };
+			return { flashMode: flashModeCycle.next(state.flashMode) };
 		});
 	};
 
@@ -135,11 +135,7 @@ export default class Camera extends Component {
 					type={RNCamera.Constants.Type.back}
 					autoFocusPointOfInterest={this.state.focusPoint}
 					autoFocus={RNCamera.Constants.AutoFocus.on}
-					flashMode={
-						this.state.flashMode
-							? RNCamera.Constants.FlashMode.on
-							: RNCamera.Constants.FlashMode.off
-					}
+					flashMode={this.state.flashMode}
 					captureAudio={false}
 					androidCameraPermissionOptions={{
 						title: 'Permission to use camera',
@@ -157,11 +153,7 @@ export default class Camera extends Component {
 					<View style={styles.flashIconTO}>
 						<Icon
 							style={styles.flashIcon}
-							name={
-								this.state.flashMode
-									? icons.FLASH_ICON.on
-									: icons.FLASH_ICON.off
-							}
+							name={icons.FLASH_ICON[this.state.flashMode]}
 							type={icons.FLASH_ICON.type}
 						/>
 					</View>
@@ -190,6 +182,19 @@ export default class Camera extends Component {
 		);
 	}
 }
+
+const flashModeCycle = {
+	next: function(num) {
+		switch (num) {
+			case RNCamera.Constants.FlashMode.off:
+				return RNCamera.Constants.FlashMode.on;
+			case RNCamera.Constants.FlashMode.on:
+				return RNCamera.Constants.FlashMode.auto;
+			default:
+				return RNCamera.Constants.FlashMode.off;
+		}
+	}
+};
 
 const styles = StyleSheet.create({
 	container: {

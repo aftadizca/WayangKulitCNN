@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { RNCamera } from 'react-native-camera';
 
 export const colors = {
 	PRIMARY: '#8d6e63',
@@ -19,8 +20,9 @@ export const fonts = {
 
 export const icons = {
 	FLASH_ICON: {
-		on: 'flashlight',
-		off: 'flashlight-off',
+		[RNCamera.Constants.FlashMode.on]: 'flash',
+		[RNCamera.Constants.FlashMode.off]: 'flash-off',
+		[RNCamera.Constants.FlashMode.auto]: 'flash-auto',
 		type: 'MaterialCommunityIcons'
 	}
 };

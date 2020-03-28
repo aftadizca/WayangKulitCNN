@@ -11,7 +11,8 @@ import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
 import { Container, Button, Icon } from 'native-base';
 import { colors, icons, DEFAULT_RATIO } from '../config';
-import IImageConverter from 'react-native-image-converter';
+//import IImageConverter from 'react-native-image-converter';
+import ImageEditor from '@react-native-community/image-editor';
 
 export default class Camera extends Component {
 	constructor(props) {
@@ -51,9 +52,9 @@ export default class Camera extends Component {
 				clearTimeout(timerId);
 				timerId = setTimeout(() => {
 					this.setState({ focusPointChange: false });
-					console.log('end of ', timerId);
+					//console.log('end of ', timerId);
 				}, 3000);
-				console.log('timerId', timerId);
+				//console.log('timerId', timerId);
 			},
 			onPanResponderMove: (evt, gestureState) => {},
 			onPanResponderTerminationRequest: (evt, gestureState) => true,
@@ -84,19 +85,41 @@ export default class Camera extends Component {
 			.unlink(`${RNFetchBlob.fs.dirs.CacheDir}/Camera`)
 			.catch(err => console.log('Deleting File'));
 		if (this.camera) {
+			// const sizes = await this.camera.getAvailablePictureSizes();
+			// console.log(sizes);
 			const options = { quality: 1.0 };
 			const data = await this.camera.takePictureAsync(options);
-			this.props.navigation.navigate('Pic', { uri: 'file://' + data.uri });
-			const param = {
-				path: data.uri,
-				grayscale: true, // or true
-				base64: false, // or true
-				widtha: '128',
-				height: '128', // 1.0 is origin value
-				imageQuality: 1.0 // 1.0 is max quality value
+			console.log('image w', data.width);
+			console.log('image h', data.height);
+			console.log('screen w', Dimensions.get('screen').width);
+			console.log('screen h', Dimensions.get('screen').height);
+			const ratio =
+				Dimensions.get('screen').width / Dimensions.get('screen').height;
+			console.log('Ratio', ratio);
+
+			const newWidth = data.height * ratio;
+			console.log('newWidth', newWidth);
+			const cropData = {
+				offset: { x: data.width / 2 - newWidth / 2, y: 0 },
+				size: { width: newWidth, height: data.height }
 			};
-			const a = await IImageConverter.convert(param);
-			console.log(a);
+			// crop Image
+			ImageEditor.cropImage(data.uri, cropData).then(url => {
+				console.log('Cropped image uri', url);
+				this.props.navigation.navigate('Pic', { uri: 'file://' + url });
+			});
+
+			//this.props.navigation.navigate('Pic', { uri: 'file://' + data.uri });
+			// const param = {
+			// 	path: data.uri,
+			// 	grayscale: true, // or true
+			// 	base64: false, // or true
+			// 	widtha: '128',
+			// 	height: '128', // 1.0 is origin value
+			// 	imageQuality: 1.0 // 1.0 is max quality value
+			// };
+			// const a = await IImageConverter.convert(param);
+			// console.log(a);
 		}
 		this.setState({ focusPointChange: false });
 	};

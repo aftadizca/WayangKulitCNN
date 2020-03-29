@@ -81,32 +81,30 @@ export default class Camera extends Component {
 	};
 
 	takePicture = async () => {
-		RNFetchBlob.fs
-			.unlink(`${RNFetchBlob.fs.dirs.CacheDir}/Camera`)
-			.catch(err => console.log('Deleting File'));
 		if (this.camera) {
 			// const sizes = await this.camera.getAvailablePictureSizes();
 			// console.log(sizes);
-			const options = { quality: 1.0 };
+			const options = {
+				quality: 0.9,
+				base64: false,
+				width: 720,
+				writeExif: false
+			};
 			const data = await this.camera.takePictureAsync(options);
-			console.log('image w', data.width);
-			console.log('image h', data.height);
-			console.log('screen w', Dimensions.get('screen').width);
-			console.log('screen h', Dimensions.get('screen').height);
 			const ratio =
 				Dimensions.get('screen').width / Dimensions.get('screen').height;
-			console.log('Ratio', ratio);
-
 			const newWidth = data.height * ratio;
-			console.log('newWidth', newWidth);
 			const cropData = {
 				offset: { x: data.width / 2 - newWidth / 2, y: 0 },
 				size: { width: newWidth, height: data.height }
 			};
 			// crop Image
 			ImageEditor.cropImage(data.uri, cropData).then(url => {
-				console.log('Cropped image uri', url);
+				//console.log('Cropped image uri', url);
 				this.props.navigation.navigate('Pic', { uri: 'file://' + url });
+				// RNFetchBlob.fs
+				// 	.unlink(data.uri)
+				// 	.catch(err => console.log('Deleting File'));
 			});
 
 			//this.props.navigation.navigate('Pic', { uri: 'file://' + data.uri });

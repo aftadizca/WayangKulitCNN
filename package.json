@@ -4,13 +4,15 @@
 	"private": true,
 	"scripts": {
 		"android": "react-native run-android",
-		"watch-need-help": "echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances && echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events && echo 65536 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && watchman shutdown-server",
+		"watch": "echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances && echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events && echo 65536 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && watchman shutdown-server",
 		"ios": "react-native run-ios",
-		"start": "npm run watch-need-help | react-native start",
+		"start": "react-native start",
 		"test": "jest",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"reverse": "adb -s 656fd018 reverse tcp:8081 tcp:8081"
 	},
 	"dependencies": {
+		"@react-native-community/image-editor": "git+https://github.com/aftadizca/react-native-image-editor.git",
 		"@react-native-community/masked-view": "^0.1.6",
 		"@react-navigation/native": "^5.0.5",
 		"@react-navigation/stack": "^5.0.5",
@@ -18,7 +20,7 @@
 		"native-base": "^2.13.8",
 		"react": "16.9.0",
 		"react-native": "0.61.5",
-		"react-native-camera": "^3.18.0",
+		"react-native-camera": "file:../react-native-camera",
 		"react-native-easy-grid": "^0.2.2",
 		"react-native-gesture-handler": "^1.6.0",
 		"react-native-image-converter": "git+https://github.com/aftadizca/react-native-image-converter.git",

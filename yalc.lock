@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "react-native-camera": {
+      "signature": "bb3cf8762405dea7683fa60292757a73",
+      "file": true
+    }
+  }
+}

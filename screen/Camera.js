@@ -87,37 +87,13 @@ export default class Camera extends Component {
 			const options = {
 				quality: 0.9,
 				base64: false,
-				width: 720,
-				writeExif: false
+				writeExif: false,
+				crop: true
 			};
 			const data = await this.camera.takePictureAsync(options);
-			const ratio =
-				Dimensions.get('screen').width / Dimensions.get('screen').height;
-			const newWidth = data.height * ratio;
-			const cropData = {
-				offset: { x: data.width / 2 - newWidth / 2, y: 0 },
-				size: { width: newWidth, height: data.height }
-			};
-			// crop Image
-			ImageEditor.cropImage(data.uri, cropData).then(url => {
-				//console.log('Cropped image uri', url);
-				this.props.navigation.navigate('Pic', { uri: 'file://' + url });
-				// RNFetchBlob.fs
-				// 	.unlink(data.uri)
-				// 	.catch(err => console.log('Deleting File'));
+			this.props.navigation.navigate('Pic', {
+				uri: 'file://' + data.uri + '?' + new Date()
 			});
-
-			//this.props.navigation.navigate('Pic', { uri: 'file://' + data.uri });
-			// const param = {
-			// 	path: data.uri,
-			// 	grayscale: true, // or true
-			// 	base64: false, // or true
-			// 	widtha: '128',
-			// 	height: '128', // 1.0 is origin value
-			// 	imageQuality: 1.0 // 1.0 is max quality value
-			// };
-			// const a = await IImageConverter.convert(param);
-			// console.log(a);
 		}
 		this.setState({ focusPointChange: false });
 	};

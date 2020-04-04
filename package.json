@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"android": "react-native run-android",
-		"watch": "echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances && echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events && echo 65536 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && watchman shutdown-server",
+		"watch": "echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf && sudo sysctl --system",
 		"ios": "react-native run-ios",
 		"start": "react-native start",
 		"test": "jest",
@@ -34,7 +34,8 @@
 		"react-native-svg-transformer": "^0.14.3",
 		"react-native-vector-icons": "^6.6.0",
 		"redux": "^4.0.5",
-		"rn-fetch-blob": "^0.12.0"
+		"rn-fetch-blob": "^0.12.0",
+		"tflite-react-native": "file:.yalc/tflite-react-native"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.6.2",

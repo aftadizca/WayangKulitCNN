@@ -26,6 +26,7 @@ DerivedData
 build/
 android/
 ios/
+models/
 .idea
 .gradle
 local.properties
@@ -61,4 +62,4 @@ buck-out/
 /ios/Pods/
 
 #yalc
-/.yalc
+.yalc/

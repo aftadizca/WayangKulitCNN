@@ -7,12 +7,12 @@ import {
 	TouchableOpacity,
 	TouchableNativeFeedback
 } from 'react-native';
-import RNFetchBlob from 'rn-fetch-blob';
+//import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
 import { Container, Button, Icon } from 'native-base';
 import { colors, icons } from '../config';
 //import IImageConverter from 'react-native-image-converter';
-import ImageEditor from '@react-native-community/image-editor';
+//import ImageEditor from '@react-native-community/image-editor';
 
 export default class Camera extends Component {
 	constructor(props) {
@@ -91,9 +91,8 @@ export default class Camera extends Component {
 				crop: true
 			};
 			const data = await this.camera.takePictureAsync(options);
-			this.props.navigation.navigate('Pic', {
-				uri: 'file://' + data.uri + '?' + new Date()
-			});
+			this.props.navigation.navigate('Pic', { uri: data.uri });
+			console.log('data.uri', data.uri);
 		}
 		this.setState({ focusPointChange: false });
 	};

@@ -4,6 +4,11 @@
     "react-native-camera": {
       "signature": "bb3cf8762405dea7683fa60292757a73",
       "file": true
+    },
+    "tflite-react-native": {
+      "signature": "3be255c7fc39758c556b0562f0e009c4",
+      "file": true,
+      "replaced": "^0.0.5"
     }
   }
 }

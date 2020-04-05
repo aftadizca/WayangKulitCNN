@@ -5,7 +5,7 @@ import Tflite from 'tflite-react-native';
 
 let tflite = new Tflite();
 
-export default class Hello extends Component {
+export default class ShowPic extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
@@ -71,8 +71,8 @@ export default class Hello extends Component {
 					<Text style={{ backgroundColor: '#f00', padding: 5 }}>
 						{this.state.prediction &&
 							this.state.prediction[0].label +
-								' ' +
-								this.state.prediction[0].confidence}
+							' ' +
+							this.state.prediction[0].confidence}
 					</Text>
 				</View>
 			</View>

@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"android": "react-native run-android",
-		"watch": "echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf && sudo sysctl --system",
+		"watch": "echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances && echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events && echo 165536 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && watchman shutdown-server",
 		"ios": "react-native run-ios",
 		"start": "react-native start",
 		"test": "jest",

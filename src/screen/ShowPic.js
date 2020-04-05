@@ -18,9 +18,9 @@ export default class Hello extends Component {
 	loadModel() {
 		tflite.loadModel(
 			{
-				model: 'custom/model.tflite', // required
+				model: 'custom/model-fast.tflite', // required
 				labels: 'custom/model.txt', // required
-				numThreads: 1 // defaults to 1
+				numThreads: 1, // defaults to 1
 			},
 			(err, res) => {
 				if (err) console.log(err);
@@ -29,7 +29,7 @@ export default class Hello extends Component {
 		);
 	}
 
-	onIdentify = img => {
+	onIdentify = (img) => {
 		console.log('img', img);
 		this.loadModel();
 		tflite.runModelOnImage(
@@ -39,12 +39,15 @@ export default class Hello extends Component {
 				imageStd: 255, // defaults to 127.5
 				numResults: 4, // defaults to 5
 				threshold: 0.1, // defaults to 0.1
-				numThreads: 4
+				numThreads: 4,
 			},
 			(err, res) => {
 				if (err) console.log(err);
 				else {
-					console.log('res', res);
+					console.log(
+						'prediction ->',
+						res[0].label + ' : ' + res[0].confidence
+					);
 					this.setState({ prediction: res });
 				}
 			}
@@ -57,16 +60,19 @@ export default class Hello extends Component {
 				<Image
 					resizeMode='cover'
 					source={{
-						uri: 'file://' + this.props.route.params.uri + '?' + new Date()
+						uri: 'file://' + this.props.route.params.uri + '?' + new Date(),
 					}}
 					style={{
 						width: '100%',
-						height: '100%'
+						height: '100%',
 					}}
 				/>
 				<View style={{ zIndex: 0, position: 'absolute', bottom: 20 }}>
 					<Text style={{ backgroundColor: '#f00', padding: 5 }}>
-						{this.state.prediction & this.state.prediction[0]}
+						{this.state.prediction &&
+							this.state.prediction[0].label +
+								' ' +
+								this.state.prediction[0].confidence}
 					</Text>
 				</View>
 			</View>

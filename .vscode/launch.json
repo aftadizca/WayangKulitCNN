@@ -5,18 +5,13 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Debug Android",
-			"cwd": "${workspaceFolder}",
-			"type": "reactnative",
+			"name": "Launch on Android",
+			"type": "nativescript",
 			"request": "launch",
-			"platform": "android"
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Launch Program",
-			"skipFiles": ["<node_internals>/**"],
-			"program": "${workspaceFolder}/start"
+			"platform": "android",
+			"appRoot": "${workspaceRoot}",
+			"sourceMaps": true,
+			"watch": true
 		}
 	]
 }

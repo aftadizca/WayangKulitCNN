@@ -5,9 +5,9 @@ import {
 	PanResponder,
 	Dimensions,
 	TouchableOpacity,
-	TouchableNativeFeedback
+	TouchableNativeFeedback,
 } from 'react-native';
-//import RNFetchBlob from 'rn-fetch-blob';
+import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
 import { Container, Button, Icon } from 'native-base';
 import { colors, icons } from '../config';
@@ -21,7 +21,7 @@ export default class Camera extends Component {
 			focusPoint: { x: 0.5, y: 0.5 },
 			focusLocation: { x: 0, y: 0 },
 			focusPointChange: false,
-			flashMode: RNCamera.Constants.FlashMode.off
+			flashMode: RNCamera.Constants.FlashMode.off,
 		};
 
 		const w = Dimensions.get('screen').width;
@@ -41,13 +41,13 @@ export default class Camera extends Component {
 				this.setState({
 					focusPoint: {
 						x: y0,
-						y: -x0 + 1
+						y: -x0 + 1,
 					},
 					focusLocation: {
 						x: evt.nativeEvent.locationX - 25,
-						y: evt.nativeEvent.locationY - 25
+						y: evt.nativeEvent.locationY - 25,
 					},
-					focusPointChange: true
+					focusPointChange: true,
 				});
 				clearTimeout(timerId);
 				timerId = setTimeout(() => {
@@ -56,7 +56,7 @@ export default class Camera extends Component {
 				}, 3000);
 				//console.log('timerId', timerId);
 			},
-			onPanResponderMove: (evt, gestureState) => {},
+			onPanResponderMove: (evt, gestureState) => { },
 			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: (evt, gestureState) => {
 				// The user has released all touches while this view is the
@@ -70,8 +70,12 @@ export default class Camera extends Component {
 				// Returns whether this component should block native components from becoming the JS
 				// responder. Returns true by default. Is currently only supported on android.
 				return true;
-			}
+			},
 		});
+	}
+
+	componentWillUnmount() {
+		RNFetchBlob.fs.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera');
 	}
 
 	_onPressFlashMode = () => {
@@ -88,7 +92,7 @@ export default class Camera extends Component {
 				quality: 0.9,
 				base64: false,
 				writeExif: false,
-				crop: true
+				crop: true,
 			};
 			const data = await this.camera.takePictureAsync(options);
 			this.props.navigation.navigate('Pic', { uri: data.uri });
@@ -101,7 +105,7 @@ export default class Camera extends Component {
 		return (
 			<Container style={styles.container}>
 				<RNCamera
-					ref={ref => {
+					ref={(ref) => {
 						this.camera = ref;
 					}}
 					style={styles.preview}
@@ -114,7 +118,7 @@ export default class Camera extends Component {
 						title: 'Permission to use camera',
 						message: 'We need your permission to use your camera',
 						buttonPositive: 'Ok',
-						buttonNegative: 'Cancel'
+						buttonNegative: 'Cancel',
 					}}
 				/>
 				<View style={styles.top} {...this._panResponder.panHandlers} />
@@ -148,7 +152,7 @@ export default class Camera extends Component {
 						borderColor: this.state.focusPointChange
 							? colors.CAMERA_FOCUS_BOX
 							: 'transparent',
-						...styles.focusBox
+						...styles.focusBox,
 					}}
 				/>
 			</Container>
@@ -157,7 +161,7 @@ export default class Camera extends Component {
 }
 
 const flashModeCycle = {
-	next: function(num) {
+	next: function (num) {
 		switch (num) {
 			case RNCamera.Constants.FlashMode.off:
 				return RNCamera.Constants.FlashMode.on;
@@ -166,19 +170,19 @@ const flashModeCycle = {
 			default:
 				return RNCamera.Constants.FlashMode.off;
 		}
-	}
+	},
 };
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
-		backgroundColor: '#555'
+		backgroundColor: '#555',
 	},
 	preview: {
 		flex: 1,
 		justifyContent: 'flex-end',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	captureButton: {
 		flex: 0,
@@ -187,16 +191,16 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		backgroundColor: 'transparent',
 		marginBottom: 20,
-		bottom: 0
+		bottom: 0,
 	},
 	captureIcon: {
 		fontSize: 100,
-		color: 'white'
+		color: 'white',
 	},
 	flashIcon: {
 		color: 'white',
 		fontSize: 32,
-		alignSelf: 'center'
+		alignSelf: 'center',
 	},
 	flashIconTO: {
 		flex: 1,
@@ -207,18 +211,18 @@ const styles = StyleSheet.create({
 		width: 60,
 		height: 60,
 		justifyContent: 'center',
-		overflow: 'hidden'
+		overflow: 'hidden',
 	},
 	focusBox: {
 		width: 50,
 		height: 50,
 		borderWidth: 2,
-		position: 'absolute'
+		position: 'absolute',
 	},
 	top: {
 		backgroundColor: 'transparent',
 		position: 'absolute',
 		width: '100%',
-		height: '100%'
-	}
+		height: '100%',
+	},
 });

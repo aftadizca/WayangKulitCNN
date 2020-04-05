@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Image, View, Text } from 'react-native';
 //import RNFetchBlob from 'rn-fetch-blob';
-import Tflite from 'tflite-react-native';
-
-let tflite = new Tflite();
 
 export default class ShowPic extends Component {
 	constructor(props) {
@@ -15,35 +12,20 @@ export default class ShowPic extends Component {
 		this.onIdentify(this.props.route.params.uri);
 	}
 
-	loadModel() {
-		tflite.loadModel(
-			{
-				model: 'custom/model-fast.tflite', // required
-				labels: 'custom/model.txt', // required
-				numThreads: 1, // defaults to 1
-			},
-			(err, res) => {
-				if (err) console.log(err);
-				else console.log(res);
-			}
-		);
-	}
-
 	onIdentify = (img) => {
-		console.log('img', img);
-		this.loadModel();
-		tflite.runModelOnImage(
+		this.props.tflite.runModelOnImage(
 			{
 				path: img, // required
 				imageMean: 0, // defaults to 127.5
 				imageStd: 255, // defaults to 127.5
 				numResults: 4, // defaults to 5
-				threshold: 0.1, // defaults to 0.1
+				threshold: 0.4, // defaults to 0.1
 				numThreads: 4,
 			},
 			(err, res) => {
 				if (err) console.log(err);
 				else {
+					console.log('res', res);
 					console.log(
 						'prediction ->',
 						res[0].label + ' : ' + res[0].confidence
@@ -60,7 +42,7 @@ export default class ShowPic extends Component {
 				<Image
 					resizeMode='cover'
 					source={{
-						uri: 'file://' + this.props.route.params.uri + '?' + new Date(),
+						uri: 'file://' + this.props.route.params.uri,
 					}}
 					style={{
 						width: '100%',
@@ -71,8 +53,8 @@ export default class ShowPic extends Component {
 					<Text style={{ backgroundColor: '#f00', padding: 5 }}>
 						{this.state.prediction &&
 							this.state.prediction[0].label +
-							' ' +
-							this.state.prediction[0].confidence}
+								' ' +
+								this.state.prediction[0].confidence}
 					</Text>
 				</View>
 			</View>

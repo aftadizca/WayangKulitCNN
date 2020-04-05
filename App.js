@@ -4,8 +4,22 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Camera, Home, ShowPic } from 'screen';
 import { screenOptions } from 'config';
+import Tflite from 'tflite-react-native';
 
 const Stack = createStackNavigator();
+let tflite = new Tflite();
+
+tflite.loadModel(
+	{
+		model: 'custom/model-fast.tflite', // required
+		labels: 'custom/model.txt', // required
+		numThreads: 1, // defaults to 1
+	},
+	(err, res) => {
+		if (err) console.log(err);
+		else console.log('Model Loaded');
+	}
+);
 
 export default function App() {
 	return (
@@ -17,7 +31,9 @@ export default function App() {
 					component={Camera}
 					options={screenOptions}
 				/>
-				<Stack.Screen name='Pic' component={ShowPic} options={screenOptions} />
+				<Stack.Screen name='Pic' options={screenOptions}>
+					{(props) => <ShowPic {...props} tflite={tflite} />}
+				</Stack.Screen>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

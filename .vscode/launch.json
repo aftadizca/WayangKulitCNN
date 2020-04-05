@@ -5,6 +5,20 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Debug Android",
+			"cwd": "${workspaceFolder}",
+			"type": "reactnative",
+			"request": "launch",
+			"platform": "android"
+		},
+		{
+			"name": "Debug Android (Hermes) - Experimental",
+			"cwd": "${workspaceFolder}",
+			"type": "reactnativedirect",
+			"request": "launch",
+			"platform": "android"
+		},
+		{
 			"name": "Launch on Android",
 			"type": "nativescript",
 			"request": "launch",

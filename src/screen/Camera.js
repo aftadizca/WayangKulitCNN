@@ -75,7 +75,9 @@ export default class Camera extends Component {
 	}
 
 	componentWillUnmount() {
-		RNFetchBlob.fs.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera');
+		RNFetchBlob.fs.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera').catch(err => {
+			console.log('err', err)
+		});
 	}
 
 	_onPressFlashMode = () => {
@@ -96,7 +98,6 @@ export default class Camera extends Component {
 			};
 			const data = await this.camera.takePictureAsync(options);
 			this.props.navigation.navigate('Pic', { uri: data.uri });
-			console.log('data.uri', data.uri);
 		}
 		this.setState({ focusPointChange: false });
 	};

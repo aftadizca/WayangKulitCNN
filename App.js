@@ -7,7 +7,7 @@ import { screenOptions } from 'config';
 import Tflite from 'tflite-react-native';
 
 const Stack = createStackNavigator();
-let tflite = new Tflite();
+const tflite = new Tflite();
 
 tflite.loadModel(
 	{

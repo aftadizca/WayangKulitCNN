@@ -94,7 +94,7 @@ export default class Camera extends Component {
 				quality: 0.9,
 				base64: false,
 				writeExif: false,
-				crop: true,
+				crop: false,
 			};
 			const data = await this.camera.takePictureAsync(options);
 			this.props.navigation.navigate('Pic', { uri: data.uri });

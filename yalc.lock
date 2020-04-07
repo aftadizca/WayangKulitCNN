@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "react-native-camera": {
-      "signature": "b021f8807b48b56170eeb09b901eea21",
+      "signature": "a87e0378711abcbfc8d5af40b0e071af",
       "file": true
     },
     "tflite-react-native": {

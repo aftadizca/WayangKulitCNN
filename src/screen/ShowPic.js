@@ -19,7 +19,7 @@ export default class ShowPic extends Component {
 				imageMean: 0, // defaults to 127.5
 				imageStd: 255, // defaults to 127.5
 				numResults: 4, // defaults to 5
-				threshold: 0.4, // defaults to 0.1
+				threshold: 0, // defaults to 0.1
 				numThreads: 4,
 			},
 			(err, res) => {

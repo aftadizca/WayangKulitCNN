@@ -56,7 +56,7 @@ export default class Camera extends Component {
 				}, 3000);
 				//console.log('timerId', timerId);
 			},
-			onPanResponderMove: (evt, gestureState) => { },
+			onPanResponderMove: (evt, gestureState) => {},
 			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: (evt, gestureState) => {
 				// The user has released all touches while this view is the
@@ -75,9 +75,11 @@ export default class Camera extends Component {
 	}
 
 	componentWillUnmount() {
-		RNFetchBlob.fs.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera').catch(err => {
-			console.log('err', err)
-		});
+		RNFetchBlob.fs
+			.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera')
+			.catch((err) => {
+				console.log('err', err);
+			});
 	}
 
 	_onPressFlashMode = () => {
@@ -93,7 +95,7 @@ export default class Camera extends Component {
 			const options = {
 				quality: 0.9,
 				base64: false,
-				writeExif: false
+				writeExif: false,
 			};
 			const data = await this.camera.takePictureAsync(options);
 			this.props.navigation.navigate('Pic', { uri: data.uri });
@@ -102,6 +104,7 @@ export default class Camera extends Component {
 	};
 
 	render() {
+		console.log('focusPoint', this.state.focusPoint);
 		return (
 			<Container style={styles.container}>
 				<RNCamera
@@ -121,7 +124,7 @@ export default class Camera extends Component {
 						buttonNegative: 'Cancel',
 					}}
 				/>
-				<View style={styles.top} {...this._panResponder.panHandlers} />
+				<View style={styles.touchFocus} {...this._panResponder.panHandlers} />
 
 				<TouchableNativeFeedback
 					background={TouchableNativeFeedback.Ripple(colors.PRIMARY, false)}
@@ -161,7 +164,7 @@ export default class Camera extends Component {
 }
 
 const flashModeCycle = {
-	next: function (num) {
+	next: function(num) {
 		switch (num) {
 			case RNCamera.Constants.FlashMode.off:
 				return RNCamera.Constants.FlashMode.on;
@@ -219,7 +222,7 @@ const styles = StyleSheet.create({
 		borderWidth: 2,
 		position: 'absolute',
 	},
-	top: {
+	touchFocus: {
 		backgroundColor: 'transparent',
 		position: 'absolute',
 		width: '100%',

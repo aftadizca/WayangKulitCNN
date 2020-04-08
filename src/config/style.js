@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
 		borderWidth: 1
 	},
 	buttonPrimaryText: {
-		fontFamily: fonts.BOLD
+		fontFamily: fonts.EXTRABOLD
 	},
 	// Header
 	headerHome: {

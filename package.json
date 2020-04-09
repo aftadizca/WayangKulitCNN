@@ -23,6 +23,7 @@
 		"react": "16.9.0",
 		"react-native": "0.61.5",
 		"react-native-camera": "file:.yalc/react-native-camera",
+		"react-native-console-time-polyfill": "^1.2.1",
 		"react-native-easy-grid": "^0.2.2",
 		"react-native-gesture-handler": "^1.6.0",
 		"react-native-image-converter": "git+https://github.com/aftadizca/react-native-image-converter.git",

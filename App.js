@@ -13,7 +13,7 @@ tflite.loadModel(
 	{
 		model: 'custom/model-fast.tflite', // required
 		labels: 'custom/model.txt', // required
-		numThreads: 1, // defaults to 1
+		numThreads: 4, // defaults to 1
 	},
 	(err, res) => {
 		if (err) console.log(err);

@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
-import { Container, Button, Icon } from 'native-base';
-import { colors, icons } from '../config';
+import { Container, Icon } from 'native-base';
+import { colors, icons } from 'config';
 
 export default class Camera extends Component {
 	constructor(props) {
@@ -83,7 +83,7 @@ export default class Camera extends Component {
 		});
 	};
 
-	takePicture = async () => {
+	_takePicture = async () => {
 		if (this.camera) {
 			const options = {
 				quality: 0.95,
@@ -133,7 +133,7 @@ export default class Camera extends Component {
 				<TouchableOpacity
 					transparent
 					style={styles.captureButton}
-					onPress={this.takePicture.bind(this)}>
+					onPress={this._takePicture.bind(this)}>
 					<Icon
 						style={styles.captureIcon}
 						name='ios-radio-button-on'

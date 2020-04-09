@@ -63,3 +63,5 @@ buck-out/
 
 #yalc
 .yalc/
+yalc.lock
+yarn.lock

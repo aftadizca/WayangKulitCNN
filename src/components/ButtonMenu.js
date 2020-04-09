@@ -6,18 +6,18 @@ import { colors, styles } from 'config';
 function ButtonMenu(props) {
 	return (
 		<TouchableNativeFeedback
-			background={TouchableNativeFeedback.Ripple(colors.PRIMARY_DARK, false)}
+			background={TouchableNativeFeedback.Ripple(colors.SECONDARY_DARK, false)}
 			useForeground={true}
 			onPress={props.onPress}>
 			<View
 				style={{
-					height: 128,
+					height: 150,
 					padding: 15,
 					width: 128,
-					margin: 10,
+					margin: 20,
 					flexDirection: 'column',
 					alignItems: 'center',
-					justifyContent: 'center',
+					justifyContent: 'space-evenly',
 					borderRadius: 8,
 					overflow: 'hidden',
 				}}>
@@ -27,6 +27,7 @@ function ButtonMenu(props) {
 						...styles.buttonPrimaryText,
 						color: colors.PRIMARY_DARK,
 						textAlign: 'center',
+						fontSize: 18,
 					}}>
 					{props.text}
 				</Text>

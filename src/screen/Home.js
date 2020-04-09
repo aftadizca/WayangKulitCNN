@@ -6,6 +6,8 @@ import ButtonMenu from '../components/ButtonMenu';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import BG from '../icon/bg2.svg';
 import CameraSvg from '../icon/camera.svg';
+import FolderSvg from '../icon/folder.svg';
+import InfoSvg from '../icon/survey.svg';
 
 export default class Home extends Component {
 	constructor(props) {
@@ -26,12 +28,12 @@ export default class Home extends Component {
 					<Right />
 				</Header>
 				<Grid>
-					<Row style={stylesHome.rowBackground}>
-						<View style={stylesHome.viewBackground}>
+					<Row style={homeStyles.rowBackground}>
+						<View style={homeStyles.viewBackground}>
 							<BG />
 						</View>
 					</Row>
-					<Row style={stylesHome.rowIcon}>
+					<Row style={homeStyles.rowIcon}>
 						{/* <Button
 								style={styles.buttonPrimary}
 								onPress={() =>
@@ -39,17 +41,18 @@ export default class Home extends Component {
 								}>
 								LAUNCH CAMERA
 							</Button> */}
-						<ButtonMenu text={'Ambil Gambar'}>
+						<ButtonMenu
+							text={'Ambil Gambar'}
+							onPress={() =>
+								this.props.navigation.navigate('Camera', { Id: 'myparams' })
+							}>
 							<CameraSvg />
 						</ButtonMenu>
 						<ButtonMenu text={'Pilih Gambar'}>
-							<CameraSvg />
+							<FolderSvg />
 						</ButtonMenu>
-						<ButtonMenu text={'Pilih Gambar'}>
-							<CameraSvg />
-						</ButtonMenu>
-						<ButtonMenu text={'Pilih Gambar'}>
-							<CameraSvg />
+						<ButtonMenu text={'Tentang'}>
+							<InfoSvg />
 						</ButtonMenu>
 					</Row>
 				</Grid>
@@ -58,7 +61,7 @@ export default class Home extends Component {
 	}
 }
 
-const stylesHome = StyleSheet.create({
+const homeStyles = StyleSheet.create({
 	rowBackground: {
 		flex: 2,
 		justifyContent: 'center',

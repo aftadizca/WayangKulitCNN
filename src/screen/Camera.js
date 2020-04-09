@@ -11,8 +11,6 @@ import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
 import { Container, Button, Icon } from 'native-base';
 import { colors, icons } from '../config';
-//import IImageConverter from 'react-native-image-converter';
-//import ImageEditor from '@react-native-community/image-editor';
 
 export default class Camera extends Component {
 	constructor(props) {
@@ -30,11 +28,10 @@ export default class Camera extends Component {
 
 		this._panResponder = PanResponder.create({
 			// Ask to be the responder:
-			//onStartShouldSetPanResponder: (evt, gestureState) => true,
-			//onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
-			//onMoveShouldSetPanResponder: (evt, gestureState) => true,
-			//onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
-
+			onStartShouldSetPanResponder: (evt, gestureState) => true,
+			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onMoveShouldSetPanResponder: (evt, gestureState) => true,
+			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
 			onPanResponderGrant: (evt, gestureState) => {
 				const x0 = evt.nativeEvent.locationX / w;
 				const y0 = evt.nativeEvent.locationY / h;
@@ -52,25 +49,23 @@ export default class Camera extends Component {
 				clearTimeout(timerId);
 				timerId = setTimeout(() => {
 					this.setState({ focusPointChange: false });
-					//console.log('end of ', timerId);
 				}, 3000);
-				//console.log('timerId', timerId);
 			},
-			//onPanResponderMove: (evt, gestureState) => {},
-			//onPanResponderTerminationRequest: (evt, gestureState) => true,
-			//onPanResponderRelease: (evt, gestureState) => {
-			// The user has released all touches while this view is the
-			// responder. This typically means a gesture has succeeded
-			//},
-			//onPanResponderTerminate: (evt, gestureState) => {
-			// Another component has become the responder, so this gesture
-			// should be cancelled
-			//},
-			//onShouldBlockNativeResponder: (evt, gestureState) => {
-			// Returns whether this component should block native components from becoming the JS
-			// responder. Returns true by default. Is currently only supported on android.
-			//return true;
-			//},
+			onPanResponderMove: (evt, gestureState) => {},
+			onPanResponderTerminationRequest: (evt, gestureState) => true,
+			onPanResponderRelease: (evt, gestureState) => {
+				// The user has released all touches while this view is the
+				// responder. This typically means a gesture has succeeded
+			},
+			onPanResponderTerminate: (evt, gestureState) => {
+				// Another component has become the responder, so this gesture
+				// should be cancelled
+			},
+			onShouldBlockNativeResponder: (evt, gestureState) => {
+				// Returns whether this component should block native components from becoming the JS
+				// responder. Returns true by default. Is currently only supported on android.
+				return true;
+			},
 		});
 	}
 
@@ -90,10 +85,8 @@ export default class Camera extends Component {
 
 	takePicture = async () => {
 		if (this.camera) {
-			// const sizes = await this.camera.getAvailablePictureSizes();
-			// console.log(sizes);
 			const options = {
-				quality: 0.9,
+				quality: 0.95,
 				base64: false,
 				writeExif: false,
 			};
@@ -104,7 +97,6 @@ export default class Camera extends Component {
 	};
 
 	render() {
-		console.log('focusPoint', this.state.focusPoint);
 		return (
 			<Container style={styles.container}>
 				<RNCamera

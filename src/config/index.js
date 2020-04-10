@@ -1,2 +1,5 @@
 export * from './config';
-export * from './style';
+
+export { default as COLORS } from './color'
+export { default as FONTS } from './font'
+export { default as ICONS } from './icon'

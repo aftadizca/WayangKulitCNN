@@ -10,7 +10,7 @@ import {
 import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
 import { Container, Icon } from 'native-base';
-import { colors, icons } from 'config';
+import { COLORS, ICONS } from '../config';
 
 export default class Camera extends Component {
 	constructor(props) {
@@ -51,7 +51,7 @@ export default class Camera extends Component {
 					this.setState({ focusPointChange: false });
 				}, 3000);
 			},
-			onPanResponderMove: (evt, gestureState) => {},
+			onPanResponderMove: (evt, gestureState) => { },
 			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: (evt, gestureState) => {
 				// The user has released all touches while this view is the
@@ -119,14 +119,14 @@ export default class Camera extends Component {
 				<View style={styles.touchFocus} {...this._panResponder.panHandlers} />
 
 				<TouchableNativeFeedback
-					background={TouchableNativeFeedback.Ripple(colors.PRIMARY, false)}
+					background={TouchableNativeFeedback.Ripple(COLORS.PRIMARY, false)}
 					useForeground={true}
 					onPress={this._onPressFlashMode}>
 					<View style={styles.flashIconTO}>
 						<Icon
 							style={styles.flashIcon}
-							name={icons.FLASH_ICON[this.state.flashMode]}
-							type={icons.FLASH_ICON.type}
+							name={ICONS.FLASH_ICON[this.state.flashMode]}
+							type={ICONS.FLASH_ICON.type}
 						/>
 					</View>
 				</TouchableNativeFeedback>
@@ -137,7 +137,7 @@ export default class Camera extends Component {
 					<Icon
 						style={styles.captureIcon}
 						name='ios-radio-button-on'
-						type='Ionicons'
+						type='IonICONS'
 					/>
 				</TouchableOpacity>
 				<View
@@ -145,7 +145,7 @@ export default class Camera extends Component {
 						top: this.state.focusLocation.y,
 						left: this.state.focusLocation.x,
 						borderColor: this.state.focusPointChange
-							? colors.CAMERA_FOCUS_BOX
+							? COLORS.CAMERA_FOCUS_BOX
 							: 'transparent',
 						...styles.focusBox,
 					}}
@@ -156,7 +156,7 @@ export default class Camera extends Component {
 }
 
 const flashModeCycle = {
-	next: function(num) {
+	next: function (num) {
 		switch (num) {
 			case RNCamera.Constants.FlashMode.off:
 				return RNCamera.Constants.FlashMode.on;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, TouchableNativeFeedback, StyleSheet } from 'react-native';
-import { colors, styles, icons } from 'config';
-import { Text, Container, Header, Left, Right, Body, Title } from 'native-base';
+import { COLORS, ICONS, FONTS } from '../config';
+import { Container, Header, Left, Right, Body, Title } from 'native-base';
 import ButtonMenu from '../components/ButtonMenu';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import BG from '../icon/bg2.svg';
@@ -19,7 +19,7 @@ export default class Home extends Component {
 		return (
 			<Container>
 				<Header
-					androidStatusBarColor={colors.PRIMARY_DARK}
+					androidStatusBarColor={COLORS.PRIMARY_DARK}
 					style={styles.headerHome}>
 					<Left />
 					<Body>
@@ -28,30 +28,23 @@ export default class Home extends Component {
 					<Right />
 				</Header>
 				<Grid>
-					<Row style={homeStyles.rowBackground}>
-						<View style={homeStyles.viewBackground}>
+					<Row style={styles.rowBackground}>
+						<View style={styles.viewBackground}>
 							<BG />
 						</View>
 					</Row>
-					<Row style={homeStyles.rowIcon}>
-						{/* <Button
-								style={styles.buttonPrimary}
-								onPress={() =>
-									this.props.navigation.navigate('Camera', { Id: 'myparams' })
-								}>
-								LAUNCH CAMERA
-							</Button> */}
+					<Row style={styles.rowIcon}>
 						<ButtonMenu
-							text={'Ambil Gambar'}
+							text={'AMBIL GAMBAR'}
 							onPress={() =>
 								this.props.navigation.navigate('Camera', { Id: 'myparams' })
 							}>
 							<CameraSvg />
 						</ButtonMenu>
-						<ButtonMenu text={'Pilih Gambar'}>
+						<ButtonMenu text={'PILIH GAMBAR'}>
 							<FolderSvg />
 						</ButtonMenu>
-						<ButtonMenu text={'Tentang'}>
+						<ButtonMenu text={'TENTANG'}>
 							<InfoSvg />
 						</ButtonMenu>
 					</Row>
@@ -61,24 +54,31 @@ export default class Home extends Component {
 	}
 }
 
-const homeStyles = StyleSheet.create({
+const styles = StyleSheet.create({
+	headerTitle: {
+		fontFamily: FONTS.EXTRA_BOLD,
+	},
+	headerHome: {
+		backgroundColor: COLORS.PRIMARY_DARK,
+	},
 	rowBackground: {
 		flex: 2,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: colors.PRIMARY_DARK,
+		backgroundColor: COLORS.PRIMARY_DARK,
 	},
 	viewBackground: {
 		width: '100%',
 		height: '100%',
-		backgroundColor: colors.PRIMARY_LIGHT,
+		backgroundColor: COLORS.PRIMARY_LIGHT,
 	},
 	rowIcon: {
-		backgroundColor: colors.PRIMARY_LIGHT,
+		backgroundColor: COLORS.PRIMARY_LIGHT,
 		justifyContent: 'center',
 		alignItems: 'center',
 		alignContent: 'center',
 		flex: 3,
 		flexWrap: 'wrap',
+		flexDirection: 'row',
 	},
 });

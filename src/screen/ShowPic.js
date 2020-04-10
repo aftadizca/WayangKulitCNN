@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Image, View, Text } from 'react-native';
-//import RNFetchBlob from 'rn-fetch-blob';
 
 export default class ShowPic extends Component {
 	constructor(props) {
@@ -53,8 +52,8 @@ export default class ShowPic extends Component {
 					<Text style={{ backgroundColor: '#f00', padding: 5 }}>
 						{this.state.prediction &&
 							this.state.prediction[0].label +
-								' ' +
-								this.state.prediction[0].confidence}
+							' ' +
+							this.state.prediction[0].confidence}
 					</Text>
 				</View>
 			</View>

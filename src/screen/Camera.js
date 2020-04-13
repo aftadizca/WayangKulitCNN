@@ -136,8 +136,8 @@ export default class Camera extends Component {
 					onPress={this._takePicture.bind(this)}>
 					<Icon
 						style={styles.captureIcon}
-						name='ios-radio-button-on'
-						type='IonICONS'
+						name={ICONS.CAPTURE_ICON.name}
+						type={ICONS.CAPTURE_ICON.type}
 					/>
 				</TouchableOpacity>
 				<View

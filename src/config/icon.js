@@ -11,4 +11,8 @@ export default ICON = {
         name: 'chevron-right',
         type: 'MaterialCommunityIcons',
     },
+    CAPTURE_ICON: {
+        name: 'camera-iris',
+        type: 'MaterialCommunityIcons'
+    }
 };

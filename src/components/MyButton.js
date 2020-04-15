@@ -4,7 +4,6 @@ import { Button, Text } from 'native-base';
 import { COLORS, FONTS } from '../config';
 
 function MyButton(props) {
-	console.log(props);
 	return (
 		<Button {...props} style={styles.button} rounded>
 			<Text uppercase={false} style={styles.text}>
@@ -18,10 +17,10 @@ export default MyButton;
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: COLORS.PRIMARY_DARK
+		backgroundColor: COLORS.PRIMARY_DARK,
 	},
 	text: {
-		fontFamily: FONTS.BOLD,
-		fontSize: 16
-	}
+		fontFamily: FONTS.TITLE,
+		fontSize: 16,
+	},
 });

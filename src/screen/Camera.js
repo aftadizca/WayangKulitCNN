@@ -77,6 +77,10 @@ export default class Camera extends Component {
 			});
 	}
 
+	componentDidMount() {
+		console.log("Mounting Camera")
+	}
+
 	_onPressFlashMode = () => {
 		this.setState((state, props) => {
 			return { flashMode: flashModeCycle.next(state.flashMode) };

@@ -20,12 +20,11 @@ export default class Home extends Component {
 			<Container>
 				<Header
 					androidStatusBarColor={COLORS.PRIMARY_DARK}
+					noLeft
 					style={styles.headerHome}>
-					<Left />
 					<Body>
-						<Title style={styles.headerTitle}>SI DANGKU</Title>
+						<Title style={styles.headerTitle}>SIDANGKU</Title>
 					</Body>
-					<Right />
 				</Header>
 				<Grid>
 					<Row style={styles.rowBackground}>
@@ -56,7 +55,8 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
 	headerTitle: {
-		fontFamily: FONTS.EXTRA_BOLD,
+		fontFamily: FONTS.TITLE,
+		fontSize: 24
 	},
 	headerHome: {
 		backgroundColor: COLORS.PRIMARY_DARK,

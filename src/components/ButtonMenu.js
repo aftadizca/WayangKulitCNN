@@ -25,7 +25,7 @@ function ButtonMenu(props) {
 
 ButtonMenu.propTypes = {
 	text: PropTypes.string.isRequired,
-	onPress: PropTypes.func
+	onPress: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -40,25 +40,25 @@ const styles = StyleSheet.create({
 		borderRadius: 20,
 		borderWidth: 2,
 		borderColor: COLORS.SECONDARY,
-		overflow: 'hidden'
+		overflow: 'hidden',
 	},
 	iconView: {
 		width: 72,
 		height: 72,
-		flex: 1
+		flex: 1,
 	},
 	textPrimary: {
-		fontFamily: FONTS.MEDIUM,
+		fontFamily: FONTS.TITLE,
 		color: COLORS.SECONDARY,
 		textAlign: 'left',
 		marginLeft: 15,
 		fontSize: 18,
-		flex: 2
+		flex: 2,
 	},
 	icon: {
 		color: COLORS.SECONDARY,
-		fontSize: 24
-	}
+		fontSize: 24,
+	},
 });
 
 export default ButtonMenu;

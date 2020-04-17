@@ -11,7 +11,7 @@ const tflite = new Tflite();
 
 tflite.loadModel(
 	{
-		model: 'custom/model-fast.tflite', // required
+		model: 'custom/model2.tflite', // required
 		labels: 'custom/model.txt', // required
 		numThreads: 4, // defaults to 1
 	},

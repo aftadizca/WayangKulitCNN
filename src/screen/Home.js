@@ -55,7 +55,7 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
 	headerTitle: {
-		fontFamily: FONTS.TITLE,
+		fontFamily: FONTS.BOLD,
 		fontSize: 24
 	},
 	headerHome: {

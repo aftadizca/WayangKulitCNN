@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableNativeFeedback, View, Text, StyleSheet } from 'react-native';
 import { Icon } from 'native-base';
 import PropTypes from 'prop-types';
+import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTS, ICONS } from '../config';
 
 function ButtonMenu(props) {
@@ -10,7 +11,7 @@ function ButtonMenu(props) {
 			background={TouchableNativeFeedback.Ripple(COLORS.PRIMARY, false)}
 			useForeground={true}
 			onPress={props.onPress}>
-			<View style={styles.viewMenu}>
+			<LinearGradient colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]} useAngle={true} angle={241} style={styles.viewMenu}>
 				<View style={styles.iconView}>{props.children}</View>
 				<Text style={styles.textPrimary}>{props.text}</Text>
 				<Icon
@@ -18,7 +19,7 @@ function ButtonMenu(props) {
 					type={ICONS.ARROW_RIGHT.type}
 					style={styles.icon}
 				/>
-			</View>
+			</LinearGradient>
 		</TouchableNativeFeedback>
 	);
 }
@@ -38,9 +39,9 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-around',
 		borderRadius: 20,
-		borderWidth: 2,
 		borderColor: COLORS.SECONDARY,
 		overflow: 'hidden',
+		elevation: 5
 	},
 	iconView: {
 		width: 72,
@@ -48,11 +49,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	textPrimary: {
-		fontFamily: FONTS.TITLE,
+		fontFamily: FONTS.BOLD,
 		color: COLORS.SECONDARY,
 		textAlign: 'left',
 		marginLeft: 15,
-		fontSize: 18,
+		fontSize: 16,
 		flex: 2,
 	},
 	icon: {

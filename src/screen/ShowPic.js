@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
 	},
 	renderContent: {
 		backgroundColor: 'white',
-		minHeight: '60%',
+		minHeight: '70%',
 		padding: 20,
 		marginLeft: 30,
 		marginRight: 30,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
 		shadowRadius: 10,
 		borderWidth: 1,
 		borderColor: COLORS.PRIMARY_DARK,
-		justifyContent: 'space-evenly',
+		justifyContent: 'center',
 		alignItems: 'center',
 	},
 });

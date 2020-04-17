@@ -7,7 +7,7 @@ export default (FONT = {
 	BOLD: 'Ubuntu-Bold',
 	BOLD_ITALIC: 'Ubuntu-BoldItalic',
 	LIGHT: 'Ubuntu-Light',
-	LIGHT_ITALIC: 'Ubuntu-MediumItalic',
+	LIGHT_ITALIC: 'Ubuntu-LightItalic',
 	MEDIUM: 'Ubuntu-Medium',
 	MEDIUM_ITALIC: 'Ubuntu-MediumItalic',
 });

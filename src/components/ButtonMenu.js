@@ -27,6 +27,7 @@ function ButtonMenu(props) {
 ButtonMenu.propTypes = {
 	text: PropTypes.string.isRequired,
 	onPress: PropTypes.func,
+	icon: PropTypes.elementType.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -41,7 +42,9 @@ const styles = StyleSheet.create({
 		borderRadius: 20,
 		borderColor: COLORS.SECONDARY,
 		overflow: 'hidden',
-		elevation: 5
+		elevation: 5,
+		borderWidth: 1,
+		backgroundColor: COLORS.PRIMARY_DARK
 	},
 	iconView: {
 		width: 72,

@@ -15,12 +15,36 @@ export default class ShowPic extends Component {
 		this.onIdentify(this.props.route.params.uri);
 	}
 
-	renderContent = () => (
-		<View style={styles.renderContent}>
-			<ProgressBar text={'Bukan Wayang'} value={50.56} />
-			<MyButton>Tampilkan Detail</MyButton>
-		</View>
-	);
+	renderContent = () => {
+		if (typeof this.state.prediction === 'undefined') {
+			//Tampilan jika prediksi gagal
+			this.bottomSheet && this.bottomSheet.snapTo(1);
+
+			return (
+				<View style={styles.renderContent}>
+					<Text style={styles.title}>KESALAHAN</Text>
+					<Text style={styles.bodyText}>TIDAK DAPAT MEMPROSES GAMBAR</Text>
+					<Text style={styles.bodyText}>
+						MOHON UNTUK MENGAMBIL ULANG GAMBAR
+					</Text>
+				</View>
+			);
+		} else {
+			//Tampilan jika prediksi sukses
+			this.bottomSheet && this.bottomSheet.snapTo(0);
+
+			return (
+				<View style={styles.renderContent}>
+					<ProgressBar
+						text={this.state.prediction[0].label}
+						value={this.state.prediction[0].confidence}
+					/>
+					<MyButton>Tampilkan Detail</MyButton>
+				</View>
+			);
+		}
+	};
+
 	renderHeader = () => (
 		<View style={{ backgroundColor: 'white', height: 50 }} />
 	);
@@ -32,18 +56,18 @@ export default class ShowPic extends Component {
 				imageMean: 0, // defaults to 127.5
 				imageStd: 255, // defaults to 127.5
 				numResults: 4, // defaults to 5
-				threshold: 0, // defaults to 0.1
+				threshold: 0.1, // defaults to 0.1
 				numThreads: 4,
 			},
 			(err, res) => {
 				if (err) console.log(err);
 				else {
 					if (res.length !== 0) {
-						console.log('res', res);
-						console.log(
-							'prediction ->',
-							res[0].label + ' : ' + res[0].confidence
-						);
+						// console.log('res', res);
+						// console.log(
+						// 	'prediction ->',
+						// 	res[0].label + ' : ' + res[0].confidence
+						// );
 						this.setState({ prediction: res });
 					}
 				}
@@ -61,17 +85,12 @@ export default class ShowPic extends Component {
 					}}
 					style={styles.image}
 				/>
-				{/* <View style={{ zIndex: 0, position: 'absolute', bottom: 20 }}>
-					<Text style={{ backgroundColor: '#f00', padding: 5 }}>
-						{this.state.prediction
-							? this.state.prediction[0].label +
-							  ' ' +
-							  this.state.prediction[0].confidence
-							: 'Gambar tidak diketahui'}
-					</Text>
-				</View> */}
 				<BottomSheet
-					snapPoints={['52%']}
+					ref={(ref) => {
+						this.bottomSheet = ref;
+					}}
+					snapPoints={['52.8%', '41%']}
+					enabledManualSnapping={true}
 					onOpenEnd={this.onOpenEnd}
 					onCloseEnd={this.onCloseEnd}
 					renderContent={this.renderContent}
@@ -106,10 +125,11 @@ const styles = StyleSheet.create({
 	},
 	renderContent: {
 		backgroundColor: 'white',
-		minHeight: '70%',
+		minHeight: '50%',
 		padding: 20,
 		marginLeft: 30,
 		marginRight: 30,
+		paddingBottom: 25,
 		borderRadius: 20,
 		backgroundColor: COLORS.PRIMARY_LIGHT,
 		elevation: 10,
@@ -119,5 +139,15 @@ const styles = StyleSheet.create({
 		borderColor: COLORS.PRIMARY_DARK,
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	title: {
+		fontFamily: FONTS.BOLD,
+		fontSize: 32,
+		color: COLORS.PRIMARY_DARK,
+	},
+	bodyText: {
+		fontFamily: FONTS.CONDENSED,
+		fontSize: 18,
+		color: COLORS.PRIMARY_DARK,
 	},
 });

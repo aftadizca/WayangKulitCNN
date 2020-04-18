@@ -7,13 +7,13 @@ import LinearGradient from 'react-native-linear-gradient';
 const ProgressBar = (props) => {
 	return (
 		<View style={{ ...styles.container, ...props.style }}>
-			<Text style={styles.text}>{props.text}</Text>
+			<Text style={styles.text}>{props.text.toUpperCase()}</Text>
 			<View
 				style={{
 					height: 20,
 					width: '100%',
 					backgroundColor: COLORS.PRIMARY_DARK,
-					borderWidth: 2,
+					borderWidth: 1,
 					borderRadius: 10,
 					borderColor: COLORS.PRIMARY_DARK,
 					overflow: 'hidden',
@@ -21,17 +21,16 @@ const ProgressBar = (props) => {
 				<LinearGradient
 					colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]}
 					useAngle={true}
-					angle={180}
-					style={styles.button}
+					angle={90}
 					style={{
 						backgroundColor: COLORS.PRIMARY_DARK,
-						width: props.value + '%',
+						width: precise(props.value) + '%',
 						height: '100%',
 						borderRadius: 10,
 					}}
 				/>
 			</View>
-			<Text style={styles.textSubtitle}>{props.value}%</Text>
+			<Text style={styles.textSubtitle}>{precise(props.value)}%</Text>
 			<Text style={styles.textSubtitle2}>CONFIDENCE</Text>
 		</View>
 	);
@@ -54,8 +53,8 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	text: {
-		fontFamily: FONTS.MEDIUM,
-		fontSize: 24,
+		fontFamily: FONTS.CONDENSED,
+		fontSize: 28,
 		color: COLORS.PRIMARY_DARK,
 		marginBottom: 5,
 	},

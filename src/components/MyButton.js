@@ -9,7 +9,7 @@ function MyButton(props) {
 			background={TouchableNativeFeedback.Ripple(COLORS.PRIMARY, false)}
 			useForeground={true}
 			onPress={props.onPress}>
-			<LinearGradient colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]} useAngle={true} angle={180} style={styles.button}>
+			<LinearGradient colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]} useAngle={true} angle={90} style={styles.button}>
 				<Text style={styles.text}>{props.children}</Text>
 			</LinearGradient>
 		</TouchableNativeFeedback>

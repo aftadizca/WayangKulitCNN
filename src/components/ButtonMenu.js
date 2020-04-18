@@ -11,7 +11,7 @@ function ButtonMenu(props) {
 			background={TouchableNativeFeedback.Ripple(COLORS.PRIMARY, false)}
 			useForeground={true}
 			onPress={props.onPress}>
-			<LinearGradient colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]} useAngle={true} angle={241} style={styles.viewMenu}>
+			<LinearGradient colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]} useAngle={true} angle={90} style={styles.viewMenu}>
 				<View style={styles.iconView}>{props.children}</View>
 				<Text style={styles.textPrimary}>{props.text}</Text>
 				<Icon

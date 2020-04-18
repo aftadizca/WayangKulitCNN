@@ -108,6 +108,7 @@ export default class Camera extends Component {
 						this.camera = ref;
 					}}
 					style={styles.preview}
+					ratio="16:9"
 					type={RNCamera.Constants.Type.back}
 					autoFocusPointOfInterest={this.state.focusPoint}
 					autoFocus={RNCamera.Constants.AutoFocus.on}

@@ -9,24 +9,14 @@ const ProgressBar = (props) => {
 		<View style={{ ...styles.container, ...props.style }}>
 			<Text style={styles.text}>{props.text.toUpperCase()}</Text>
 			<View
-				style={{
-					height: 20,
-					width: '100%',
-					backgroundColor: COLORS.PRIMARY_DARK,
-					borderWidth: 1,
-					borderRadius: 10,
-					borderColor: COLORS.PRIMARY_DARK,
-					overflow: 'hidden',
-				}}>
+				style={styles.outerBar}>
 				<LinearGradient
 					colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]}
 					useAngle={true}
 					angle={90}
 					style={{
-						backgroundColor: COLORS.PRIMARY_DARK,
-						width: precise(props.value) + '%',
-						height: '100%',
-						borderRadius: 10,
+						...styles.insideBar,
+						width: precise(props.value) + '%'
 					}}
 				/>
 			</View>
@@ -37,7 +27,7 @@ const ProgressBar = (props) => {
 };
 
 function precise(x) {
-	return Number.parseFloat(x * 100).toPrecision(4);
+	return Number.parseFloat(x * 100).toPrecision(3);
 }
 
 ProgressBar.propTypes = {
@@ -57,6 +47,19 @@ const styles = StyleSheet.create({
 		fontSize: 28,
 		color: COLORS.PRIMARY_DARK,
 		marginBottom: 5,
+	},
+	outerBar: {
+		height: 20,
+		width: '100%',
+		borderWidth: 1,
+		borderRadius: 10,
+		borderColor: COLORS.PRIMARY_DARK,
+		overflow: 'hidden'
+	},
+	insideBar: {
+		backgroundColor: COLORS.PRIMARY_DARK,
+		height: '100%',
+		borderRadius: 10,
 	},
 	textSubtitle: {
 		fontFamily: FONTS.CONDENSED,

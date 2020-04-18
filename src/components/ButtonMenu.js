@@ -13,7 +13,10 @@ function ButtonMenu(props) {
 			onPress={props.onPress}>
 			<LinearGradient colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]} useAngle={true} angle={90} style={styles.viewMenu}>
 				<View style={styles.iconView}>{props.children}</View>
-				<Text style={styles.textPrimary}>{props.text}</Text>
+				<View style={{ flex: 2 }}>
+					<Text style={styles.textPrimary}>{props.text}</Text>
+					<Text style={styles.textSecondary}>{props.caption}</Text>
+				</View>
 				<Icon
 					name={ICONS.ARROW_RIGHT.name}
 					type={ICONS.ARROW_RIGHT.type}
@@ -26,6 +29,7 @@ function ButtonMenu(props) {
 
 ButtonMenu.propTypes = {
 	text: PropTypes.string.isRequired,
+	caption: PropTypes.string.isRequired,
 	onPress: PropTypes.func,
 	icon: PropTypes.elementType.isRequired
 };
@@ -50,18 +54,26 @@ const styles = StyleSheet.create({
 		width: 72,
 		height: 72,
 		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	textPrimary: {
 		fontFamily: FONTS.BOLD,
 		color: COLORS.SECONDARY,
 		textAlign: 'left',
 		marginLeft: 15,
-		fontSize: 16,
-		flex: 2,
+		fontSize: 16
+	},
+	textSecondary: {
+		fontFamily: FONTS.CONDENSED,
+		color: COLORS.SECONDARY,
+		textAlign: 'left',
+		marginLeft: 15,
+		fontSize: 15
 	},
 	icon: {
 		color: COLORS.SECONDARY,
-		fontSize: 24,
+		fontSize: 24
 	},
 });
 

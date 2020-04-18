@@ -58,16 +58,20 @@ export default class Home extends Component {
 					</Row>
 					<Row style={styles.rowIcon}>
 						<ButtonMenu
-							text={'AMBIL GAMBAR'}
+							text='AMBIL GAMBAR'
+							caption='Ambil gambar menggunakan camera'
 							onPress={() =>
 								this.props.navigation.navigate('Camera', { Id: 'myparams' })
 							}>
 							<CameraSvg />
 						</ButtonMenu>
-						<ButtonMenu text={'PILIH GAMBAR'} onPress={this.openImagePicker}>
+						<ButtonMenu
+							text={'PILIH GAMBAR'}
+							caption='Pilih gambar dari gallery'
+							onPress={this.openImagePicker}>
 							<FolderSvg />
 						</ButtonMenu>
-						<ButtonMenu text={'TENTANG'}>
+						<ButtonMenu text={'TENTANG'} caption='Informasi tentang aplikasi'>
 							<InfoSvg />
 						</ButtonMenu>
 					</Row>

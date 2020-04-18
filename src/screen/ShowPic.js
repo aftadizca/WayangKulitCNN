@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Image, View, Text, StyleSheet } from 'react-native';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { COLORS, FONTS } from '../config';
-import MyButton from '../components/MyButton';
-import ProgressBar from '../components/ProgressBar';
+import { MyButton, ProgressBar } from '../components';
 
 export default class ShowPic extends Component {
 	constructor(props) {

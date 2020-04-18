@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, TouchableNativeFeedback, StyleSheet } from 'react-native';
-import { COLORS, ICONS, FONTS } from '../config';
-import { Container, Header, Left, Right, Body, Title } from 'native-base';
-import ButtonMenu from '../components/ButtonMenu';
-import { Col, Row, Grid } from 'react-native-easy-grid';
+import { View, StyleSheet } from 'react-native';
+import { COLORS, FONTS } from '../config';
+import { Container, Header, Body, Title } from 'native-base';
+import { ButtonMenu } from '../components';
+import { Row, Grid } from 'react-native-easy-grid';
+//icon
 import BG from '../icon/bg2.svg';
 import CameraSvg from '../icon/camera.svg';
 import FolderSvg from '../icon/folder.svg';
@@ -14,6 +15,8 @@ export default class Home extends Component {
 		super(props);
 		this.state = {};
 	}
+
+
 
 	render() {
 		return (

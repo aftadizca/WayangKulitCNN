@@ -4,6 +4,7 @@ import { COLORS, FONTS } from '../config';
 import { Container, Header, Body, Title } from 'native-base';
 import { ButtonMenu } from '../components';
 import { Row, Grid } from 'react-native-easy-grid';
+import ImagePicker from 'react-native-image-picker';
 //icon
 import BG from '../icon/bg2.svg';
 import CameraSvg from '../icon/camera.svg';
@@ -16,7 +17,27 @@ export default class Home extends Component {
 		this.state = {};
 	}
 
-
+	openImagePicker = () => {
+		const options = {
+			title: 'Select Avatar',
+			customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+			storageOptions: {
+				skipBackup: true,
+				path: 'images',
+			},
+		};
+		ImagePicker.launchImageLibrary(options, (response) => {
+			if (response.didCancel) {
+				console.log('User cancelled image picker');
+			} else if (response.error) {
+				console.log('ImagePicker Error: ', response.error);
+			} else if (response.customButton) {
+				console.log('User tapped custom button: ', response.customButton);
+			} else {
+				this.props.navigation.navigate('Pic', { uri: response.path });
+			}
+		});
+	};
 
 	render() {
 		return (
@@ -43,7 +64,7 @@ export default class Home extends Component {
 							}>
 							<CameraSvg />
 						</ButtonMenu>
-						<ButtonMenu text={'PILIH GAMBAR'}>
+						<ButtonMenu text={'PILIH GAMBAR'} onPress={this.openImagePicker}>
 							<FolderSvg />
 						</ButtonMenu>
 						<ButtonMenu text={'TENTANG'}>
@@ -59,7 +80,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
 	headerTitle: {
 		fontFamily: FONTS.BOLD,
-		fontSize: 24
+		fontSize: 24,
 	},
 	headerHome: {
 		backgroundColor: COLORS.PRIMARY_DARK,

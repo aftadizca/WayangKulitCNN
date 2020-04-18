@@ -55,7 +55,7 @@ export default class ShowPic extends Component {
 				imageMean: 0, // defaults to 127.5
 				imageStd: 255, // defaults to 127.5
 				numResults: 4, // defaults to 5
-				threshold: 0.1, // defaults to 0.1
+				threshold: 0.4, // defaults to 0.1
 				numThreads: 4,
 			},
 			(err, res) => {
@@ -78,7 +78,7 @@ export default class ShowPic extends Component {
 		return (
 			<View style={styles.container}>
 				<Image
-					resizeMode='cover'
+					resizeMode='contain'
 					source={{
 						uri: 'file://' + this.props.route.params.uri,
 					}}
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
 	image: {
 		width: '100%',
 		height: '100%',
+		backgroundColor: COLORS.PRIMARY_DARK
 	},
 	renderContent: {
 		backgroundColor: 'white',

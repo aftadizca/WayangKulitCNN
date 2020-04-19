@@ -32,7 +32,7 @@ function precise(x) {
 
 ProgressBar.propTypes = {
 	text: PropTypes.string.isRequired,
-	value: PropTypes.func,
+	value: PropTypes.number,
 	style: PropTypes.object,
 };
 

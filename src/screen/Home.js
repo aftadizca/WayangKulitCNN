@@ -60,20 +60,22 @@ export default class Home extends Component {
 						<ButtonMenu
 							text='AMBIL GAMBAR'
 							caption='Ambil gambar menggunakan camera'
+							icon={<CameraSvg />}
 							onPress={() =>
 								this.props.navigation.navigate('Camera', { Id: 'myparams' })
-							}>
-							<CameraSvg />
-						</ButtonMenu>
+							}
+						/>
 						<ButtonMenu
 							text={'PILIH GAMBAR'}
+							icon={<FolderSvg />}
 							caption='Pilih gambar dari gallery'
-							onPress={this.openImagePicker}>
-							<FolderSvg />
-						</ButtonMenu>
-						<ButtonMenu text={'TENTANG'} caption='Informasi tentang aplikasi'>
-							<InfoSvg />
-						</ButtonMenu>
+							onPress={this.openImagePicker}
+						/>
+						<ButtonMenu
+							text={'TENTANG'}
+							icon={<InfoSvg />}
+							caption='Informasi tentang aplikasi'
+						/>
 					</Row>
 				</Grid>
 			</Container>

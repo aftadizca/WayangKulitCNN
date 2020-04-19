@@ -12,7 +12,7 @@ function ButtonMenu(props) {
 			useForeground={true}
 			onPress={props.onPress}>
 			<LinearGradient colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]} useAngle={true} angle={90} style={styles.viewMenu}>
-				<View style={styles.iconView}>{props.children}</View>
+				<View style={styles.iconView}>{props.icon}</View>
 				<View style={{ flex: 2 }}>
 					<Text style={styles.textPrimary}>{props.text}</Text>
 					<Text style={styles.textSecondary}>{props.caption}</Text>
@@ -31,7 +31,7 @@ ButtonMenu.propTypes = {
 	text: PropTypes.string.isRequired,
 	caption: PropTypes.string.isRequired,
 	onPress: PropTypes.func,
-	icon: PropTypes.elementType.isRequired
+	icon: PropTypes.element.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 		color: COLORS.SECONDARY,
 		textAlign: 'left',
 		marginLeft: 15,
-		fontSize: 16
+		fontSize: 18
 	},
 	textSecondary: {
 		fontFamily: FONTS.CONDENSED,

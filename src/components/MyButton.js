@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableNativeFeedback, Text } from 'react-native';
+import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTS } from '../config';
 
@@ -16,7 +17,10 @@ function MyButton(props) {
 	);
 }
 
-export default MyButton;
+MyButton.propTypes = {
+	onPress: PropTypes.func,
+	children: PropTypes.string.isRequired
+}
 
 const styles = StyleSheet.create({
 	button: {
@@ -38,3 +42,5 @@ const styles = StyleSheet.create({
 		color: COLORS.SECONDARY
 	},
 });
+
+export default MyButton;

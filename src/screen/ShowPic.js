@@ -89,7 +89,7 @@ export default class ShowPic extends Component {
 						this.bottomSheet = ref;
 					}}
 					snapPoints={['52.8%', '41%']}
-					enabledManualSnapping={true}
+					enabledGestureInteraction={false}
 					onOpenEnd={this.onOpenEnd}
 					onCloseEnd={this.onCloseEnd}
 					renderContent={this.renderContent}
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
 	image: {
 		width: '100%',
 		height: '100%',
-		backgroundColor: COLORS.PRIMARY_DARK
+		backgroundColor: COLORS.PRIMARY_DARK,
 	},
 	renderContent: {
 		backgroundColor: 'white',

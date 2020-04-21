@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Camera, Home, ShowPic } from 'screen';
+import { Camera, Home, ShowPic, About } from './src/screen';
 import { screenOptions } from 'config';
 import Tflite from 'tflite-react-native';
 
@@ -31,6 +31,7 @@ export default function App() {
 					component={Camera}
 					options={screenOptions}
 				/>
+				<Stack.Screen name='About' component={About} options={screenOptions} />
 				<Stack.Screen name='Pic' options={screenOptions}>
 					{(props) => <ShowPic {...props} tflite={tflite} />}
 				</Stack.Screen>

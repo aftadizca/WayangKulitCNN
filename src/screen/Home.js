@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { COLORS, FONTS } from '../config';
-import { Container, Header, Body, Title } from 'native-base';
+import { Container, Header, Body, Title, Subtitle } from 'native-base';
 import { ButtonMenu } from '../components';
 import { Row, Grid } from 'react-native-easy-grid';
 import ImagePicker from 'react-native-image-picker';
@@ -45,9 +45,14 @@ export default class Home extends Component {
 				<Header
 					androidStatusBarColor={COLORS.PRIMARY_DARK}
 					noLeft
+					hasSubtitle
+					span
 					style={styles.headerHome}>
 					<Body>
 						<Title style={styles.headerTitle}>SIDANGKU</Title>
+						<Subtitle style={styles.headerSubtitle}>
+							Sistem Identifikasi Wayang Kulit
+						</Subtitle>
 					</Body>
 				</Header>
 				<Grid>
@@ -75,6 +80,7 @@ export default class Home extends Component {
 							text={'TENTANG'}
 							icon={<InfoSvg />}
 							caption='Informasi tentang aplikasi'
+							onPress={() => this.props.navigation.navigate('About')}
 						/>
 					</Row>
 				</Grid>
@@ -86,7 +92,11 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
 	headerTitle: {
 		fontFamily: FONTS.BOLD,
-		fontSize: 24,
+		fontSize: 32,
+	},
+	headerSubtitle: {
+		fontFamily: FONTS.CONDENSED,
+		fontSize: 18,
 	},
 	headerHome: {
 		backgroundColor: COLORS.PRIMARY_DARK,

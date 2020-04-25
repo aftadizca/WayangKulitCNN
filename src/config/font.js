@@ -1,3 +1,5 @@
+import { Dimensions } from 'react-native'
+
 export default (FONT = {
 	TITLE: 'Acme-Regular',
 	BODY: 'Roboto-Regular',

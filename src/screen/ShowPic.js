@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, Text, StyleSheet } from 'react-native';
+import { Image, View, Text, StyleSheet, Dimensions } from 'react-native';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { COLORS, FONTS } from '../config';
 import { MyButton, ProgressBar } from '../components';
@@ -88,11 +88,11 @@ export default class ShowPic extends Component {
 					ref={(ref) => {
 						this.bottomSheet = ref;
 					}}
-					snapPoints={['52.8%', '41%']}
-					enabledGestureInteraction={false}
-					onOpenEnd={this.onOpenEnd}
-					onCloseEnd={this.onCloseEnd}
+					snapPoints={[heightScreen * 0.7, heightScreen * 0.385]}
+					enabledManualSnapping={false}
 					renderContent={this.renderContent}
+					borderRadius={30}
+					enabledInnerScrolling={false}
 					enabledBottomInitialAnimation={true}
 					springConfig={{
 						damping: 1000,
@@ -112,6 +112,8 @@ function precise(x) {
 	return Number.parseFloat(x * 100).toPrecision(4);
 }
 
+const heightScreen = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -125,24 +127,19 @@ const styles = StyleSheet.create({
 	},
 	renderContent: {
 		backgroundColor: 'white',
-		minHeight: '50%',
 		padding: 20,
-		marginLeft: 30,
-		marginRight: 30,
-		paddingBottom: 25,
-		borderRadius: 20,
+		paddingBottom: 10,
 		backgroundColor: COLORS.PRIMARY_LIGHT,
 		elevation: 10,
+		opacity: 0.85,
 		shadowColor: COLORS.PRIMARY_DARK,
-		shadowRadius: 10,
-		borderWidth: 1,
 		borderColor: COLORS.PRIMARY_DARK,
-		justifyContent: 'center',
 		alignItems: 'center',
+		height: '100%',
 	},
 	title: {
 		fontFamily: FONTS.BOLD,
-		fontSize: 32,
+		fontSize: 28,
 		color: COLORS.PRIMARY_DARK,
 	},
 	bodyText: {

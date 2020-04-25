@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, TouchableNativeFeedback, Text } from 'react-native';
+import { StyleSheet, TouchableNativeFeedback } from 'react-native';
+import Text from 'react-native-text'
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTS } from '../config';
@@ -39,8 +40,8 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		fontFamily: FONTS.BOLD,
-		fontSize: 16,
-		color: 'white'
+		fontSize: 14,
+		color: COLORS.PRIMARY_DARK
 	},
 });
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Text from 'react-native-text'
 import PropTypes from 'prop-types';
 import { COLORS, FONTS } from '../config';
 import LinearGradient from 'react-native-linear-gradient';
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		fontFamily: FONTS.CONDENSED,
-		fontSize: 32,
+		fontSize: 28,
 		color: COLORS.PRIMARY_DARK,
 		marginBottom: 5,
 	},
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
 	textSubtitle: {
 		fontFamily: FONTS.CONDENSED,
 		fontWeight: '100',
-		fontSize: 60,
+		fontSize: 50,
 		marginTop: -5,
 		marginBottom: -10,
 		color: COLORS.PRIMARY_DARK,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
 	textSubtitle2: {
 		fontFamily: FONTS.CONDENSED,
 		opacity: 0.7,
-		fontSize: 18,
+		fontSize: 16,
 		color: COLORS.PRIMARY_DARK,
 	},
 });

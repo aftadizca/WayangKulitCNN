@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
+import Text from 'react-native-text';
 import { COLORS, FONTS } from '../config';
-import { Container, Header, Body, Title, Subtitle } from 'native-base';
+import { Container } from 'native-base';
 import { ButtonMenu } from '../components';
-import { Row, Grid } from 'react-native-easy-grid';
+import { Row, Grid, Col } from 'react-native-easy-grid';
 import ImagePicker from 'react-native-image-picker';
 //icon
 import BG from '../icon/bg2.svg';
 import CameraSvg from '../icon/camera.svg';
 import FolderSvg from '../icon/folder.svg';
 import InfoSvg from '../icon/survey.svg';
+import Wayang from '../icon/wayang.svg';
 
 export default class Home extends Component {
 	constructor(props) {
@@ -42,20 +44,22 @@ export default class Home extends Component {
 	render() {
 		return (
 			<Container>
-				<Header
-					androidStatusBarColor={COLORS.PRIMARY_DARK}
-					noLeft
-					hasSubtitle
-					span
-					style={styles.headerHome}>
-					<Body>
-						<Title style={styles.headerTitle}>SIDANGKU</Title>
-						<Subtitle style={styles.headerSubtitle}>
-							Sistem Identifikasi Wayang Kulit
-						</Subtitle>
-					</Body>
-				</Header>
 				<Grid>
+					<Row style={styles.rowTop}>
+						<Col
+							style={{
+								justifyContent: 'center',
+								alignItems: 'flex-end',
+							}}>
+							<Text style={styles.headerTitle}>SIDANGKU</Text>
+							<Text style={styles.headerSubtitle}>
+								Sistem Identifikasi Wayang Kulit
+							</Text>
+						</Col>
+						<Col>
+							<Wayang />
+						</Col>
+					</Row>
 					<Row style={styles.rowBackground}>
 						<View style={styles.viewBackground}>
 							<BG />
@@ -92,20 +96,32 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
 	headerTitle: {
 		fontFamily: FONTS.BOLD,
-		fontSize: 32,
+		fontSize: 28,
+		color: COLORS.PRIMARY_LIGHT,
+		textAlign: 'right',
 	},
 	headerSubtitle: {
 		fontFamily: FONTS.CONDENSED,
 		fontSize: 18,
+		color: COLORS.PRIMARY_LIGHT,
+		textAlign: 'right',
 	},
 	headerHome: {
 		backgroundColor: COLORS.PRIMARY_DARK,
+		justifyContent: 'center',
+		alignItems: 'flex-start',
 	},
 	rowBackground: {
 		flex: 2,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: COLORS.PRIMARY_DARK,
+	},
+	rowTop: {
+		backgroundColor: COLORS.PRIMARY_DARK,
+		flex: 2,
+		flexDirection: 'row',
+		padding: 20,
 	},
 	viewBackground: {
 		width: '100%',
@@ -117,8 +133,9 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		alignContent: 'center',
-		flex: 3,
+		flex: 4,
 		flexWrap: 'wrap',
 		flexDirection: 'row',
+		paddingBottom: 20,
 	},
 });

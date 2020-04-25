@@ -10,7 +10,7 @@ function MyButton(props) {
 			background={TouchableNativeFeedback.Ripple(COLORS.PRIMARY, false)}
 			useForeground={true}
 			onPress={props.onPress}>
-			<LinearGradient colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]} useAngle={true} angle={90} style={styles.button}>
+			<LinearGradient colors={COLORS.GRADIENT} useAngle={true} angle={180} style={styles.button}>
 				<Text style={styles.text}>{props.children}</Text>
 			</LinearGradient>
 		</TouchableNativeFeedback>
@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
 		paddingRight: 20,
 		borderRadius: 50,
 		borderWidth: 1,
-		borderColor: COLORS.SECONDARY,
+		backgroundColor: COLORS.PRIMARY_DARK,
+		borderColor: COLORS.PRIMARY_DARK,
 		overflow: 'hidden',
 		elevation: 5
 
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 	text: {
 		fontFamily: FONTS.BOLD,
 		fontSize: 16,
-		color: COLORS.SECONDARY
+		color: 'white'
 	},
 });
 

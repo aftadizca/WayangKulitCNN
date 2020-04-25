@@ -11,7 +11,7 @@ function ButtonMenu(props) {
 			background={TouchableNativeFeedback.Ripple(COLORS.PRIMARY, false)}
 			useForeground={true}
 			onPress={props.onPress}>
-			<LinearGradient colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]} useAngle={true} angle={90} style={styles.viewMenu}>
+			<LinearGradient colors={COLORS.GRADIENT} useAngle={true} angle={180} style={styles.viewMenu}>
 				<View style={styles.iconView}>{props.icon}</View>
 				<View style={{ flex: 2 }}>
 					<Text style={styles.textPrimary}>{props.text}</Text>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-around',
 		borderRadius: 20,
-		borderColor: COLORS.SECONDARY,
+		borderColor: COLORS.PRIMARY_DARK,
 		overflow: 'hidden',
 		elevation: 5,
 		borderWidth: 1,
@@ -59,20 +59,21 @@ const styles = StyleSheet.create({
 	},
 	textPrimary: {
 		fontFamily: FONTS.BOLD,
-		color: COLORS.SECONDARY,
+		color: 'white',
 		textAlign: 'left',
 		marginLeft: 15,
 		fontSize: 18
 	},
 	textSecondary: {
 		fontFamily: FONTS.CONDENSED,
-		color: COLORS.SECONDARY,
+		color: 'white',
+		opacity: 0.8,
 		textAlign: 'left',
 		marginLeft: 15,
 		fontSize: 15
 	},
 	icon: {
-		color: COLORS.SECONDARY,
+		color: 'white',
 		fontSize: 24
 	},
 });

@@ -8,18 +8,21 @@ const ProgressBar = (props) => {
 	return (
 		<View style={{ ...styles.container, ...props.style }}>
 			<Text style={styles.text}>{props.text.toUpperCase()}</Text>
-			<View
+			<LinearGradient
+				colors={COLORS.GRADIENT2}
+				useAngle={true}
+				angle={360}
 				style={styles.outerBar}>
 				<LinearGradient
-					colors={[COLORS.PRIMARY_LIGHT, COLORS.PRIMARY, COLORS.PRIMARY_DARK]}
+					colors={COLORS.GRADIENT}
 					useAngle={true}
-					angle={90}
+					angle={180}
 					style={{
 						...styles.insideBar,
-						width: precise(props.value) + '%'
+						width: precise(props.value) + '%',
 					}}
 				/>
-			</View>
+			</LinearGradient>
 			<Text style={styles.textSubtitle}>{precise(props.value)}%</Text>
 			<Text style={styles.textSubtitle2}>CONFIDENCE</Text>
 		</View>
@@ -44,17 +47,17 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		fontFamily: FONTS.CONDENSED,
-		fontSize: 28,
+		fontSize: 32,
 		color: COLORS.PRIMARY_DARK,
 		marginBottom: 5,
 	},
 	outerBar: {
 		height: 20,
 		width: '100%',
-		borderWidth: 1,
+		borderWidth: 0.5,
 		borderRadius: 10,
 		borderColor: COLORS.PRIMARY_DARK,
-		overflow: 'hidden'
+		overflow: 'hidden',
 	},
 	insideBar: {
 		backgroundColor: COLORS.PRIMARY_DARK,

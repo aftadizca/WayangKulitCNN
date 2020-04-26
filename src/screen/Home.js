@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, BackHandler, ToastAndroid } from 'react-native';
 import Text from 'react-native-text';
 import { COLORS, FONTS } from '../config';
 import { Container } from 'native-base';
@@ -17,6 +17,38 @@ export default class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
+	}
+
+	timer = undefined;
+
+	backAction = () => {
+		if (!this.timer) {
+			ToastAndroid.showWithGravityAndOffset(
+				'Tekan tombol kembali sekali lagi untuk keluar',
+				ToastAndroid.SHORT,
+				ToastAndroid.BOTTOM,
+				25,
+				50
+			);
+			this.timer = setTimeout(() => {
+				clearTimeout(this.timer);
+				this.timer = undefined;
+			}, 2500);
+		} else {
+			BackHandler.exitApp();
+		}
+		return true;
+	};
+
+	componentDidMount() {
+		this.backHandler = BackHandler.addEventListener(
+			'hardwareBackPress',
+			this.backAction
+		);
+	}
+
+	componentWillUnmount() {
+		this.backHandler.remove();
 	}
 
 	openImagePicker = () => {

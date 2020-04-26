@@ -5,6 +5,10 @@ import Text from 'react-native-text'
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTS, ICONS } from '../config';
+import {
+	heightPercentageToDP,
+	widthPercentageToDP,
+} from 'react-native-responsive-screen';
 
 function ButtonMenu(props) {
 	return (
@@ -14,7 +18,7 @@ function ButtonMenu(props) {
 			onPress={props.onPress}>
 			<LinearGradient colors={COLORS.GRADIENT} useAngle={true} angle={180} style={styles.viewMenu}>
 				<View style={styles.iconView}>{props.icon}</View>
-				<View style={{ flex: 3 }}>
+				<View style={styles.textView}>
 					<Text style={styles.textPrimary}>{props.text}</Text>
 					<Text style={styles.textSecondary}>{props.caption}</Text>
 				</View>
@@ -37,13 +41,12 @@ ButtonMenu.propTypes = {
 
 const styles = StyleSheet.create({
 	viewMenu: {
-		padding: 15,
-		margin: 5,
+		margin: heightPercentageToDP('5%'),
 		width: '70%',
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-around',
-		borderRadius: 20,
+		borderRadius: widthPercentageToDP('50%'),
 		borderColor: COLORS.PRIMARY_DARK,
 		overflow: 'hidden',
 		elevation: 5,
@@ -51,29 +54,30 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.PRIMARY_DARK
 	},
 	iconView: {
-		width: '20%',
-		height: '20%',
-		flex: 1,
+		width: '40%',
+		height: '40%',
+		flex: 30,
 		justifyContent: 'center',
 		alignItems: 'center'
+	},
+
+	textView: { flex: 55 },
+	icon: {
+		flex: 15,
+		color: COLORS.PRIMARY_DARK,
+		fontSize: 24
 	},
 	textPrimary: {
 		fontFamily: FONTS.BOLD,
 		color: COLORS.PRIMARY_DARK,
 		textAlign: 'left',
-		marginLeft: 15,
 		fontSize: 16
 	},
 	textSecondary: {
 		fontFamily: FONTS.CONDENSED,
 		color: COLORS.PRIMARY_DARK,
 		textAlign: 'left',
-		marginLeft: 15,
 		fontSize: 14
-	},
-	icon: {
-		color: COLORS.PRIMARY_DARK,
-		fontSize: 24
 	},
 });
 

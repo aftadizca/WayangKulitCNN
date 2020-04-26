@@ -88,7 +88,7 @@ export default class ShowPic extends Component {
 					ref={(ref) => {
 						this.bottomSheet = ref;
 					}}
-					snapPoints={[heightScreen * 0.7, heightScreen * 0.385]}
+					snapPoints={[heightScreen * 0.7, heightScreen * 0.7]}
 					enabledManualSnapping={false}
 					renderContent={this.renderContent}
 					borderRadius={30}

@@ -6,12 +6,12 @@ import { Container } from 'native-base';
 import { ButtonMenu } from '../components';
 import { Row, Grid, Col } from 'react-native-easy-grid';
 import ImagePicker from 'react-native-image-picker';
+import {
+	heightPercentageToDP,
+	widthPercentageToDP,
+} from 'react-native-responsive-screen';
 //icon
-import BG from '../icon/bg2.svg';
-import CameraSvg from '../icon/camera.svg';
-import FolderSvg from '../icon/folder.svg';
-import InfoSvg from '../icon/survey.svg';
-import Wayang from '../icon/wayang.svg';
+import { BgSvg, GallerySvg, WayangSvg, CameraSvg, InfoSvg } from '../icon';
 
 export default class Home extends Component {
 	constructor(props) {
@@ -21,7 +21,7 @@ export default class Home extends Component {
 
 	openImagePicker = () => {
 		const options = {
-			title: 'Select Avatar',
+			title: 'Pilih Gambar Wayang',
 			customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
 			storageOptions: {
 				skipBackup: true,
@@ -57,15 +57,15 @@ export default class Home extends Component {
 							</Text>
 						</Col>
 						<Col>
-							<Wayang />
+							<WayangSvg />
 						</Col>
 					</Row>
 					<Row style={styles.rowBackground}>
 						<View style={styles.viewBackground}>
-							<BG />
+							<BgSvg />
 						</View>
 					</Row>
-					<Row style={styles.rowIcon}>
+					<Row style={styles.rowMenu}>
 						<ButtonMenu
 							text='AMBIL GAMBAR'
 							caption='Ambil gambar menggunakan camera'
@@ -76,7 +76,7 @@ export default class Home extends Component {
 						/>
 						<ButtonMenu
 							text={'PILIH GAMBAR'}
-							icon={<FolderSvg />}
+							icon={<GallerySvg />}
 							caption='Pilih gambar dari gallery'
 							onPress={this.openImagePicker}
 						/>
@@ -111,31 +111,35 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'flex-start',
 	},
+	rowTop: {
+		backgroundColor: COLORS.PRIMARY_DARK,
+		flex: 2,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		paddingRight: widthPercentageToDP('8%'),
+		paddingLeft: widthPercentageToDP('8%'),
+		paddingTop: widthPercentageToDP('8%'),
+	},
 	rowBackground: {
 		flex: 2,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: COLORS.PRIMARY_DARK,
 	},
-	rowTop: {
-		backgroundColor: COLORS.PRIMARY_DARK,
-		flex: 2,
-		flexDirection: 'row',
-		padding: 20,
+	rowMenu: {
+		backgroundColor: COLORS.PRIMARY_LIGHT,
+		justifyContent: 'space-evenly',
+		alignItems: 'center',
+		alignContent: 'center',
+		flex: 4,
+		flexDirection: 'column',
+		paddingTop: widthPercentageToDP('10%'),
+		paddingBottom: widthPercentageToDP('10%'),
 	},
 	viewBackground: {
 		width: '100%',
 		height: '100%',
 		backgroundColor: COLORS.PRIMARY_LIGHT,
-	},
-	rowIcon: {
-		backgroundColor: COLORS.PRIMARY_LIGHT,
-		justifyContent: 'center',
-		alignItems: 'center',
-		alignContent: 'center',
-		flex: 4,
-		flexWrap: 'wrap',
-		flexDirection: 'row',
-		paddingBottom: 20,
 	},
 });

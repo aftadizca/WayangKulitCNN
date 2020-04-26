@@ -34,7 +34,7 @@ export class About extends Component {
 						<Text style={styles.text}>UMAHA</Text>
 					</Col>
 				</Row>
-				<Row size={2} style={styles.rTwo}>
+				<Row size={2}>
 					<View style={styles.viewBackground}>
 						<BG />
 					</View>
@@ -107,12 +107,6 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.PRIMARY_DARK,
 		justifyContent: 'center',
 		alignItems: 'center',
-	},
-	rTwo: {
-		backgroundColor: COLORS.PRIMARY_DARK,
-		justifyContent: 'flex-start',
-		alignItems: 'center',
-		flexDirection: 'column',
 	},
 	rThree: {
 		backgroundColor: COLORS.PRIMARY_LIGHT,

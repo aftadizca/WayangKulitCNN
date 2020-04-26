@@ -19,37 +19,37 @@ export default class Home extends Component {
 		this.state = {};
 	}
 
-	timer = undefined;
+	// timer = undefined;
 
-	backAction = () => {
-		if (!this.timer) {
-			ToastAndroid.showWithGravityAndOffset(
-				'Tekan tombol kembali sekali lagi untuk keluar',
-				ToastAndroid.SHORT,
-				ToastAndroid.BOTTOM,
-				25,
-				50
-			);
-			this.timer = setTimeout(() => {
-				clearTimeout(this.timer);
-				this.timer = undefined;
-			}, 2500);
-		} else {
-			BackHandler.exitApp();
-		}
-		return true;
-	};
+	// backAction = () => {
+	// 	if (!this.timer) {
+	// 		ToastAndroid.showWithGravityAndOffset(
+	// 			'Tekan tombol kembali sekali lagi untuk keluar',
+	// 			ToastAndroid.SHORT,
+	// 			ToastAndroid.BOTTOM,
+	// 			25,
+	// 			50
+	// 		);
+	// 		this.timer = setTimeout(() => {
+	// 			clearTimeout(this.timer);
+	// 			this.timer = undefined;
+	// 		}, 2500);
+	// 	} else {
+	// 		BackHandler.exitApp();
+	// 	}
+	// 	return true;
+	// };
 
-	componentDidMount() {
-		this.backHandler = BackHandler.addEventListener(
-			'hardwareBackPress',
-			this.backAction
-		);
-	}
+	// componentDidMount() {
+	// 	this.backHandler = BackHandler.addEventListener(
+	// 		'hardwareBackPress',
+	// 		this.backAction
+	// 	);
+	// }
 
-	componentWillUnmount() {
-		this.backHandler.remove();
-	}
+	// componentWillUnmount() {
+	// 	this.backHandler.remove();
+	// }
 
 	openImagePicker = () => {
 		const options = {

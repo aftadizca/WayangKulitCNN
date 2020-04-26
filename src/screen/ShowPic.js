@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { Image, View, Text, StyleSheet, Dimensions } from 'react-native';
-import BottomSheet from 'reanimated-bottom-sheet';
+import { Image, View, StyleSheet } from 'react-native';
+import Text from 'react-native-text';
 import { COLORS, FONTS } from '../config';
 import { MyButton, ProgressBar } from '../components';
+import {
+	heightPercentageToDP,
+	widthPercentageToDP,
+} from 'react-native-responsive-screen';
+import Modal from 'react-native-modal';
 
 export default class ShowPic extends Component {
 	constructor(props) {
@@ -13,40 +18,6 @@ export default class ShowPic extends Component {
 	componentDidMount() {
 		this.onIdentify(this.props.route.params.uri);
 	}
-
-	renderContent = () => {
-		if (typeof this.state.prediction === 'undefined') {
-			//Tampilan jika prediksi gagal
-			this.bottomSheet && this.bottomSheet.snapTo(1);
-
-			return (
-				<View style={styles.renderContent}>
-					<Text style={styles.title}>KESALAHAN</Text>
-					<Text style={styles.bodyText}>TIDAK DAPAT MEMPROSES GAMBAR</Text>
-					<Text style={styles.bodyText}>
-						MOHON UNTUK MENGAMBIL ULANG GAMBAR
-					</Text>
-				</View>
-			);
-		} else {
-			//Tampilan jika prediksi sukses
-			this.bottomSheet && this.bottomSheet.snapTo(0);
-
-			return (
-				<View style={styles.renderContent}>
-					<ProgressBar
-						text={this.state.prediction[0].label}
-						value={this.state.prediction[0].confidence}
-					/>
-					<MyButton>Tampilkan Detail</MyButton>
-				</View>
-			);
-		}
-	};
-
-	renderHeader = () => (
-		<View style={{ backgroundColor: 'white', height: 50 }} />
-	);
 
 	onIdentify = (img) => {
 		this.props.tflite.runModelOnImage(
@@ -84,35 +55,44 @@ export default class ShowPic extends Component {
 					}}
 					style={styles.image}
 				/>
-				<BottomSheet
-					ref={(ref) => {
-						this.bottomSheet = ref;
-					}}
-					snapPoints={[heightScreen * 0.7, heightScreen * 0.7]}
-					enabledManualSnapping={false}
-					renderContent={this.renderContent}
-					borderRadius={30}
-					enabledInnerScrolling={false}
-					enabledBottomInitialAnimation={true}
-					springConfig={{
-						damping: 1000,
-						mass: 2,
-						stiffness: 300,
-						toss: 1,
-						restDisplacementThreshold: 0.3,
-						restSpeedThreshold: 0.3,
-					}}
-				/>
+				<Modal
+					isVisible={true}
+					style={styles.modal}
+					hasBackdrop={false}
+					animationInTiming={800}
+					onBackButtonPress={() => this.props.navigation.goBack()}>
+					<ModalContent prediction={this.state.prediction} />
+				</Modal>
 			</View>
 		);
 	}
 }
 
-function precise(x) {
-	return Number.parseFloat(x * 100).toPrecision(4);
+function ModalContent(props) {
+	console.log('prediksi start');
+	console.log(props.prediction);
+	if (typeof props.prediction === 'undefined') {
+		//Tampilan jika prediksi gagal
+		return (
+			<View style={styles.renderContent}>
+				<Text style={styles.title}>KESALAHAN</Text>
+				<Text style={styles.bodyText}>TIDAK DAPAT MEMPROSES GAMBAR</Text>
+				<Text style={styles.bodyText}>MOHON UNTUK MENGAMBIL ULANG GAMBAR</Text>
+			</View>
+		);
+	} else {
+		//Tampilan jika prediksi sukses
+		return (
+			<View style={styles.renderContent}>
+				<ProgressBar
+					text={props.prediction[0].label}
+					value={props.prediction[0].confidence}
+				/>
+				<MyButton>Tampilkan Detail</MyButton>
+			</View>
+		);
+	}
 }
-
-const heightScreen = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
 	container: {
@@ -125,17 +105,16 @@ const styles = StyleSheet.create({
 		height: '100%',
 		backgroundColor: COLORS.PRIMARY_DARK,
 	},
+	modal: {
+		justifyContent: 'flex-end',
+		margin: 0,
+	},
+
 	renderContent: {
-		backgroundColor: 'white',
-		padding: 20,
-		paddingBottom: 10,
+		padding: widthPercentageToDP('5%'),
 		backgroundColor: COLORS.PRIMARY_LIGHT,
-		elevation: 10,
-		opacity: 0.85,
-		shadowColor: COLORS.PRIMARY_DARK,
-		borderColor: COLORS.PRIMARY_DARK,
+		borderWidth: 1,
 		alignItems: 'center',
-		height: '100%',
 	},
 	title: {
 		fontFamily: FONTS.BOLD,

@@ -12,7 +12,7 @@ export class About extends Component {
 	render() {
 		return (
 			<Grid>
-				<Row size={2} style={styles.rOne}>
+				<Row size={3} style={styles.rOne}>
 					<Col
 						style={{
 							padding: 5,
@@ -39,7 +39,7 @@ export class About extends Component {
 						<BG />
 					</View>
 				</Row>
-				<Row size={3} style={styles.rThree}>
+				<Row size={4} style={styles.rThree}>
 					<AboutList
 						data={{
 							icon: ICONS.APP_VERSION,

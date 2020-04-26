@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 		borderRadius: widthPercentageToDP('50%'),
 		borderColor: COLORS.PRIMARY_DARK,
 		overflow: 'hidden',
-		elevation: 5,
+		elevation: 10,
 		borderWidth: 1,
 		backgroundColor: COLORS.PRIMARY_DARK
 	},

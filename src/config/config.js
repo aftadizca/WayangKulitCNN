@@ -5,6 +5,9 @@ import {
 
 export const screenOptions = {
     headerMode: 'none',
+    headerStyle: {
+        backgroundColor: '#f4511e',
+    },
     gestureDirection: 'horizontal',
     headerShown: false,
     transitionSpec: {

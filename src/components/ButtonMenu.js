@@ -41,11 +41,11 @@ ButtonMenu.propTypes = {
 
 const styles = StyleSheet.create({
 	viewMenu: {
-		margin: heightPercentageToDP('5%'),
+		maxHeight: heightPercentageToDP('25%'),
 		width: '70%',
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-around',
+		justifyContent: 'space-evenly',
 		borderRadius: widthPercentageToDP('50%'),
 		borderColor: COLORS.PRIMARY_DARK,
 		overflow: 'hidden',

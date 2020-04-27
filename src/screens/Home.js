@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
 	},
 	rowMenu: {
 		backgroundColor: COLORS.PRIMARY_LIGHT,
-		justifyContent: 'space-evenly',
+		justifyContent: 'space-around',
 		alignItems: 'center',
 		alignContent: 'center',
 		flex: 4,

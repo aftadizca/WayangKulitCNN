@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import { Icon } from 'native-base';
+import { MyButton } from '../components';
 import Text, { useScaleText } from 'react-native-text';
 import { Grid, Row, Col } from 'react-native-easy-grid';
-import Avatar from '../icon/avatar.jpg';
 import { COLORS, FONTS, ICONS } from '../config';
 import { version } from '../../package.json';
+import {
+	heightPercentageToDP,
+	widthPercentageToDP,
+} from 'react-native-responsive-screen';
+
+import Avatar from '../icon/avatar.jpg';
 import BG from '../icon/bg2.svg';
 
 export class About extends Component {
@@ -30,8 +36,8 @@ export class About extends Component {
 						<Text adjustsFontSizeToFit style={styles.nameText}>
 							Afta Dizca Wahana
 						</Text>
-						<Text style={styles.text}>Teknik Informatika</Text>
-						<Text style={styles.text}>UMAHA</Text>
+						<Text style={styles.nameSubText}>Teknik Informatika</Text>
+						<Text style={styles.nameSubText}>UMAHA</Text>
 					</Col>
 				</Row>
 				<Row size={2}>
@@ -54,6 +60,7 @@ export class About extends Component {
 							desc: '1.0',
 						}}
 					/>
+					<MyButton>Cek Update CNN Model</MyButton>
 				</Row>
 			</Grid>
 		);
@@ -63,44 +70,40 @@ export class About extends Component {
 function AboutList(props) {
 	const { icon, title, desc } = props.data;
 	return (
-		<View
+		<Row
 			style={{
 				width: '70%',
-				height: 80,
-				padding: 5,
+				maxHeight: heightPercentageToDP('10%'),
 			}}>
-			<Grid>
-				<Col
+			<Col
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					width: widthPercentageToDP('20%'),
+				}}>
+				<Icon
+					name={icon.name}
+					type={icon.type}
 					style={{
-						justifyContent: 'center',
-						alignItems: 'flex-end',
-						width: '35%',
-						borderRightWidth: 3,
-						paddingRight: 10,
-					}}>
-					<Icon
-						name={icon.name}
-						type={icon.type}
-						style={{
-							fontSize: useScaleText({ fontSize: 35 }).fontSize,
-							color: COLORS.PRIMARY_DARK,
-						}}
-					/>
-				</Col>
-				<Col
-					style={{
-						justifyContent: 'center',
-						paddingLeft: 10,
-					}}>
-					<Text style={styles.listPrimaryText}>{title}</Text>
-					<Text style={styles.listSecondaryText}>{desc}</Text>
-				</Col>
-			</Grid>
-		</View>
+						fontSize: useScaleText({ fontSize: 20 }).fontSize,
+						color: COLORS.PRIMARY_LIGHT,
+						backgroundColor: COLORS.PRIMARY_DARK,
+						padding: widthPercentageToDP('4%'),
+						borderRadius: widthPercentageToDP('8%'),
+					}}
+				/>
+			</Col>
+			<Col
+				style={{
+					justifyContent: 'center',
+					marginLeft: widthPercentageToDP('3%'),
+				}}>
+				<Text style={styles.listPrimaryText}>{title}</Text>
+				<Text style={styles.listSecondaryText}>{desc}</Text>
+			</Col>
+		</Row>
 	);
 }
-
-const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
 	rOne: {
@@ -113,14 +116,15 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 		flexDirection: 'column',
+		paddingTop: heightPercentageToDP('8%'),
 	},
 	nameText: {
 		fontFamily: FONTS.BOLD,
-		marginBottom: 5,
+		marginBottom: heightPercentageToDP('0.5%'),
 		fontSize: 18,
 		color: COLORS.PRIMARY_LIGHT,
 	},
-	text: {
+	nameSubText: {
 		fontFamily: FONTS.CONDENSED,
 		fontSize: 16,
 		color: COLORS.PRIMARY_LIGHT,
@@ -128,7 +132,7 @@ const styles = StyleSheet.create({
 	},
 	listPrimaryText: {
 		fontFamily: FONTS.BOLD,
-		marginBottom: 5,
+		marginBottom: heightPercentageToDP('0.5%'),
 		fontSize: 18,
 		color: COLORS.PRIMARY_DARK,
 	},
@@ -139,9 +143,9 @@ const styles = StyleSheet.create({
 		opacity: 0.5,
 	},
 	image: {
-		height: windowWidth * 0.35,
-		width: windowWidth * 0.35,
-		borderRadius: windowWidth * 0.7,
+		height: widthPercentageToDP('35%'),
+		width: widthPercentageToDP('35%'),
+		borderRadius: widthPercentageToDP('17.5%'),
 	},
 	viewBackground: {
 		width: '100%',

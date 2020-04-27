@@ -3,7 +3,7 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Camera, Home, ShowPic, About } from './src/screen';
+import { Camera, Home, ShowPic, About } from './src/screens';
 import { screenOptions, COLORS } from './src/config';
 import Tflite from 'tflite-react-native';
 

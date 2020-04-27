@@ -69,8 +69,7 @@ export default class ShowPic extends Component {
 }
 
 function ModalContent(props) {
-	console.log('prediksi start');
-	console.log(props.prediction);
+	console.log('prediksi', props.prediction);
 	if (typeof props.prediction === 'undefined') {
 		//Tampilan jika prediksi gagal
 		return (
@@ -88,7 +87,7 @@ function ModalContent(props) {
 					text={props.prediction[0].label}
 					value={props.prediction[0].confidence}
 				/>
-				<MyButton>Tampilkan Detail</MyButton>
+				{props.prediction[0].index !== 3 ? <MyButton>Tampilkan Detail</MyButton> : null}
 			</View>
 		);
 	}

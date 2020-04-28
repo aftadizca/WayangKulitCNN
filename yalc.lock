@@ -9,6 +9,11 @@
       "signature": "2ccbbf61df4503f2a1dd435cb0864efa",
       "file": true,
       "replaced": "^0.0.5"
+    },
+    "native-base": {
+      "signature": "0c6888c7e586b21010add84612b6bd85",
+      "file": true,
+      "replaced": "^2.13.12"
     }
   }
 }

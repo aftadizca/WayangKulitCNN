@@ -51,6 +51,7 @@ export default class Home extends Component {
 	// 	this.backHandler.remove();
 	// }
 
+	//Open native gallery to select image
 	openImagePicker = () => {
 		const options = {
 			title: 'Pilih Gambar Wayang',

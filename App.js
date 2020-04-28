@@ -1,10 +1,9 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Camera, Home, ShowPic, About } from './src/screens';
-import { screenOptions, COLORS } from './src/config';
+import { Camera, Home, ShowPic, About, Detail } from './src/screens';
+import { screenOptions } from './src/config';
 import Tflite from 'tflite-react-native';
 
 const Stack = createStackNavigator();
@@ -25,8 +24,8 @@ tflite.loadModel(
 export default function App() {
 	return (
 		<NavigationContainer>
-			<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
 			<Stack.Navigator>
+				<Stack.Screen name='Detail' component={Detail} options={screenOptions} />
 				<Stack.Screen name='Home' component={Home} options={screenOptions} />
 				<Stack.Screen
 					name='Camera'

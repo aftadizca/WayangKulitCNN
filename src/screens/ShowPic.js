@@ -19,6 +19,7 @@ export default class ShowPic extends Component {
 		this.onIdentify(this.props.route.params.uri);
 	}
 
+
 	onIdentify = (img) => {
 		this.props.tflite.runModelOnImage(
 			{
@@ -59,7 +60,8 @@ export default class ShowPic extends Component {
 					isVisible={true}
 					style={styles.modal}
 					hasBackdrop={false}
-					animationInTiming={800}
+					animationInTiming={300}
+					useNativeDriver={true}
 					onBackButtonPress={() => this.props.navigation.goBack()}>
 					<ModalContent prediction={this.state.prediction} />
 				</Modal>

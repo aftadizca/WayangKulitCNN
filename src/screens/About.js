@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
-import { Icon } from 'native-base';
-import { MyButton } from '../components';
+import { View, Image, StyleSheet, StatusBar } from 'react-native';
 import Text, { useScaleText } from 'react-native-text';
 import { Grid, Row, Col } from 'react-native-easy-grid';
 import { COLORS, FONTS, ICONS } from '../config';
 import { version } from '../../package.json';
+import { MyButton } from '../components';
 import {
 	heightPercentageToDP,
 	widthPercentageToDP,
 } from 'react-native-responsive-screen';
-
+import {
+	Container,
+	Header,
+	Content,
+	Button,
+	ListItem,
+	Icon,
+	Left,
+	Body,
+	Right,
+	Switch,
+} from 'native-base';
 import Avatar from '../icon/avatar.jpg';
 import BG from '../icon/bg2.svg';
 
@@ -18,6 +28,7 @@ export class About extends Component {
 	render() {
 		return (
 			<Grid>
+				<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
 				<Row size={3} style={styles.rOne}>
 					<Col
 						style={{
@@ -47,20 +58,16 @@ export class About extends Component {
 				</Row>
 				<Row size={4} style={styles.rThree}>
 					<AboutList
-						data={{
-							icon: ICONS.APP_VERSION,
-							title: 'Versi Aplikasi',
-							desc: version,
-						}}
+						title='Versi Aplikasi'
+						desc={version}
+						iconLeft={ICONS.APP_VERSION}
 					/>
 					<AboutList
-						data={{
-							icon: ICONS.CNN_VERSION,
-							title: 'Versi Model CNN',
-							desc: '1.0',
-						}}
+						title='Versi Model CNN'
+						desc={'1.0'}
+						iconRight={ICONS.UPDATE}
+						iconLeft={ICONS.CNN_VERSION}
 					/>
-					<MyButton>Cek Update CNN Model</MyButton>
 				</Row>
 			</Grid>
 		);
@@ -68,40 +75,46 @@ export class About extends Component {
 }
 
 function AboutList(props) {
-	const { icon, title, desc } = props.data;
+	const { iconLeft, iconRight, title, desc } = props;
 	return (
-		<Row
+		<ListItem
+			icon
 			style={{
 				width: '70%',
-				maxHeight: heightPercentageToDP('10%'),
+				marginBottom: 10,
 			}}>
-			<Col
+			<Left
 				style={{
+					width: '17%',
 					justifyContent: 'center',
 					alignItems: 'center',
-					width: widthPercentageToDP('20%'),
+					paddingRight: 0,
 				}}>
 				<Icon
-					name={icon.name}
-					type={icon.type}
 					style={{
-						fontSize: useScaleText({ fontSize: 20 }).fontSize,
-						color: COLORS.PRIMARY_LIGHT,
-						backgroundColor: COLORS.PRIMARY_DARK,
-						padding: widthPercentageToDP('4%'),
-						borderRadius: widthPercentageToDP('8%'),
+						fontSize: useScaleText({ fontSize: 30 }).fontSize,
+						color: COLORS.PRIMARY_DARK,
+						height: '100%',
+						width: '100%',
 					}}
+					{...iconLeft}
 				/>
-			</Col>
-			<Col
-				style={{
-					justifyContent: 'center',
-					marginLeft: widthPercentageToDP('3%'),
-				}}>
+			</Left>
+			<Body style={{ borderBottomWidth: 0 }}>
 				<Text style={styles.listPrimaryText}>{title}</Text>
 				<Text style={styles.listSecondaryText}>{desc}</Text>
-			</Col>
-		</Row>
+			</Body>
+			<Right style={{ borderBottomWidth: 0 }}>
+				{iconRight && (
+					<Button
+						rounded
+						small
+						style={{ backgroundColor: COLORS.PRIMARY_DARK }}>
+						<Icon active {...iconRight} />
+					</Button>
+				)}
+			</Right>
+		</ListItem>
 	);
 }
 

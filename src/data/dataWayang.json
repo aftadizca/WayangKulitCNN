@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Focaccia al rosmarino update",
+		"description": "Wood fired rosemary and garlic focaccia",
+		"price": 8.5,
+		"type": "Appetizers"
+	},
+	{
+		"name": "Burratta con speck",
+		"description": "Burratta cheese, imported smoked prok belly prosciutto, pached balsamic pear",
+		"price": 13.5,
+		"type": "Appetizers"
+	}
+]

@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
 		paddingLeft: 20,
 		paddingRight: 20,
 		borderRadius: 50,
-		borderWidth: 1,
 		backgroundColor: COLORS.PRIMARY_DARK,
 		borderColor: COLORS.PRIMARY_DARK,
 		overflow: 'hidden',

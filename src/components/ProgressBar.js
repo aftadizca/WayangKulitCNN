@@ -55,14 +55,10 @@ const styles = StyleSheet.create({
 	outerBar: {
 		height: 20,
 		width: '100%',
-		borderWidth: 0.5,
 		borderRadius: 10,
-		borderColor: COLORS.PRIMARY_DARK,
-		backgroundColor: COLORS.PRIMARY_DARK,
 		overflow: 'hidden',
 	},
 	insideBar: {
-		backgroundColor: COLORS.PRIMARY_DARK,
 		height: '100%',
 		borderRadius: 10,
 	},

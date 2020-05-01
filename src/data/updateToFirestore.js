@@ -17,7 +17,7 @@ console.log(data);
 
 data.forEach(function (obj, i) {
     console.log(i);
-    db.collection("menu").doc(i.toString()).set(obj).then(function (docRef) {
+    db.collection("Wayang").doc(i.toString()).set(obj).then(function (docRef) {
         console.log("Document written");
     }).catch(function (error) {
         console.error("Error adding document: ", error);

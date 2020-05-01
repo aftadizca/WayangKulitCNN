@@ -1,14 +1,231 @@
 [
 	{
-		"name": "Focaccia al rosmarino update",
-		"description": "Wood fired rosemary and garlic focaccia",
-		"price": 8.5,
-		"type": "Appetizers"
+		"nama": "Arjuna",
+		"namaLain": [
+			"Arjuna",
+			"Parta",
+			"Kiritin",
+			"Pritapura",
+			"Janaka",
+			"Permadi/Pamade",
+			"Dananjaya",
+			"Kumbalyali",
+			"Ciptaning Mintaraga",
+			"Pandusiwi",
+			"Indratanaya",
+			"Jahnawi",
+			"Palguna",
+			"Danasmara",
+			"Margana"
+		],
+		"orangTua": {
+			"Ayah": "Prabu Pandudewanata",
+			"Ibu": "Dewi Prita / Dewi Kunti"
+		},
+		"istri": [
+			"Dewi Sumbadra",
+			"Dewi Larasati / Rarasati",
+			"Dewi Wara Srikandi",
+			"Dewi Ulupi/Dewi Palupi",
+			"Dewi Jimambang",
+			"Dewi Dresanala",
+			"Dewi Wilutama",
+			"Dewi Manuhara"
+		],
+		"putra": [
+			"Abimanyu",
+			"Sumitra",
+			"Irawan",
+			"Kumaladewa",
+			"Kumalasekti",
+			"Wisanggeni",
+			"Wilugangga",
+			"Bratalaras"
+		],
+		"putri": ["Endang Pregiwa", "Endang Pregiwati"],
+		"sifat": "Arjuna adalah seorang yang sakti mandra guna, berilmu tinggi, cerdik pandai, pendiam, teliti, sopan santun, berani, halus dalam tindakan dan kata-katanya, serta senang melindungi yang lemah. Apabila marah selalu menggigit bibir. Bakti kepada ibu dan kepada mereka yang mempunyai kedudukan lebih tua, pandai dan cekatan dalam olah kepra-juritan dan senjata, khususnya dalam mempergunakan panah. Gemar mengembara dan tekun menjalankan tapa untuk kebahagiaan umat dan keluarganya.",
+		"kisah": [
+			"Arjuna banyak disebut-sebut di dalam lakon-lakon yang tenar dan penuh dengan perjuangan hidup menghadapi keburukan dan kejahatan Di dalam lakon \"Pendawa papa\", Dewi Kunti menyuruh Arjuna untuk mencari makan bagi kedua adiknya : Pinten/Nakula dan Tangsen/Sahadewa.",
+			"Dalam pencahariannya itu ia bertemu dengan Sagotra, seorang yang tidak pernah mendapat kebahagiaan dalam keluarganya. Sagotra selalu tidak mendapatkan kedamaian dengan istrinya: Rara Winihan. Setelah perjumpaannya itu, Arjuna dapat merukunkan kembali kedua suami istri tersebut. Karena peristiwa itu Sagotra mendapatkan kebahagiaan-nya dan hidup secara kekeluargaan, yang baru sekali itu dialaminya di dalam seluruh kehidupannya. Akhirnya Sagotra pun minta kepada Arjuna bahwa pada perang Baratayuda nanti, ia bersedia menjadi tawur demi kemenangan Pandawa.",
+			"Dalam lakon \"Kangsa Adu Jago\", Arjuna membantu Bima untuk mengalahkan Suratimantra, dan di dalam cerita \"Jagal Bilawa\" membantu Bima mengalahkan Rajamala. Dalam \"Babad Mretani Jayeng-katon\" ia dapat membebaskan Bima, Nakula dan Sadewa yang di penjara oleh raja Mretani.",
+			"Cerita \"Cipta Ening Mintaraga\", mengisahkan puncak pengalaman Arjuna dalam perjuangan hidupnya. Ia bertapa untuk memohon kemenangan Pandawa dalam Baratayuda. la dapat mengatasi segala godaan yang mengganggunya, sehingga Dewata memberi anugerah senjata pamungkas, Pasopati.",
+			"la membantu menumpas bala-tentara Prabu Niwatakawaca yang menyerang Suralaya. Dengan pimpinan dan siasat perang Arjuna, angkatan perang Dewa dapat menghancurkannya. Lakon ini dalam cerita aslinya, berjudul \"Arjuna Wiwaha\", diceritakan di dalamnya Arjuna menjadi raja di Kaindran (Ka-indra-an) bergelar Prabu Kirtin/Kariti/Kaliti.",
+			"Arjuna sangat berjasa dalam menyelesaikan kerusuhan-kerusuhan yang terjadi di negara Madraka/Mandaraka. Ia dapat menemukan Dewi Erawati yang hilang yang kemudian dikawinkan dengan Prabu Baladewa. la pernah pula menangkap pencuri/duratmaka (jawa) yang mencemarkan kerajaan Mandraka, dengan menculik Dewi Surtikanti. Suryatmaja (karna diwaktu muda) adalah perusuhnya yang akhirnya tertangkap oleh Arjuna. Karna kemudian dikawinkan dengan Dewi Surtikanti.",
+			"Dalam kisah perkawinan Duryudana, ia dapat mencarikan persyaratannva, yaitu seekor gajah putih, sehingga Duryudana dapat kawin dengan Dewi Banowati, putri Madraka/Mandaraka. Arjuna pernah menolong Kresna dalam lakon \"Kresna Kembang\", di mana kemudian Kresna dapat mempersunting Dewi Rukmini, putri Prabu Bismaka dari kerajaan Kubina/Kumbina. Pada waktu perkawinannya dengan Wara Sumbadra, putri Prabu Basudewa, raja Mandura, diceritakan besar sekali perayaannya, sebagaimana disebutkan dalam lakon \"Partakrama\". Lakon \"Kresna Gugah\", menampilkan pula Arjuna sebagai peran penting.",
+			"Akhir riwayat Arjuna dalam Mahabrata, parwa yang ke XVII, yang berjudul \"Maha Prastanika Parwa\", diceritakan bahwa Arjuna mati muksa dan masuk sorga."
+		],
+		"pusaka": [
+			"Keris Kyai Kalanadah",
+			"Gandewa",
+			"Panah Pasopati",
+			"Panah Sangkali",
+			"Panah Cundamanik",
+			"Candranila",
+			"Sirsha",
+			"Dewadata (sebuah terompet)",
+			"Baruna",
+			"Pulanggeni",
+			"Sarotama"
+		],
+		"kesaktian": [
+			"Palimunan - Mempunyai khasiat dapat menghilang",
+			"Tunggengmaya - Dapat menciptakan air",
+			"Sepiangin - Dapat berjalan tidak menapak",
+			"Mayabumi - Berkhasiat menundukkan musuh",
+			"Pengasih - Dikasihi makhluk",
+			"Asmaragama - Untuk cinta-asmara"
+		]
 	},
 	{
-		"name": "Burratta con speck",
-		"description": "Burratta cheese, imported smoked prok belly prosciutto, pached balsamic pear",
-		"price": 13.5,
-		"type": "Appetizers"
+		"nama": "Bima",
+		"namaLain": [
+			"Bayusuta",
+			"Ballawa/Bilawa",
+			"Bratasena",
+			"Bhima",
+			"Birawa",
+			"Dandun",
+			"Nagata",
+			"Kusumayuda",
+			"Kowara",
+			"Kusumadilaga",
+			"Pandusiwi",
+			"Sena",
+			"Werkodara",
+			"Wijasena"
+		],
+		"orangTua": {
+			"Ayah": "Prabu Pandudewanata",
+			"Ibu": "Dewi Prita / Dewi Kunti"
+		},
+		"istri": ["Dewi Nagagini", "Dewi Arimbi", "Dewi Urangayu"],
+		"putra": ["Anantaraja", "Gatotkaca", "Anantasena"],
+		"putri": [],
+		"sifat": "Bima selalu berkata-kata dengan bahasa yang tidak halus/nungkak krama/ngoko (jawa). Ia tidak pernah berjongkok dan menyembah kepada siapa pun, selalu berdiri tegak, walaupun berhadapan dengan raja dan Dewa sekalipun.",
+		"kisah": [
+			"Dalam lakon \"Bale gagala/Bale sigala-gala\" ia dapat menyelamatkan ibu dan saudara-saudaranya dari bahaya api kebakaran, karena perbuatan Kurawa yang menginginkan kematian Pandawa. Ia ditolong oleh seekor garangan putih penjelmaan Anantaboga, sehingga dapat ke luar dari api dan sampai di Saptapratala. Saat itu juga Bima dikawinkan dengan Dewi Nagagini",
+			"Di dalam peristiwa-peristiwa yang terjadi pada masa pembuangan Pandawa oleh Kurawa, Bima banyak sekali menemui kejadian-kejadian yang membawa namanya pada ketenaran. Ia dapat mengalahkan Prabu Arimba/Hidimba dan kemudian kawin dengan Dewi Arimbi/Hidimbi putri negara Pringgadani. Bima telah pula menolong rakyat dan penduduk Giripurwa yang hampir punah karena keserakahan rajanya Prabu Baka/Waka. Sebagai balas jasa yang diberikan Bima setelah dapat membinasakan kelaliman itu, Wiku Ijrapa dan Rawan anaknya, yang akan dijadikan korban, sanggup dan bersedia dengan keikhlasannya menjadi tawur Baratayuda demi kemenangan Pandawa.",
+			"Bima pernah menyelamatkan negara Wirata dengan membunuh Kecaka dan menumpas balatentaranya dalam lakon \"Jagal Bilawa\". ",
+			"Menurut pedalangan, lakon tersebut berjudul \"Jagal Bilawa\". Ia berjasa membunuh Rajamala, Rupakenca dan Kencakarupa.",
+			"Dalam lakon \"Babad Alas Mretani\", pada waktu Pandawa membuka hutan Mretani untuk dibangun menjadi kerajaan, ia berperang dengan balatentara jin dan berhadapan dengan Arya Dandunwacana yang kemudian bersatu, sejiwa dan dengan diri Bima. Kerajaan itu adalah Amarta.",
+			"\"Kangsa Adu Jago\" menceritakan Bima sebagai jago aduan pihak Mandura dihadapkan dengan Suratimantra jago Sengkapura.",
+			"Dalam \"Yasa Kali Serayu\", Bima berhasil mencapai kemenangan setelah berlomba dengan Kurawa dalam pembuatan kali Serayu, ia bertemu dengan Dewi Urangayu, yang kemudian menjadi istrinya.",
+			"Lakon \"Dewi Ruci\" amat terkenal. Dewi Ruci telah memberikan ilmu kesempurnaan kepada Bima. Setelah melalui rintangan-rintangan dan ujian-ujian yang berat. Ia harus membinasakan naga raksasa penjaga lautan untuk dapat mencapai dasar samodra. Di dalam Mahabarata peristiwa ini terjadi pada waktu dan ketika Dewi Drupadi bersama Pandawa berkelana mengembara di hutan Kamyaka. Dewi Drupadi minta kepada Bima agar dicarikan bunga padma yang berada di tengah-tengah telaga.",
+			"Dalam cerita \"Partakrama\", ia diutus untuk mencari sarana persyaratan perkawinan Arjuna yang berwujud 40 ekor banteng dan kera putih bernama Mayanggaseta dari Pandansurat.",
+			"Di dalam lakon \"Dewa Mambang\" ia dapat mempertahankan kehormatan nama Puntadewa kakaknya, dan negara Amarta/Amreta. Dikisahkan di dalam lakon \"Gandamana Pasanggiri\", ia telah berhasil mengalahkan Gandamana dalam sayembara perang tanding, dan Puntadewa berhasil pula mendapatkan Dewi Drupadi dari negara Pancala sebagai istrinya. ",
+			"Di dalam lakon \"Lenga Tala\" ia dapat merebut kembali pusaka Lengatala dari tangan Kurawa.",
+			"Ia pernah menjadi raja di Gilingwesi bergelar Prabu Tuguwasesa/Tuhuwasesa.",
+			"Di dalam kancah perang Baratayuda, Bima sebagai pahlawan dan senapati angkatan perang Pandawa, menggempur balatentara Kurawa menjadi cerai-berai, dan dapat memenuhi sumpah Dewi Kunti, ibunya, dengan membunuh Sakuni, serta membinasakan Dursasana untuk memenuhi sumpah Dewi Drupadi.",
+			"Di dalam kisah \"Wahyu Hidayat\", ia berhasil mendapatkan wahyu tersebut dengan segala ketahanan tekad dan ketekunan tapanya.",
+			"Bima telah mendapat Wahyu Maningrat dalam kisah \"Bima Kopek\". Wahyu tersebut akhirnya menjelma, sejiwa dan dalam diri Abimanyu.",
+			"Di dalam cerita \"Pandawa timbang\", ia berhasil mengalahkan berat timbangan Kurawa. ",
+			"Di dalam lakon-lakon yang lain, Bima banyak ditampilkan sebagai pembawa peran-peran penting. Seperti nampak pada ungkapan Bima pada bentuk wayangnya, perawakannya mencerminkan wataknya: gagah berani, teguh, kuat, tabah, patuh dan jujur."
+		],
+		"pusaka": [
+			"Gada Lukitasari",
+			"Kuku Pancanaka",
+			"Alugora",
+			"Bargawa",
+			"Bargawastra"
+		],
+		"kesaktian": [
+			"Aji Bandungbandawasa - Memiliki tangan dan pikiran yang kuat",
+			"Aji Ketuglindu - Berjalan seperti angin, cepat, dan menggetarkan"
+		]
+	},
+	{
+		"nama": "Nakula",
+		"namaLain": ["Pinten"],
+		"orangTua": {
+			"Ayah": "Prabu Pandudewanata",
+			"Ibu": "Dewi Madrim"
+		},
+		"istri": ["Dewi Suyati", "Dewi Srengganawati"],
+		"putra": ["Bambang Pramusinta"],
+		"putri": ["Dewi Pramuwati", "Dewi Sritanjung"],
+		"sifat": "Nakula mempunyai watak jujur, setia, taat, belas kasih, tahu membalas guna dan dapat menyimpan rahasia. Semua persoalan yang timbul selalu dihadapinya dengan mudah dan dengan hati tenang",
+		"kisah": [
+			"Nakula arti kata menurut Mahabarata berarti: menguasai diri sendiri. Nakula di dalam cerita Jawa mempunyai namanya yang lain, yaitu: Pinten (nama tumbuh-tumbuhan yang daunnya dapat dipergunakan sebagai obat.) Ia disebut juga dengan sebutan Si Kembar, karena dilahirkan kembar dengan Sahadewa/Tangsen.",
+			"Ayahnya bernama Prabu Pandudewanata, raja kerajaan Astina, putra Begawan Wiyasa, Ibunya adalah Dewi Madrim, putri Prabu Mandrapati, raja kerajaan Mandaraka, adik Narasoma/Prabu Salya, Saudara sekandungnya adalah Sahadewa (saudara kembar).",
+			"Ia mempunyai istri bernama Dewi Suyati, putri Prabu Kridakerata, raja negara Awuawulangit (Pustaka Raja). Nakula kawin dengan Dewi Suyati setelah dapat mengalahkan kakaknya yaitu ditya Indrakesata.",
+			"Menurut Purwacarita istri Nakula bernama Dewi Srengganawati, putri Badawanganala di negara Gisiksamodra/Ekapratala (pedalangan). Dengan Dewi Suyati ia berputra: Pramusinta dan Dewi Pramuwati. Dan dari Dewi Srengganawati berputra seorang putri bernama: Dewi Sri Tanjung (pedalangan).",
+			"Nakula lahir kembar-pria sebagai akibat bunuh diri ibunya: Dewi Madrim, karena belapati Prabu Pandudewanata, yang mangkat mendadak setelah pesiar di atas negara Astina dengan berkendaraan lembu Nandini, Kedua bayi kembar tersebut lahir melalui luka perut yang robek karena tertusuk. Begawan Wiyasa kemudian memberikan bayi kembar tersebut kepada Dewi Kunti untuk dipelihara dan diasuhnya bersama-sama dengan ketiga putranya yang lain.",
+			"Nakula adalah titis Batara Aswi, Dewa Tabib. Mahir menunggang kuda/penegar (jawa) dan merupakan seorang prajurit yang pandai mempergunakan panah dan lembing. Ia mendapat anugerah cupu berisi banyu penguripan/air kehidupan dari Batara Indra. Nakula tidak akan dapat lupa, karena mempunyai aji Pranawajati dari ditya Sapujagat, senapati negara Mretani. Waktu menyembunyikan diri sebagai brahmana di negara Wirata, ia bernama Damagranti. Nakula mempunyai tempat kedudukan di kesatrian Sawojajar.",
+			"Nakula pernah mengetahui Karna menolak pangakuan Dewi Kunti, bahwa Karna adalah putranya. Untuk menginsafkan Adipati Karna, maka Nakula kemudian menjadi raja di negara Trancanggribig. Kurawa (Duryudana) dan Adipati Karna dipenjarakan. Nakula tidak pernah berpisah dengan Sahadewa, kecuali ada hal atau kejadian-kejadian dan peristiwa-peristiwa yang sangat penting yang harus memisahkannya. Oleh karena tidak pernah lupa, maka ia menjadi pendamping pribadi Prabu Yudistira, yang tidak pernah bergeser dari sisinya.",
+			"Dalam Baratayuda Nakula merupakan senapati yang tangguh di dalam susunan angkatan perang Pandawa. Pandawa waktu Prabu Salya, pamannya diangkat menjadi senapati agung balatentara Kurawa, Nakula dan Sahadewa diberi tugas untuk melemahkan Kurawa dengan jalan meruntuhkan semangat Prabu Salya; usaha mereka berhasil, sehingga Prabu Salya memberitahukan rahasia kelemahannya yaitu: yang dapat membinasakan Prabu Salya dan melenyapkan aji Candabirawa adalah Prabu Yudistira.",
+			"Hal itu dikemukakan kepada Nakula Sahadewa karena kecintaannya kepada Pandawa, dan Prabu Salya telah merasa bahwa takdir telah menentukan kepastiannya, ia akan gugur di medan perang Baratayuda. Dalam pada itu sepeninggalnya nanti Prabu Salya menyerahkan negara dan kerajaan Mandaraka kepada Nakula karena kakak sepupunya bernama Rukmarata putra mahkota Mandaraka telah gugur di medan pertempuran Baratayuda oleh resi Seta.",
+			"Setelah Baratayuda selesai, Nakula diangkat menjadi patih Prabu Kalimataya/Yudistira di negara Astina. Di samping itu ia dilantik menjadi raja menduduki takhta singgasana kerajaan Mandaraka sesuai dengan amanat Prabu Salya. Menurut \"Maha Prastanika Parwa\" ia muksa dalam perjalanan menuju ke Tepeiloka bersama saudara-saudaranya. Kemudian ia mendapat sorga berkumpul dengan para Pandawa, Dewi Drupadi dan Karna."
+		],
+		"pusaka": ["Banyu Panguripan"],
+		"kesaktian": ["Aji Pranawajati - Tidak bisa lupa"]
+	},
+	{
+		"nama": "Sadewa",
+		"namaLain": ["Sahadewa", "Tangsen"],
+		"orangTua": {
+			"Ayah": "Prabu Pandudewanata",
+			"Ibu": "Dewi Madrim"
+		},
+		"istri": ["Dewi Srengganawati"],
+		"putra": ["Widapaksa/Sidapeksa"],
+		"putri": [],
+		"sifat": "Sadewa mempunyai watak jujur, setia, taat, belas kasih, tahu membalas guna dan dapat menyimpan rahasia. Semua persoalan yang timbul selalu dihadapinya dengan mudah dan dengan hati tenang.",
+		"kisah": [
+			"Sadewa adalah salah satu Pandawa yang terkenal sebagai saudara kembar Nakula. Ia adalah putra Prabu Pandudewanata dengan istrinya Dewi Madrim. Sadewa memiliki istri bernama Dewi Srengginiwati putri Hyang Antabaga di Saptapratala, dari perkawinan itu ia mendapatkan satu orang putra yaitu Raden Sidapeksa. Ia memiliki kesatrian yang dinamakan Bumiratalun.",
+			"Sadewa dilahirkan ketika ibunya telah meninggal dunia dengan cara bunuh diri menusuk lambungnya, setelah mengetahui suaminya mati mendadak, saat melihat keindahan negara Astina dengan menaiki lembu Andini. Sadewa lahir kembar melalui luka bekas tusukan keris itu. Bayi kembar itu oleh Abiyasa selanjutnya diserahkan kepada Dewi Kunti agar dapat diasuh seperti ketiga anak Pandu yang lainnya.",
+			"Sadewa adalah titisan Dewa Aswin (Dewa Kembar) dan dewanya tabib, yang mahir dalam menunggang kuda dan merupakan prajurit yang sangat tangguh dalam memainkan senjata panah dan lembing. Ketika Pandawa dalam pembuangan selama 13 tahun, Sadewa bersama kembarannya menyamar sebagai tenaga tata interior di Istana Wirata.",
+			"Sadewa dalam kehidupannya sehari-hari selalu bersama dengan saudara kembarnya Nakula, hampir tidak pernah berpisah. Mereka mendampingi raja Amarta yang bernama Darmakusuma (Yudistira) untuk berbagai keperluan, terutama berkaitan dengan masalah-masalah kenegaraan, kerakyatan, kemakmuran negara, strategi perang dan sebagainya, bahkan masalah-masalah pribadi raja tidak luput dari perhatian. Keluarga Pandawa memiliki tali persaudaraan yang sangat kuat, sehinga akan selalu membantu mengatasi dalam berbagai persoalan. Dalam lakon-lakon wayang selalu diceritakan bahkan Sadewa lebih terkenal daripada Nakula, tokoh ini memiliki kebijaksanaan sama dengan Batara Kresna. Ketika Kresna dalam melaksanakan tugasnya telah dipengaruhi oleh kepentingan pribadi, seperti membela anaknya Sitija yang sedang bermusuhan dengan Gatutkaca karena masalah kikis Tunggarana, kedudukan penasihat para Pandawa diambil alih oleh Sadewa yang didukung oleh para putra Pandawa.",
+			"Dalam perang Baratayuda, Sadewa bersama kembarannya bertugas untuk melemahkan semangat Prabu Salya yang merupakan saudara tua ibunya, sehingga kekuatan para Kurawa menjadi lemah. Prabu Salya merasa iba kepada kedua kemenakannya karena teringat bahwa anak itu sejak lahir sudah yatim piatu, tanpa ayah dan ibu, sehingga atas jasa Dewi Kunti mereka itu dapat berkembang menjadi dewasa. Di samping itu teringat bahwa selama ini tidak pernah memperhatikannya, sehinga merasa berdosa kepada adiknya Dewi Madrim. Atas dasar itu Sadewa mendapat penjelasan bahwa dalam perang Baratayuda yang dapat mengalahkan Prabu Salya adalah Puntadewa, karena raja yang memiliki darah putih hanya raja Amarta itu. Hal ini dilakukan didasari oleh kecintaannya kepada Pandawa. Di samping itu negara Mandaraka juga diserahkan kepada Nakula dan Sadewa, karena sudah tidak ada anak keturunannya yang hidup, semuanya telah gugur dalam perang Baratayuda itu.",
+			"Akhir hayat Sadewa dikisahkan dalam Maha Prastanika Parwa, Sadewa mokswa bersama saudaranya dalam perjalanan menuju swargaloka."
+		],
+		"pusaka": [],
+		"kesaktian": [
+			"Aji Purnamajati - Dapat mengerti dan mengingat dengan jelas pada semua peristiwa"
+		]
+	},
+	{
+		"nama": "Yudistira",
+		"namaLain": [
+			"Puntadewa",
+			"Darmakusuma",
+			"Darmaputra",
+			"Darmawangsa",
+			"Darmaraja",
+			"Gunatalikrama",
+			"Sadha Dwijakangka",
+			"Sang Ajathasatru",
+			"Dwijakangka",
+			"Kantakapura",
+			"Prabu Kalimataya / Karimataya"
+		],
+		"orangTua": {
+			"Ayah": "Prabu Pandudewanata",
+			"Ibu": "Dewi Prita / Dewi Kunti"
+		},
+		"istri": ["Drupadi"],
+		"putra": ["Pancawala"],
+		"putri": [],
+		"sifat": "Yudistira mempunyai watak: sabar, ikhlas, percaya atas kekuasaan Tuhan, tekun dalam agamanya, tahu membalas guna dan selalu bertindak adil dan jujur. Ia adalah titis Batara Darma, Dewa Keadilan, karenanya ia pun bergelar Prabu Darmakusuma, Yudistira termashur pandai bermain catur. Ia benar-benar mendudukkan dirinya pada tempatnya sebagai saudara yang tertua dari para Pandawa.",
+		"kisah": [
+			"Prabu Yudistira di dalam cerita Jawa adalah raja jin kerajaan Mretani. Negara tersebut di dalam penglihatan mata biasa merupakan hutan belantara yang sangat angker.",
+			"Para Pandawa dalam membuka hutan Mretani menghadapi musuh yang tak nampak, sehingga mereka mengalami rintangan-rintangan yang sangat gaib. Tetapi berkat Lenga Jayangkaton yang didapat Permadi/Wijanarka dari pemberian begawan Wilwuk, maka terbukalah penglihatan para Pandawa.",
+			"Mretani merupakan kerajaan besar yang sangat megah dan kuat. Penaklukan negara tersebut harus ditempuh melalui peperangan yang sangat dahsyat. Senapati Mretani, Arya Dandunwacana tewas dan menjelma dalam diri Bima dan Arya Danajaya binasa oleh Arjuna serta bersatu dalam dirinya.",
+			"Setelah dikalahkan Pandawa, Prabu Yudistira kemudian menyerahkan seluruh negaranya beserta isinya kepada Puntadewa, sulung Pandawa, putra Prabu Pandudewanata dengan permaisuri Dewi Kunti. Prabu Yudistira menjelma dalam diri Puntadewa. Puntadewa dinobatkan menjadi raja bergelar Prabu Yudistira. Negara baru tersebut kemudian diundangkan sebagai kerajaan Amarta/Amreta atau Endraprasta.",
+			"Dalam kitab Mahabarata, Yudistira disebutkan sebagai putra Pandu dengan Dewi Prita/Kunti yang sulung. Ia lahir ke luar dari ubun-ubun. Oleh karena itu ia bernama: Puntadewa, yang berarti: pusat keluhuran. Yudistira adalah raja prajurit (Mahabarata), tetapi pedalangan Jawa menceritakan bahwa Yudistira seolah-olah tidak mengenal senjata dan perang.",
+			"Yudistira mempunyai watak: sabar, ikhlas, percaya atas kekuasaan Tuhan, tekun dalam agamanya, tahu membalas guna dan selalu bertindak adil dan jujur. Ia adalah titis Batara Darma, Dewa Keadilan, karenanya ia pun bergelar Prabu Darmakusuma, Yudistira termashur pandai bermain catur. Ia benar-benar mendudukkan dirinya pada tempatnya sebagai saudara yang tertua dari para Pandawa.",
+			"Dalam perang Baratayuda ia maju ke medan perang berhadapan dengan senapati Astina/Kurawa: Prabu Salya, raja negara Mandaraka. Setelah dapat membinasakan aji Candabirawa tanpa perlawanan dengan mudah ia dapat mengalahkan Prabu Salya.",
+			"Prabu Yudistira berhasil mengadakan Aswameda, yaitu: sesaji kuda yang selalu dilakukan oleh seorang raja besar. Aswameda dilaksanakan dengan cara melepaskan seekor kuda selama setahun dan diikuti sepasukan prajurit pengawal ke mana saja kuda itu pergi. Kuda tersebut tidak boleh diganggu oleh siapa pun juga sepanjang perjalanannya. Setelah setahun, kuda itu kemudian dipersembahkan sebagai sesaji. Yusditira mengadakan Aswameda untuk menyelidiki seberapa jauh dan seberapa besar kewibawaannya. Prabu Darmakusuma berhasil mengadakan Asmaweda, sehingga keagungannya diakui oleh raja-raja sedunia.",
+			"Ia mempunyai pusaka kerajaan berwujud payung dan disebut dengan nama: Kyai Tunggulnaga dan sebuah tombak bernama; Kyai Karawelang.",
+			"Sehabis Baratayuda ia mengadakan sesaji besar untuk menghormati arwah-arwah para pahlawannya yang gugur di medan perang. Kemudian Yudistira naik takhta dinobatkan sebagai raja negara Astina, dilantik dengan gelar Prabu Kalimataya/Karimataya. Ia memerintah dengan bijaksana dan adil dan penuh kejujuran. Usahanya untuk membangun kembali negara Astina yang hancur karena perang, berhasil, sehingga kehidupan masyarakat dan rakyatnya dengan pesat menanjak menuju kemakmuran, kesejahteraan dan kebahagiaan.",
+			"Setelah menobatkan Parikesit, putra Abimanyu dengan Dewi Utari, sebagai maharaja Astina, ia menginginkan moksa. Ia memimpin perjalanan para Pandawa yang diikuti Dewi Drupadi menuju ke Tepetloka. Seorang demi seorang adik-adiknya jatuh meninggal dalam perjalanan itu. Ia terus berjalan diiringi anjingnya, yang sebenarnya adalah penjelmaan Batara Dharma. ",
+			"Dengan melalui segala rintangan akhirnya ia masuk sorga dengan raganya. Kemudian para Pandawa dengan Dewi Drupadi beserta Dewi Kunti dan Karna ikut serta mendapatkan sorga dan berkumpul untuk selama-lamanya."
+		],
+		"pusaka": [
+			"Kyai Tunggulnaga",
+			"Kyai Karawelang",
+			" Jamus Kalimasada",
+			"Robyong Mustikawarih"
+		],
+		"kesaktian": []
 	}
 ]

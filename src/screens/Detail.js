@@ -38,6 +38,7 @@ export default class Detail extends Component {
 		this.getData(this.state.index);
 	}
 
+	//get url from Cloud Storage Firebase
 	getImgUrl = (ref) => {
 		return Promise.all(ref.items.map((x) => x.getDownloadURL()));
 	};
@@ -149,21 +150,29 @@ export default class Detail extends Component {
 							<ScrollView contentContainerStyle={styles.scrollView}>
 								{this.state.img &&
 									this.state.img.map((x) => (
-										<Card transparent>
-											<CardItem style={styles.cardItem}>
-												<Body>
-													<Image
-														key={shortid.generate()}
-														style={{
-															width: '100%',
-															height: 500,
-														}}
-														resizeMode='contain'
-														source={{
-															uri: x,
-														}}
-													/>
-												</Body>
+										<Card key={shortid.generate()}>
+											<CardItem cardBody style={styles.cardItem}>
+												<Image
+													style={{
+														width: null,
+														height: heightPercentageToDP('62%'),
+														flex: 1,
+													}}
+													resizeMode='stretch'
+													source={{
+														uri: x,
+													}}
+												/>
+											</CardItem>
+											<CardItem style={styles.cardItem} footer>
+												<Icon
+													{...ICONS.BOOK}
+													style={{ color: COLORS.PRIMARY_DARK }}
+												/>
+												<Text style={{ fontFamily: FONTS.CONDENSED, flex: 1 }}>
+													Wayang Kulit Gaya Yogyakarta : Bentuk dan Ceritanya
+													oleh Drs. Prijo Mustiko
+												</Text>
 											</CardItem>
 										</Card>
 									))}

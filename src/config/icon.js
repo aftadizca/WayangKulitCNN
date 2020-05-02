@@ -41,5 +41,9 @@ export default ICON = {
     ARROW_RIGHT_CYCLE: {
         name: 'arrow-right-circle',
         type: typeIcon
+    },
+    BOOK: {
+        name: 'book',
+        type: typeIcon
     }
 };

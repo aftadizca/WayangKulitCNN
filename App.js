@@ -6,8 +6,14 @@ import { Camera, Home, ShowPic, About, Detail } from './src/screens';
 import { screenOptions } from './src/config';
 import Tflite from 'tflite-react-native';
 
+import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
+
 const Stack = createStackNavigator();
 const tflite = new Tflite();
+
+const db = firestore().collection('Wayang');
+const store = storage();
 
 tflite.loadModel(
 	{
@@ -21,11 +27,28 @@ tflite.loadModel(
 	}
 );
 
+function listFilesAndDirectories(reference, pageToken) {
+	return reference.list({ pageToken }).then((result) => {
+		// Loop over each item
+		result.items.forEach((ref) => {
+			console.log(ref.fullPath);
+		});
+
+		if (result.nextPageToken) {
+			return listFilesAndDirectories(reference, result.nextPageToken);
+		}
+
+		return Promise.resolve();
+	});
+}
+
 export default function App() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen name='Detail' component={Detail} options={screenOptions} />
+				<Stack.Screen name='Detail' options={screenOptions}>
+					{(props) => <Detail {...props} db={db} store={store} />}
+				</Stack.Screen>
 				<Stack.Screen name='Home' component={Home} options={screenOptions} />
 				<Stack.Screen
 					name='Camera'

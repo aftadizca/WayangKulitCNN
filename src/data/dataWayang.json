@@ -134,6 +134,51 @@
 		]
 	},
 	{
+		"nama": "Yudistira",
+		"namaLain": [
+			"Puntadewa",
+			"Darmakusuma",
+			"Darmaputra",
+			"Darmawangsa",
+			"Darmaraja",
+			"Gunatalikrama",
+			"Sadha Dwijakangka",
+			"Sang Ajathasatru",
+			"Dwijakangka",
+			"Kantakapura",
+			"Prabu Kalimataya / Karimataya"
+		],
+		"orangTua": {
+			"Ayah": "Prabu Pandudewanata",
+			"Ibu": "Dewi Prita / Dewi Kunti"
+		},
+		"istri": ["Drupadi"],
+		"putra": ["Pancawala"],
+		"putri": [],
+		"sifat": "Yudistira mempunyai watak: sabar, ikhlas, percaya atas kekuasaan Tuhan, tekun dalam agamanya, tahu membalas guna dan selalu bertindak adil dan jujur. Ia adalah titis Batara Darma, Dewa Keadilan, karenanya ia pun bergelar Prabu Darmakusuma, Yudistira termashur pandai bermain catur. Ia benar-benar mendudukkan dirinya pada tempatnya sebagai saudara yang tertua dari para Pandawa.",
+		"kisah": [
+			"Prabu Yudistira di dalam cerita Jawa adalah raja jin kerajaan Mretani. Negara tersebut di dalam penglihatan mata biasa merupakan hutan belantara yang sangat angker.",
+			"Para Pandawa dalam membuka hutan Mretani menghadapi musuh yang tak nampak, sehingga mereka mengalami rintangan-rintangan yang sangat gaib. Tetapi berkat Lenga Jayangkaton yang didapat Permadi/Wijanarka dari pemberian begawan Wilwuk, maka terbukalah penglihatan para Pandawa.",
+			"Mretani merupakan kerajaan besar yang sangat megah dan kuat. Penaklukan negara tersebut harus ditempuh melalui peperangan yang sangat dahsyat. Senapati Mretani, Arya Dandunwacana tewas dan menjelma dalam diri Bima dan Arya Danajaya binasa oleh Arjuna serta bersatu dalam dirinya.",
+			"Setelah dikalahkan Pandawa, Prabu Yudistira kemudian menyerahkan seluruh negaranya beserta isinya kepada Puntadewa, sulung Pandawa, putra Prabu Pandudewanata dengan permaisuri Dewi Kunti. Prabu Yudistira menjelma dalam diri Puntadewa. Puntadewa dinobatkan menjadi raja bergelar Prabu Yudistira. Negara baru tersebut kemudian diundangkan sebagai kerajaan Amarta/Amreta atau Endraprasta.",
+			"Dalam kitab Mahabarata, Yudistira disebutkan sebagai putra Pandu dengan Dewi Prita/Kunti yang sulung. Ia lahir ke luar dari ubun-ubun. Oleh karena itu ia bernama: Puntadewa, yang berarti: pusat keluhuran. Yudistira adalah raja prajurit (Mahabarata), tetapi pedalangan Jawa menceritakan bahwa Yudistira seolah-olah tidak mengenal senjata dan perang.",
+			"Yudistira mempunyai watak: sabar, ikhlas, percaya atas kekuasaan Tuhan, tekun dalam agamanya, tahu membalas guna dan selalu bertindak adil dan jujur. Ia adalah titis Batara Darma, Dewa Keadilan, karenanya ia pun bergelar Prabu Darmakusuma, Yudistira termashur pandai bermain catur. Ia benar-benar mendudukkan dirinya pada tempatnya sebagai saudara yang tertua dari para Pandawa.",
+			"Dalam perang Baratayuda ia maju ke medan perang berhadapan dengan senapati Astina/Kurawa: Prabu Salya, raja negara Mandaraka. Setelah dapat membinasakan aji Candabirawa tanpa perlawanan dengan mudah ia dapat mengalahkan Prabu Salya.",
+			"Prabu Yudistira berhasil mengadakan Aswameda, yaitu: sesaji kuda yang selalu dilakukan oleh seorang raja besar. Aswameda dilaksanakan dengan cara melepaskan seekor kuda selama setahun dan diikuti sepasukan prajurit pengawal ke mana saja kuda itu pergi. Kuda tersebut tidak boleh diganggu oleh siapa pun juga sepanjang perjalanannya. Setelah setahun, kuda itu kemudian dipersembahkan sebagai sesaji. Yusditira mengadakan Aswameda untuk menyelidiki seberapa jauh dan seberapa besar kewibawaannya. Prabu Darmakusuma berhasil mengadakan Asmaweda, sehingga keagungannya diakui oleh raja-raja sedunia.",
+			"Ia mempunyai pusaka kerajaan berwujud payung dan disebut dengan nama: Kyai Tunggulnaga dan sebuah tombak bernama; Kyai Karawelang.",
+			"Sehabis Baratayuda ia mengadakan sesaji besar untuk menghormati arwah-arwah para pahlawannya yang gugur di medan perang. Kemudian Yudistira naik takhta dinobatkan sebagai raja negara Astina, dilantik dengan gelar Prabu Kalimataya/Karimataya. Ia memerintah dengan bijaksana dan adil dan penuh kejujuran. Usahanya untuk membangun kembali negara Astina yang hancur karena perang, berhasil, sehingga kehidupan masyarakat dan rakyatnya dengan pesat menanjak menuju kemakmuran, kesejahteraan dan kebahagiaan.",
+			"Setelah menobatkan Parikesit, putra Abimanyu dengan Dewi Utari, sebagai maharaja Astina, ia menginginkan moksa. Ia memimpin perjalanan para Pandawa yang diikuti Dewi Drupadi menuju ke Tepetloka. Seorang demi seorang adik-adiknya jatuh meninggal dalam perjalanan itu. Ia terus berjalan diiringi anjingnya, yang sebenarnya adalah penjelmaan Batara Dharma. ",
+			"Dengan melalui segala rintangan akhirnya ia masuk sorga dengan raganya. Kemudian para Pandawa dengan Dewi Drupadi beserta Dewi Kunti dan Karna ikut serta mendapatkan sorga dan berkumpul untuk selama-lamanya."
+		],
+		"pusaka": [
+			"Kyai Tunggulnaga",
+			"Kyai Karawelang",
+			" Jamus Kalimasada",
+			"Robyong Mustikawarih"
+		],
+		"kesaktian": []
+	},
+	{
 		"nama": "Nakula",
 		"namaLain": ["Pinten"],
 		"orangTua": {
@@ -182,50 +227,5 @@
 		"kesaktian": [
 			"Aji Purnamajati - Dapat mengerti dan mengingat dengan jelas pada semua peristiwa"
 		]
-	},
-	{
-		"nama": "Yudistira",
-		"namaLain": [
-			"Puntadewa",
-			"Darmakusuma",
-			"Darmaputra",
-			"Darmawangsa",
-			"Darmaraja",
-			"Gunatalikrama",
-			"Sadha Dwijakangka",
-			"Sang Ajathasatru",
-			"Dwijakangka",
-			"Kantakapura",
-			"Prabu Kalimataya / Karimataya"
-		],
-		"orangTua": {
-			"Ayah": "Prabu Pandudewanata",
-			"Ibu": "Dewi Prita / Dewi Kunti"
-		},
-		"istri": ["Drupadi"],
-		"putra": ["Pancawala"],
-		"putri": [],
-		"sifat": "Yudistira mempunyai watak: sabar, ikhlas, percaya atas kekuasaan Tuhan, tekun dalam agamanya, tahu membalas guna dan selalu bertindak adil dan jujur. Ia adalah titis Batara Darma, Dewa Keadilan, karenanya ia pun bergelar Prabu Darmakusuma, Yudistira termashur pandai bermain catur. Ia benar-benar mendudukkan dirinya pada tempatnya sebagai saudara yang tertua dari para Pandawa.",
-		"kisah": [
-			"Prabu Yudistira di dalam cerita Jawa adalah raja jin kerajaan Mretani. Negara tersebut di dalam penglihatan mata biasa merupakan hutan belantara yang sangat angker.",
-			"Para Pandawa dalam membuka hutan Mretani menghadapi musuh yang tak nampak, sehingga mereka mengalami rintangan-rintangan yang sangat gaib. Tetapi berkat Lenga Jayangkaton yang didapat Permadi/Wijanarka dari pemberian begawan Wilwuk, maka terbukalah penglihatan para Pandawa.",
-			"Mretani merupakan kerajaan besar yang sangat megah dan kuat. Penaklukan negara tersebut harus ditempuh melalui peperangan yang sangat dahsyat. Senapati Mretani, Arya Dandunwacana tewas dan menjelma dalam diri Bima dan Arya Danajaya binasa oleh Arjuna serta bersatu dalam dirinya.",
-			"Setelah dikalahkan Pandawa, Prabu Yudistira kemudian menyerahkan seluruh negaranya beserta isinya kepada Puntadewa, sulung Pandawa, putra Prabu Pandudewanata dengan permaisuri Dewi Kunti. Prabu Yudistira menjelma dalam diri Puntadewa. Puntadewa dinobatkan menjadi raja bergelar Prabu Yudistira. Negara baru tersebut kemudian diundangkan sebagai kerajaan Amarta/Amreta atau Endraprasta.",
-			"Dalam kitab Mahabarata, Yudistira disebutkan sebagai putra Pandu dengan Dewi Prita/Kunti yang sulung. Ia lahir ke luar dari ubun-ubun. Oleh karena itu ia bernama: Puntadewa, yang berarti: pusat keluhuran. Yudistira adalah raja prajurit (Mahabarata), tetapi pedalangan Jawa menceritakan bahwa Yudistira seolah-olah tidak mengenal senjata dan perang.",
-			"Yudistira mempunyai watak: sabar, ikhlas, percaya atas kekuasaan Tuhan, tekun dalam agamanya, tahu membalas guna dan selalu bertindak adil dan jujur. Ia adalah titis Batara Darma, Dewa Keadilan, karenanya ia pun bergelar Prabu Darmakusuma, Yudistira termashur pandai bermain catur. Ia benar-benar mendudukkan dirinya pada tempatnya sebagai saudara yang tertua dari para Pandawa.",
-			"Dalam perang Baratayuda ia maju ke medan perang berhadapan dengan senapati Astina/Kurawa: Prabu Salya, raja negara Mandaraka. Setelah dapat membinasakan aji Candabirawa tanpa perlawanan dengan mudah ia dapat mengalahkan Prabu Salya.",
-			"Prabu Yudistira berhasil mengadakan Aswameda, yaitu: sesaji kuda yang selalu dilakukan oleh seorang raja besar. Aswameda dilaksanakan dengan cara melepaskan seekor kuda selama setahun dan diikuti sepasukan prajurit pengawal ke mana saja kuda itu pergi. Kuda tersebut tidak boleh diganggu oleh siapa pun juga sepanjang perjalanannya. Setelah setahun, kuda itu kemudian dipersembahkan sebagai sesaji. Yusditira mengadakan Aswameda untuk menyelidiki seberapa jauh dan seberapa besar kewibawaannya. Prabu Darmakusuma berhasil mengadakan Asmaweda, sehingga keagungannya diakui oleh raja-raja sedunia.",
-			"Ia mempunyai pusaka kerajaan berwujud payung dan disebut dengan nama: Kyai Tunggulnaga dan sebuah tombak bernama; Kyai Karawelang.",
-			"Sehabis Baratayuda ia mengadakan sesaji besar untuk menghormati arwah-arwah para pahlawannya yang gugur di medan perang. Kemudian Yudistira naik takhta dinobatkan sebagai raja negara Astina, dilantik dengan gelar Prabu Kalimataya/Karimataya. Ia memerintah dengan bijaksana dan adil dan penuh kejujuran. Usahanya untuk membangun kembali negara Astina yang hancur karena perang, berhasil, sehingga kehidupan masyarakat dan rakyatnya dengan pesat menanjak menuju kemakmuran, kesejahteraan dan kebahagiaan.",
-			"Setelah menobatkan Parikesit, putra Abimanyu dengan Dewi Utari, sebagai maharaja Astina, ia menginginkan moksa. Ia memimpin perjalanan para Pandawa yang diikuti Dewi Drupadi menuju ke Tepetloka. Seorang demi seorang adik-adiknya jatuh meninggal dalam perjalanan itu. Ia terus berjalan diiringi anjingnya, yang sebenarnya adalah penjelmaan Batara Dharma. ",
-			"Dengan melalui segala rintangan akhirnya ia masuk sorga dengan raganya. Kemudian para Pandawa dengan Dewi Drupadi beserta Dewi Kunti dan Karna ikut serta mendapatkan sorga dan berkumpul untuk selama-lamanya."
-		],
-		"pusaka": [
-			"Kyai Tunggulnaga",
-			"Kyai Karawelang",
-			" Jamus Kalimasada",
-			"Robyong Mustikawarih"
-		],
-		"kesaktian": []
 	}
 ]

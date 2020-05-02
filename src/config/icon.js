@@ -25,5 +25,21 @@ export default ICON = {
     CNN_VERSION: {
         name: 'brain',
         type: typeIcon
+    },
+    UPDATE: {
+        name: 'update',
+        type: typeIcon
+    },
+    CLIPBOARD: {
+        name: 'clipboard',
+        type: typeIcon
+    },
+    ARROW_LEFT_CYCLE: {
+        name: 'arrow-left-circle',
+        type: typeIcon
+    },
+    ARROW_RIGHT_CYCLE: {
+        name: 'arrow-right-circle',
+        type: typeIcon
     }
 };

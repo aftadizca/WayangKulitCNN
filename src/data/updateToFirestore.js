@@ -13,7 +13,7 @@ firebase.initializeApp({
 
 var db = firebase.firestore();
 
-console.log(data);
+//console.log(data);
 
 data.forEach(function (obj, i) {
     console.log(i);

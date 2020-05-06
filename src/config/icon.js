@@ -45,5 +45,9 @@ export default ICON = {
     BOOK: {
         name: 'book',
         type: typeIcon
+    },
+    BULLET: {
+        name: 'checkbox-multiple-marked-circle',
+        type: typeIcon
     }
 };

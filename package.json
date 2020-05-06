@@ -14,6 +14,7 @@
 		"log": "adb logcat -s TEST:V"
 	},
 	"dependencies": {
+		"@react-native-community/async-storage": "^1.10.0",
 		"@react-native-community/masked-view": "^0.1.6",
 		"@react-native-firebase/app": "^6.7.1",
 		"@react-native-firebase/firestore": "^6.7.1",

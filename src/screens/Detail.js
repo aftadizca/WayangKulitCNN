@@ -135,10 +135,10 @@ export default class Detail extends Component {
 								</Button>
 							</View>
 						) : (
-							<View style={styles.headerContainer}>
-								<Text style={styles.headerText}>{this.state.data.nama}</Text>
-							</View>
-						)}
+								<View style={styles.headerContainer}>
+									<Text style={styles.headerText}>{this.state.data.nama}</Text>
+								</View>
+							)}
 					</Header>
 					<Tabs
 						tabBarUnderlineStyle={{ backgroundColor: 'transparent' }}
@@ -163,16 +163,6 @@ export default class Detail extends Component {
 														uri: x,
 													}}
 												/>
-											</CardItem>
-											<CardItem style={styles.cardItem} footer>
-												<Icon
-													{...ICONS.BOOK}
-													style={{ color: COLORS.PRIMARY_DARK }}
-												/>
-												<Text style={{ fontFamily: FONTS.CONDENSED, flex: 1 }}>
-													Wayang Kulit Gaya Yogyakarta : Bentuk dan Ceritanya
-													oleh Drs. Prijo Mustiko
-												</Text>
 											</CardItem>
 										</Card>
 									))}
@@ -234,12 +224,20 @@ function SilsilahTab(props) {
 					<Text style={styles.listTextHeader}>ORANG TUA</Text>
 				</ListItem>
 				<ListItem noIndent style={styles.listItem}>
+					<Icon
+						{...ICONS.BULLET}
+						style={{ ...styles.listTextPrimary, marginRight: 5 }}
+					/>
 					<Body>
 						<Text style={styles.listTextPrimary}>{orangTua.Ibu}</Text>
 						<Text style={styles.listTextSecondary}>Ibu</Text>
 					</Body>
 				</ListItem>
 				<ListItem noIndent style={styles.listItem}>
+					<Icon
+						{...ICONS.BULLET}
+						style={{ ...styles.listTextPrimary, marginRight: 5 }}
+					/>
 					<Body>
 						<Text style={styles.listTextPrimary}>{orangTua.Ayah}</Text>
 						<Text style={styles.listTextSecondary}>Ayah</Text>
@@ -251,6 +249,10 @@ function SilsilahTab(props) {
 				{istri &&
 					istri.map((x) => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
+							<Icon
+								{...ICONS.BULLET}
+								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>
 					))}
@@ -266,6 +268,10 @@ function SilsilahTab(props) {
 				{putra.length > 0 &&
 					putra.map((x) => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
+							<Icon
+								{...ICONS.BULLET}
+								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>
 					))}
@@ -281,6 +287,10 @@ function SilsilahTab(props) {
 				{putri.length > 0 &&
 					putri.map((x) => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
+							<Icon
+								{...ICONS.BULLET}
+								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>
 					))}
@@ -295,6 +305,10 @@ function NamaTab(props) {
 			<List>
 				{props.data.namaLain.map((x) => (
 					<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
+						<Icon
+							{...ICONS.BULLET}
+							style={{ ...styles.listTextPrimary, marginRight: 5 }}
+						/>
 						<Text style={styles.listTextPrimary}>{x}</Text>
 					</ListItem>
 				))}
@@ -321,6 +335,10 @@ function KesaktianTab(props) {
 				{kesaktian.length > 0 &&
 					kesaktian.map((x) => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
+							<Icon
+								{...ICONS.BULLET}
+								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>
 					))}
@@ -336,6 +354,10 @@ function KesaktianTab(props) {
 				{pusaka.length > 0 &&
 					pusaka.map((x) => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
+							<Icon
+								{...ICONS.BULLET}
+								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>
 					))}

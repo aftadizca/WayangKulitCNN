@@ -15,14 +15,13 @@ import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 //Navigation
 const Stack = createStackNavigator();
-const tflite = new Tflite();
 
 const db = firestore().collection('Wayang');
 const store = storage();
 const modelDirs = pathJoin([RNFetchBlob.fs.dirs.MainBundleDir, 'model']);
 
 export default function App() {
-	const [model, setModel] = useState(tflite);
+	const [model, setModel] = useState(new Tflite());
 	const [isLoading, setIsLoading] = useState(true);
 	const [downloadProgress, setDownloadProgress] = useState(0);
 	const [isDownloadModel, setIsDownloadModel] = useState(false);
@@ -44,22 +43,24 @@ export default function App() {
 		}
 	};
 
-	function loadModel(path) {
-		model.loadModel(
-			{
-				modelFromStorage: path, // required
-				labels: 'custom/model.txt', // required
-				numThreads: 4, // defaults to 1
-			},
-			(err, res) => {
-				if (err) {
-					console.log('Load Model', err);
-				} else {
-					console.log('Model Loaded : ' + path);
-					setModel(tflite);
+	function loadModel(path, model) {
+		return new Promise((resolve) => {
+			model.loadModel(
+				{
+					modelFromStorage: path, // required
+					labels: 'custom/model.txt', // required
+					numThreads: 4, // defaults to 1
+				},
+				(err, res) => {
+					if (err) {
+						console.log('Load Model', err);
+					} else {
+						console.log('Model Loaded : ' + path);
+						resolve(model);
+					}
 				}
-			}
-		);
+			);
+		});
 	}
 
 	function downloadModel() {
@@ -93,7 +94,10 @@ export default function App() {
 		if (isLoading && !isDownloadModel) {
 			getModelName().then((x) => {
 				if (x !== null) {
-					setIsLoading(false);
+					loadModel(pathJoin([modelDirs, x]), model).then((res) => {
+						setModel(res);
+						setIsLoading(false);
+					});
 					console.log('Model detected:', x);
 				} else {
 					setIsDownloadModel(true);
@@ -154,11 +158,6 @@ export default function App() {
 		return (
 			<NavigationContainer>
 				<Stack.Navigator>
-					{/* <Stack.Screen name='Detail' options={screenOptions}>
-						{(props) => (
-							<Detail {...props} db={db} store={store} test={modelDirs} />
-						)}
-					</Stack.Screen> */}
 					<Stack.Screen name='Home' component={Home} options={screenOptions} />
 					<Stack.Screen
 						name='Camera'
@@ -172,6 +171,9 @@ export default function App() {
 					/>
 					<Stack.Screen name='Pic' options={screenOptions}>
 						{(props) => <ShowPic {...props} tflite={model} />}
+					</Stack.Screen>
+					<Stack.Screen name='Detail' options={screenOptions}>
+						{(props) => <Detail {...props} db={db} store={store} />}
 					</Stack.Screen>
 				</Stack.Navigator>
 			</NavigationContainer>

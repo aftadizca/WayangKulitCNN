@@ -27,7 +27,7 @@ export default ICON = {
         type: typeIcon
     },
     UPDATE: {
-        name: 'update',
+        name: 'arrow-down-circle',
         type: typeIcon
     },
     CLIPBOARD: {

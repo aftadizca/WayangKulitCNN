@@ -27,7 +27,7 @@ export default class Detail extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			index: WayangId.ARJUNA,
+			index: this.props.route.params.wayangId,
 			data: null,
 			loading: true,
 			img: null,
@@ -135,10 +135,10 @@ export default class Detail extends Component {
 								</Button>
 							</View>
 						) : (
-								<View style={styles.headerContainer}>
-									<Text style={styles.headerText}>{this.state.data.nama}</Text>
-								</View>
-							)}
+							<View style={styles.headerContainer}>
+								<Text style={styles.headerText}>{this.state.data.nama}</Text>
+							</View>
+						)}
 					</Header>
 					<Tabs
 						tabBarUnderlineStyle={{ backgroundColor: 'transparent' }}

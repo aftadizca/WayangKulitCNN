@@ -30,6 +30,10 @@ export default ICON = {
         name: 'cloud-download',
         type: typeIcon
     },
+    UPDATED: {
+        name: 'cloud-check',
+        type: typeIcon
+    },
     CLIPBOARD: {
         name: 'clipboard',
         type: typeIcon

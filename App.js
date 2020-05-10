@@ -171,11 +171,9 @@ export default function App() {
 						component={Camera}
 						options={screenOptions}
 					/>
-					<Stack.Screen
-						name="About"
-						component={About}
-						options={screenOptions}
-					/>
+					<Stack.Screen name="About" options={screenOptions}>
+						{props => <About {...props} store={store} />}
+					</Stack.Screen>
 					<Stack.Screen name="Pic" options={screenOptions}>
 						{props => <ShowPic {...props} tflite={model} />}
 					</Stack.Screen>

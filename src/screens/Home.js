@@ -6,7 +6,6 @@ import {
 	ToastAndroid,
 	StatusBar,
 } from 'react-native';
-import RNRestart from 'react-native-restart';
 import Text from 'react-native-text';
 import { COLORS, FONTS } from '../config';
 import { Container, Button } from 'native-base';

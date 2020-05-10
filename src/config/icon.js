@@ -23,11 +23,11 @@ export default ICON = {
         type: typeIcon
     },
     CNN_VERSION: {
-        name: 'brain',
+        name: 'chemical-weapon',
         type: typeIcon
     },
     UPDATE: {
-        name: 'arrow-down-circle',
+        name: 'cloud-download',
         type: typeIcon
     },
     CLIPBOARD: {
@@ -35,11 +35,11 @@ export default ICON = {
         type: typeIcon
     },
     ARROW_LEFT_CYCLE: {
-        name: 'arrow-left-circle',
+        name: 'chevron-left',
         type: typeIcon
     },
     ARROW_RIGHT_CYCLE: {
-        name: 'arrow-right-circle',
+        name: 'chevron-right',
         type: typeIcon
     },
     BOOK: {
@@ -48,6 +48,14 @@ export default ICON = {
     },
     BULLET: {
         name: 'checkbox-multiple-marked-circle',
+        type: typeIcon
+    },
+    NAVIGATION_BACK: {
+        name: 'arrow-left-circle',
+        type: typeIcon
+    },
+    NAVIGATION_HOME: {
+        name: 'home-circle',
         type: typeIcon
     }
 };

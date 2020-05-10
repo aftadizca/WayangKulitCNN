@@ -26,7 +26,8 @@ export default function App() {
 	const [downloadProgress, setDownloadProgress] = useState(0);
 	const [isDownloadModel, setIsDownloadModel] = useState(false);
 
-	storeModelName = async (modelName) => {
+	// eslint-disable-next-line no-undef
+	storeModelName = async modelName => {
 		try {
 			await AsyncStorage.setItem('@model_name', modelName);
 		} catch (e) {
@@ -34,6 +35,7 @@ export default function App() {
 		}
 	};
 
+	// eslint-disable-next-line no-undef
 	getModelName = async () => {
 		try {
 			const value = await AsyncStorage.getItem('@model_name');
@@ -43,8 +45,8 @@ export default function App() {
 		}
 	};
 
-	function loadModel(path, model) {
-		return new Promise((resolve) => {
+	function loadModel(path) {
+		return new Promise((resolve, reject) => {
 			model.loadModel(
 				{
 					modelFromStorage: path, // required
@@ -53,9 +55,8 @@ export default function App() {
 				},
 				(err, res) => {
 					if (err) {
-						console.log('Load Model', err);
+						reject(err);
 					} else {
-						console.log('Model Loaded : ' + path);
 						resolve(model);
 					}
 				}
@@ -67,9 +68,9 @@ export default function App() {
 		store
 			.ref('model')
 			.listAll()
-			.then((res) => {
+			.then(res => {
 				let modelName = res.items[0].name;
-				res.items[0].getDownloadURL().then((url) => {
+				res.items[0].getDownloadURL().then(url => {
 					RNFetchBlob.config({
 						// response data will be saved to this path if it has access right.
 						path: pathJoin([modelDirs, modelName]),
@@ -78,13 +79,13 @@ export default function App() {
 						.progress((received, total) => {
 							setDownloadProgress(((received / total) * 100).toFixed(0));
 						})
-						.then((res) => {
+						.then(downloadRes => {
 							storeModelName(modelName).then(() => {
 								setIsDownloadModel(false);
-								console.log('The file saved to ', res.path());
+								console.log('The file saved to ', downloadRes.path());
 							});
 						})
-						.catch((err) => console.log('Download Error : ', err));
+						.catch(err => console.log('Download Error : ', err));
 				});
 			});
 	}
@@ -92,13 +93,19 @@ export default function App() {
 	//check modelPath
 	useEffect(() => {
 		if (isLoading && !isDownloadModel) {
-			getModelName().then((x) => {
+			// eslint-disable-next-line no-undef
+			getModelName().then(x => {
 				if (x !== null) {
-					loadModel(pathJoin([modelDirs, x]), model).then((res) => {
-						setModel(res);
-						setIsLoading(false);
-					});
-					console.log('Model detected:', x);
+					loadModel(pathJoin([modelDirs, x]))
+						.then(res => {
+							setModel(res);
+							setIsLoading(false);
+							console.log('Model detected:', x);
+						})
+						.catch(err => {
+							console.log(err);
+							setIsDownloadModel(true);
+						});
 				} else {
 					setIsDownloadModel(true);
 				}
@@ -158,22 +165,22 @@ export default function App() {
 		return (
 			<NavigationContainer>
 				<Stack.Navigator>
-					<Stack.Screen name='Home' component={Home} options={screenOptions} />
+					<Stack.Screen name="Home" component={Home} options={screenOptions} />
 					<Stack.Screen
-						name='Camera'
+						name="Camera"
 						component={Camera}
 						options={screenOptions}
 					/>
 					<Stack.Screen
-						name='About'
+						name="About"
 						component={About}
 						options={screenOptions}
 					/>
-					<Stack.Screen name='Pic' options={screenOptions}>
-						{(props) => <ShowPic {...props} tflite={model} />}
+					<Stack.Screen name="Pic" options={screenOptions}>
+						{props => <ShowPic {...props} tflite={model} />}
 					</Stack.Screen>
-					<Stack.Screen name='Detail' options={screenOptions}>
-						{(props) => <Detail {...props} db={db} store={store} />}
+					<Stack.Screen name="Detail" options={screenOptions}>
+						{props => <Detail {...props} db={db} store={store} />}
 					</Stack.Screen>
 				</Stack.Navigator>
 			</NavigationContainer>

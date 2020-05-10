@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, ScrollView, Image, BackHandler } from 'react-native';
+import { Navigation } from '../components';
 import Text from 'react-native-text';
 import {
 	Container,
@@ -22,7 +23,7 @@ import {
 	widthPercentageToDP,
 } from 'react-native-responsive-screen';
 import shortid from 'shortid';
-
+//this.props.route.params.wayangId
 export default class Detail extends Component {
 	constructor(props) {
 		super(props);
@@ -39,21 +40,21 @@ export default class Detail extends Component {
 	}
 
 	//get url from Cloud Storage Firebase
-	getImgUrl = (ref) => {
-		return Promise.all(ref.items.map((x) => x.getDownloadURL()));
+	getImgUrl = ref => {
+		return Promise.all(ref.items.map(x => x.getDownloadURL()));
 	};
 
-	getData = (index) => {
+	getData = index => {
 		this.setState({ loading: true }, () => {
 			this.props.db
 				.doc(index.toString())
 				.get()
-				.then((dbData) => {
+				.then(dbData => {
 					this.props.store
 						.ref('wayang' + index)
 						.listAll()
-						.then((resultList) => {
-							this.getImgUrl(resultList).then((url) => {
+						.then(resultList => {
+							this.getImgUrl(resultList).then(url => {
 								this.setState({
 									data: dbData.data(),
 									index: index,
@@ -102,6 +103,7 @@ export default class Detail extends Component {
 						span
 						androidStatusBarColor={COLORS.PRIMARY_DARK}
 						style={{ backgroundColor: COLORS.PRIMARY_DARK }}>
+						<Navigation {...this.props} back />
 						{this.state.index > WayangId.YUDISTIRA ? (
 							<View style={styles.headerContainer}>
 								<Button
@@ -113,7 +115,7 @@ export default class Detail extends Component {
 									<Icon
 										style={{
 											color: COLORS.PRIMARY_LIGHT,
-											opacity: this.state.index === WayangId.NAKULA ? 0.3 : 1,
+											opacity: this.state.index === WayangId.NAKULA ? 0 : 1,
 										}}
 										{...ICONS.ARROW_LEFT_CYCLE}
 									/>
@@ -128,7 +130,7 @@ export default class Detail extends Component {
 									<Icon
 										style={{
 											color: COLORS.PRIMARY_LIGHT,
-											opacity: this.state.index === WayangId.SADEWA ? 0.3 : 1,
+											opacity: this.state.index === WayangId.SADEWA ? 0 : 1,
 										}}
 										{...ICONS.ARROW_RIGHT_CYCLE}
 									/>
@@ -149,7 +151,7 @@ export default class Detail extends Component {
 						<Tab heading={'BENTUK WAYANG'} {...this.tabProps}>
 							<ScrollView contentContainerStyle={styles.scrollView}>
 								{this.state.img &&
-									this.state.img.map((x) => (
+									this.state.img.map(x => (
 										<Card key={shortid.generate()}>
 											<CardItem cardBody style={styles.cardItem}>
 												<Image
@@ -158,7 +160,7 @@ export default class Detail extends Component {
 														height: heightPercentageToDP('62%'),
 														flex: 1,
 													}}
-													resizeMode='stretch'
+													resizeMode="stretch"
 													source={{
 														uri: x,
 													}}
@@ -168,20 +170,20 @@ export default class Detail extends Component {
 									))}
 							</ScrollView>
 						</Tab>
-						<Tab heading='NAMA LAIN' {...this.tabProps}>
+						<Tab heading="NAMA LAIN" {...this.tabProps}>
 							<NamaTab data={this.state.data} />
 						</Tab>
 
 						<Tab heading={'SILSILAH'} {...this.tabProps}>
 							<SilsilahTab data={this.state.data} />
 						</Tab>
-						<Tab heading='SIFAT' {...this.tabProps}>
+						<Tab heading="SIFAT" {...this.tabProps}>
 							<SifatTab data={this.state.data} />
 						</Tab>
-						<Tab heading='KESAKTIAN' {...this.tabProps}>
+						<Tab heading="KESAKTIAN" {...this.tabProps}>
 							<KesaktianTab data={this.state.data} />
 						</Tab>
-						<Tab heading='KISAH' {...this.tabProps}>
+						<Tab heading="KISAH" {...this.tabProps}>
 							<KisahTab data={this.state.data} />
 						</Tab>
 					</Tabs>
@@ -205,7 +207,7 @@ function SifatTab(props) {
 function KisahTab(props) {
 	return (
 		<ScrollView contentContainerStyle={styles.scrollView}>
-			{props.data.kisah.map((x) => (
+			{props.data.kisah.map(x => (
 				<Text key={shortid.generate()} style={styles.textBody}>
 					{'\t\t\t\t\t'}
 					{x}
@@ -247,7 +249,7 @@ function SilsilahTab(props) {
 					<Text style={styles.listTextHeader}>ISTRI</Text>
 				</ListItem>
 				{istri &&
-					istri.map((x) => (
+					istri.map(x => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}
@@ -266,7 +268,7 @@ function SilsilahTab(props) {
 					</ListItem>
 				)}
 				{putra.length > 0 &&
-					putra.map((x) => (
+					putra.map(x => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}
@@ -285,7 +287,7 @@ function SilsilahTab(props) {
 					</ListItem>
 				)}
 				{putri.length > 0 &&
-					putri.map((x) => (
+					putri.map(x => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}
@@ -303,7 +305,7 @@ function NamaTab(props) {
 	return (
 		<ScrollView style={styles.scrollView}>
 			<List>
-				{props.data.namaLain.map((x) => (
+				{props.data.namaLain.map(x => (
 					<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 						<Icon
 							{...ICONS.BULLET}
@@ -333,7 +335,7 @@ function KesaktianTab(props) {
 					</ListItem>
 				)}
 				{kesaktian.length > 0 &&
-					kesaktian.map((x) => (
+					kesaktian.map(x => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}
@@ -352,7 +354,7 @@ function KesaktianTab(props) {
 					</ListItem>
 				)}
 				{pusaka.length > 0 &&
-					pusaka.map((x) => (
+					pusaka.map(x => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}

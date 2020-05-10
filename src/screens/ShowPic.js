@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { Image, View, StyleSheet } from 'react-native';
 import Text from 'react-native-text';
 import { COLORS, FONTS } from '../config';
-import { MyButton, ProgressBar } from '../components';
+import { MyButton, ProgressBar, Navigation } from '../components';
 import {
 	heightPercentageToDP,
 	widthPercentageToDP,
@@ -14,6 +15,7 @@ export default function ShowPic(props) {
 	const [isModalVisible, setModalVisible] = useState(true);
 	const { navigation, tflite } = props;
 
+	//identify image with cnn
 	function onIdentify(img) {
 		return new Promise((resolve) => {
 			tflite.runModelOnImage(
@@ -41,23 +43,19 @@ export default function ShowPic(props) {
 			);
 		});
 	}
-
-	useEffect(() => {
-		const unsubscribe = navigation.addListener('focus', () => {
+	//hide/show modal whwn screen on focus / in background
+	useFocusEffect(
+		React.useCallback(() => {
+			// Do something when the screen is focused
 			setModalVisible(true);
-		});
 
-		return unsubscribe;
-	}, [navigation]);
-
-	useEffect(() => {
-		const unsubscribe = navigation.addListener('blur', () => {
-			setModalVisible(false);
-		});
-
-		return unsubscribe;
-	}, [navigation]);
-
+			return () => {
+				// Do something when the screen is unfocused
+				// Useful for cleanup functions
+				setModalVisible(false);
+			};
+		}, [])
+	);
 	//identify image
 	useEffect(() => {
 		onIdentify(props.route.params.uri).then((res) => {
@@ -81,6 +79,7 @@ export default function ShowPic(props) {
 				animationInTiming={300}
 				useNativeDriver={true}
 				onBackButtonPress={() => navigation.goBack()}>
+				<Navigation {...props} back />
 				<ModalContent {...props} prediction={prediction} />
 			</Modal>
 		</View>

@@ -11,7 +11,9 @@
 		"lint": "eslint .",
 		"reverse": "adb -s 656fd018 reverse tcp:8081 tcp:8081",
 		"reverse2": "adb -s abf56ad17d73 reverse tcp:8081 tcp:8081",
-		"log": "adb logcat -s TEST:V"
+		"log": "adb logcat -s TEST:V",
+		"list-avd": "emulator -list-avds",
+		"run-avd": "emulator @Realme_XT_API_29"
 	},
 	"dependencies": {
 		"@react-native-community/async-storage": "^1.10.0",
@@ -21,6 +23,7 @@
 		"@react-native-firebase/storage": "^6.7.1",
 		"@react-navigation/native": "^5.0.5",
 		"@react-navigation/stack": "^5.0.5",
+		"eslint-config-prettier": "^6.11.0",
 		"firebase": "^7.14.2",
 		"native-base": "file:.yalc/native-base",
 		"prop-types": "^15.7.2",
@@ -36,9 +39,10 @@
 		"react-native-reanimated": "^1.8.0",
 		"react-native-rename": "^2.4.1",
 		"react-native-responsive-screen": "^1.4.1",
+		"react-native-restart": "^0.0.17",
 		"react-native-safe-area-context": "^0.7.3",
 		"react-native-screens": "^2.0.0-beta.4",
-		"react-native-svg": "^11.0.1",
+		"react-native-svg": "12.1.0",
 		"react-native-svg-transformer": "^0.14.3",
 		"react-native-text": "^1.0.8",
 		"react-native-vector-icons": "^6.6.0",
@@ -52,6 +56,7 @@
 		"@react-native-community/eslint-config": "^0.0.5",
 		"babel-jest": "^24.9.0",
 		"eslint": "^6.5.1",
+		"eslint-plugin-react-hooks": "^4.0.0",
 		"jest": "^24.9.0",
 		"metro-react-native-babel-preset": "^0.56.0",
 		"react-test-renderer": "16.9.0"

@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, BackHandler, ToastAndroid, StatusBar } from 'react-native';
+import {
+	View,
+	StyleSheet,
+	BackHandler,
+	ToastAndroid,
+	StatusBar,
+} from 'react-native';
+import RNRestart from 'react-native-restart';
 import Text from 'react-native-text';
 import { COLORS, FONTS } from '../config';
-import { Container } from 'native-base';
+import { Container, Button } from 'native-base';
 import { ButtonMenu } from '../components';
 import { Row, Grid, Col } from 'react-native-easy-grid';
 import ImagePicker from 'react-native-image-picker';
-import {
-	heightPercentageToDP,
-	widthPercentageToDP,
-} from 'react-native-responsive-screen';
+import { widthPercentageToDP } from 'react-native-responsive-screen';
 //icon
 import { BgSvg, GallerySvg, WayangSvg, CameraSvg, InfoSvg } from '../icon';
 
@@ -61,7 +65,7 @@ export default class Home extends Component {
 				path: 'images',
 			},
 		};
-		ImagePicker.launchImageLibrary(options, (response) => {
+		ImagePicker.launchImageLibrary(options, response => {
 			if (response.didCancel) {
 				console.log('User cancelled image picker');
 			} else if (response.error) {
@@ -78,6 +82,9 @@ export default class Home extends Component {
 		return (
 			<Container>
 				<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
+				<Button onPress={() => RNRestart.Restart()}>
+					<Text>asasas</Text>
+				</Button>
 				<Grid>
 					<Row style={styles.rowTop}>
 						<Col
@@ -101,8 +108,8 @@ export default class Home extends Component {
 					</Row>
 					<Row style={styles.rowMenu}>
 						<ButtonMenu
-							text='AMBIL GAMBAR'
-							caption='Ambil gambar menggunakan camera'
+							text="AMBIL GAMBAR"
+							caption="Ambil gambar menggunakan camera"
 							icon={<CameraSvg />}
 							onPress={() =>
 								this.props.navigation.navigate('Camera', { Id: 'myparams' })
@@ -111,13 +118,13 @@ export default class Home extends Component {
 						<ButtonMenu
 							text={'PILIH GAMBAR'}
 							icon={<GallerySvg />}
-							caption='Pilih gambar dari gallery'
+							caption="Pilih gambar dari gallery"
 							onPress={this.openImagePicker}
 						/>
 						<ButtonMenu
 							text={'TENTANG'}
 							icon={<InfoSvg />}
-							caption='Informasi tentang aplikasi'
+							caption="Informasi tentang aplikasi"
 							onPress={() => this.props.navigation.navigate('About')}
 						/>
 					</Row>

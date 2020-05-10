@@ -51,7 +51,7 @@ export default ICON = {
         type: typeIcon
     },
     NAVIGATION_BACK: {
-        name: 'arrow-left-circle',
+        name: 'arrow-left',
         type: typeIcon
     },
     NAVIGATION_HOME: {

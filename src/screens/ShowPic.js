@@ -17,19 +17,20 @@ export default function ShowPic(props) {
 
 	//identify image with cnn
 	function onIdentify(img) {
-		return new Promise((resolve) => {
+		return new Promise(resolve => {
 			tflite.runModelOnImage(
 				{
 					path: img, // required
 					imageMean: 0, // defaults to 127.5
 					imageStd: 255, // defaults to 127.5
 					numResults: 4, // defaults to 5
-					threshold: 0.4, // defaults to 0.1
+					threshold: 0.5, // defaults to 0.1
 					numThreads: 4,
 				},
 				(err, res) => {
-					if (err) console.log(err);
-					else {
+					if (err) {
+						console.log(err);
+					} else {
 						if (res.length !== 0) {
 							// console.log('res', res);
 							// console.log(
@@ -58,7 +59,7 @@ export default function ShowPic(props) {
 	);
 	//identify image
 	useEffect(() => {
-		onIdentify(props.route.params.uri).then((res) => {
+		onIdentify(props.route.params.uri).then(res => {
 			setPrediction(res);
 		});
 	}, []);
@@ -66,7 +67,7 @@ export default function ShowPic(props) {
 	return (
 		<View style={styles.container}>
 			<Image
-				resizeMode='contain'
+				resizeMode="contain"
 				source={{
 					uri: 'file://' + props.route.params.uri,
 				}}

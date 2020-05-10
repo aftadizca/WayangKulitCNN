@@ -82,9 +82,6 @@ export default class Home extends Component {
 		return (
 			<Container>
 				<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
-				<Button onPress={() => RNRestart.Restart()}>
-					<Text>asasas</Text>
-				</Button>
 				<Grid>
 					<Row style={styles.rowTop}>
 						<Col

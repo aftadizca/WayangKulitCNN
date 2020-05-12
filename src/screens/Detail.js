@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Image, BackHandler } from 'react-native';
+import { StyleSheet, View, ScrollView, Image, PixelRatio } from 'react-native';
 import { Navigation } from '../components';
 import Text from 'react-native-text';
 import {
@@ -37,6 +37,7 @@ export default class Detail extends Component {
 
 	componentDidMount() {
 		this.getData(this.state.index);
+		console.log(PixelRatio.get());
 	}
 
 	//get url from Cloud Storage Firebase
@@ -156,9 +157,9 @@ export default class Detail extends Component {
 											<CardItem cardBody style={styles.cardItem}>
 												<Image
 													style={{
-														width: null,
-														height: heightPercentageToDP('62%'),
-														flex: 1,
+														width: '100%',
+														height: undefined,
+														aspectRatio: 9 / 16,
 													}}
 													resizeMode="stretch"
 													source={{

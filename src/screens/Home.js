@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+/* eslint-disable no-undef */
+import React, { useEffect } from 'react';
 import {
 	View,
 	StyleSheet,
@@ -8,7 +9,7 @@ import {
 } from 'react-native';
 import Text from 'react-native-text';
 import { COLORS, FONTS } from '../config';
-import { Container, Button } from 'native-base';
+import { Container } from 'native-base';
 import { ButtonMenu } from '../components';
 import { Row, Grid, Col } from 'react-native-easy-grid';
 import ImagePicker from 'react-native-image-picker';
@@ -16,43 +17,36 @@ import { widthPercentageToDP } from 'react-native-responsive-screen';
 //icon
 import { BgSvg, GallerySvg, WayangSvg, CameraSvg, InfoSvg } from '../icon';
 
-export default class Home extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
-
+export default function Home(props) {
 	// timer = undefined;
-
-	// backAction = () => {
-	// 	if (!this.timer) {
-	// 		ToastAndroid.showWithGravityAndOffset(
-	// 			'Tekan tombol kembali sekali lagi untuk keluar',
-	// 			ToastAndroid.SHORT,
-	// 			ToastAndroid.BOTTOM,
-	// 			25,
-	// 			50
-	// 		);
-	// 		this.timer = setTimeout(() => {
-	// 			clearTimeout(this.timer);
-	// 			this.timer = undefined;
-	// 		}, 2500);
-	// 	} else {
-	// 		BackHandler.exitApp();
-	// 	}
-	// 	return true;
-	// };
-
-	// componentDidMount() {
-	// 	this.backHandler = BackHandler.addEventListener(
+	// useEffect(() => {
+	// 	const backAction = () => {
+	// 		if (!timer) {
+	// 			ToastAndroid.showWithGravityAndOffset(
+	// 				'Tekan tombol kembali sekali lagi untuk keluar',
+	// 				ToastAndroid.SHORT,
+	// 				ToastAndroid.BOTTOM,
+	// 				25,
+	// 				50
+	// 			);
+	// 			timer = setTimeout(() => {
+	// 				clearTimeout(timer);
+	// 				timer = undefined;
+	// 			}, 2500);
+	// 		} else {
+	// 			BackHandler.exitApp();
+	// 		}
+	// 		return true;
+	// 	};
+	// 	const backHandler = BackHandler.addEventListener(
 	// 		'hardwareBackPress',
-	// 		this.backAction
+	// 		backAction
 	// 	);
-	// }
 
-	// componentWillUnmount() {
-	// 	this.backHandler.remove();
-	// }
+	// 	return () => {
+	// 		backHandler.remove();
+	// 	};
+	// });
 
 	//Open native gallery to select image
 	openImagePicker = () => {
@@ -72,62 +66,60 @@ export default class Home extends Component {
 			} else if (response.customButton) {
 				console.log('User tapped custom button: ', response.customButton);
 			} else {
-				this.props.navigation.navigate('Pic', { uri: response.path });
+				props.navigation.navigate('Pic', { uri: response.path });
 			}
 		});
 	};
 
-	render() {
-		return (
-			<Container>
-				<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
-				<Grid>
-					<Row style={styles.rowTop}>
-						<Col
-							style={{
-								justifyContent: 'center',
-								alignItems: 'flex-end',
-							}}>
-							<Text style={styles.headerTitle}>SIDANGKU</Text>
-							<Text style={styles.headerSubtitle}>
-								Sistem Identifikasi Wayang Kulit
-							</Text>
-						</Col>
-						<Col>
-							<WayangSvg />
-						</Col>
-					</Row>
-					<Row style={styles.rowBackground}>
-						<View style={styles.viewBackground}>
-							<BgSvg />
-						</View>
-					</Row>
-					<Row style={styles.rowMenu}>
-						<ButtonMenu
-							text="AMBIL GAMBAR"
-							caption="Ambil gambar menggunakan camera"
-							icon={<CameraSvg />}
-							onPress={() =>
-								this.props.navigation.navigate('Camera', { Id: 'myparams' })
-							}
-						/>
-						<ButtonMenu
-							text={'PILIH GAMBAR'}
-							icon={<GallerySvg />}
-							caption="Pilih gambar dari gallery"
-							onPress={this.openImagePicker}
-						/>
-						<ButtonMenu
-							text={'TENTANG'}
-							icon={<InfoSvg />}
-							caption="Informasi tentang aplikasi"
-							onPress={() => this.props.navigation.navigate('About')}
-						/>
-					</Row>
-				</Grid>
-			</Container>
-		);
-	}
+	return (
+		<Container>
+			<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
+			<Grid>
+				<Row style={styles.rowTop}>
+					<Col
+						style={{
+							justifyContent: 'center',
+							alignItems: 'flex-end',
+						}}>
+						<Text style={styles.headerTitle}>SIDANGKU</Text>
+						<Text style={styles.headerSubtitle}>
+							Sistem Identifikasi Wayang Kulit
+						</Text>
+					</Col>
+					<Col>
+						<WayangSvg />
+					</Col>
+				</Row>
+				<Row style={styles.rowBackground}>
+					<View style={styles.viewBackground}>
+						<BgSvg />
+					</View>
+				</Row>
+				<Row style={styles.rowMenu}>
+					<ButtonMenu
+						text="AMBIL GAMBAR"
+						caption="Ambil gambar menggunakan camera"
+						icon={<CameraSvg />}
+						onPress={() =>
+							props.navigation.navigate('Camera', { Id: 'myparams' })
+						}
+					/>
+					<ButtonMenu
+						text={'PILIH GAMBAR'}
+						icon={<GallerySvg />}
+						caption="Pilih gambar dari gallery"
+						onPress={openImagePicker}
+					/>
+					<ButtonMenu
+						text={'TENTANG'}
+						icon={<InfoSvg />}
+						caption="Informasi tentang aplikasi"
+						onPress={() => props.navigation.navigate('About')}
+					/>
+				</Row>
+			</Grid>
+		</Container>
+	);
 }
 
 const styles = StyleSheet.create({

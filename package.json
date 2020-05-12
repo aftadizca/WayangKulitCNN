@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"android": "react-native run-android",
+		"release": "react-native run-android --variant=release",
 		"watch": "echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances && echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events && echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && watchman shutdown-server",
 		"ios": "react-native run-ios",
 		"start": "react-native start",

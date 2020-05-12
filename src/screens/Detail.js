@@ -303,7 +303,7 @@ function SilsilahTab(props) {
 
 function NamaTab(props) {
 	return (
-		<ScrollView style={styles.scrollView}>
+		<ScrollView contentContainerStyle={styles.scrollView}>
 			<List>
 				{props.data.namaLain.map(x => (
 					<ListItem key={shortid.generate()} noIndent style={styles.listItem}>

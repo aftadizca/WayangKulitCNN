@@ -37,7 +37,6 @@ export default class Detail extends Component {
 
 	componentDidMount() {
 		this.getData(this.state.index);
-		console.log(PixelRatio.get());
 	}
 
 	//get url from Cloud Storage Firebase
@@ -138,10 +137,10 @@ export default class Detail extends Component {
 								</Button>
 							</View>
 						) : (
-							<View style={styles.headerContainer}>
-								<Text style={styles.headerText}>{this.state.data.nama}</Text>
-							</View>
-						)}
+								<View style={styles.headerContainer}>
+									<Text style={styles.headerText}>{this.state.data.nama}</Text>
+								</View>
+							)}
 					</Header>
 					<Tabs
 						tabBarUnderlineStyle={{ backgroundColor: 'transparent' }}

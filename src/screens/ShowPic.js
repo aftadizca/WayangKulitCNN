@@ -32,11 +32,6 @@ export default function ShowPic(props) {
 						console.log(err);
 					} else {
 						if (res.length !== 0) {
-							// console.log('res', res);
-							// console.log(
-							// 	'prediction ->',
-							// 	res[0].label + ' : ' + res[0].confidence
-							// );
 							resolve(res);
 						}
 					}

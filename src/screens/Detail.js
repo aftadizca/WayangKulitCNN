@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Image, PixelRatio } from 'react-native';
+import { StyleSheet, View, ScrollView, Image } from 'react-native';
 import { Navigation } from '../components';
 import Text from 'react-native-text';
 import {

@@ -5,9 +5,7 @@ import { ICONS } from '../config';
 import { styles } from './Navigation.style';
 
 export default function Navigation(props) {
-	const { navigation } = props;
 	const [opacity, setOpacity] = useState(0.1);
-
 	function handleOpacity(bool) {
 		if (bool) {
 			setOpacity(1);
@@ -15,13 +13,12 @@ export default function Navigation(props) {
 			setOpacity(0.1);
 		}
 	}
-
 	return (
 		<View style={styles.container}>
 			<Button
 				rounded
 				transparent
-				onPress={() => navigation.goBack()}
+				onPress={() => props.goBack()}
 				onPressIn={() => handleOpacity(true)}
 				onPressOut={() => handleOpacity(false)}
 				style={{ opacity: opacity }}>

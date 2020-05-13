@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import { Image, View, StyleSheet } from 'react-native';
+import { Image, View } from 'react-native';
 import Text from 'react-native-text';
-import { COLORS, FONTS } from '../config';
 import { MyButton, ProgressBar, Navigation } from '../components';
-import {
-	heightPercentageToDP,
-	widthPercentageToDP,
-} from 'react-native-responsive-screen';
 import Modal from 'react-native-modal';
+import { styles } from './ShowPic.style';
 
 export default function ShowPic(props) {
 	const [prediction, setPrediction] = useState(undefined);
 	const [isModalVisible, setModalVisible] = useState(true);
-	const { navigation, tflite } = props;
+	const { navigation, tflite, route } = props;
 
 	//identify image with cnn
 	function onIdentify(img) {
@@ -54,7 +50,7 @@ export default function ShowPic(props) {
 	);
 	//identify image
 	useEffect(() => {
-		onIdentify(props.route.params.uri).then(res => {
+		onIdentify(route.params.uri).then(res => {
 			setPrediction(res);
 		});
 	}, []);
@@ -64,7 +60,7 @@ export default function ShowPic(props) {
 			<Image
 				resizeMode="contain"
 				source={{
-					uri: 'file://' + props.route.params.uri,
+					uri: 'file://' + route.params.uri,
 				}}
 				style={styles.image}
 			/>
@@ -75,8 +71,8 @@ export default function ShowPic(props) {
 				animationInTiming={300}
 				useNativeDriver={true}
 				onBackButtonPress={() => navigation.goBack()}>
-				<Navigation {...props} back />
-				<ModalContent {...props} prediction={prediction} />
+				<Navigation {...navigation} back />
+				<ModalContent {...navigation} prediction={prediction} />
 			</Modal>
 		</View>
 	);
@@ -103,7 +99,7 @@ function ModalContent(props) {
 				{props.prediction[0].index !== 3 ? (
 					<MyButton
 						onPress={() =>
-							props.navigation.navigate('Detail', {
+							props.navigate('Detail', {
 								wayangId: props.prediction[0].index,
 							})
 						}>
@@ -114,37 +110,3 @@ function ModalContent(props) {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	image: {
-		width: '100%',
-		height: '100%',
-		backgroundColor: COLORS.PRIMARY_DARK,
-	},
-	modal: {
-		justifyContent: 'flex-end',
-		margin: 0,
-	},
-
-	renderContent: {
-		padding: widthPercentageToDP('5%'),
-		backgroundColor: COLORS.PRIMARY_LIGHT,
-		borderWidth: 1,
-		alignItems: 'center',
-	},
-	title: {
-		fontFamily: FONTS.BOLD,
-		fontSize: 28,
-		color: COLORS.PRIMARY_DARK,
-	},
-	bodyText: {
-		fontFamily: FONTS.CONDENSED,
-		fontSize: 18,
-		color: COLORS.PRIMARY_DARK,
-	},
-});

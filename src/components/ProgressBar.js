@@ -6,10 +6,16 @@ import { COLORS } from '../config';
 import LinearGradient from 'react-native-linear-gradient';
 import { styles } from './ProgressBar.style';
 
-const ProgressBar = props => {
+const ProgressBar = ({
+	style,
+	text,
+	value,
+	enableSubText = true,
+	subText = 'CONFIDENCE',
+}) => {
 	return (
-		<View style={{ ...styles.container, ...props.style }}>
-			<Text style={styles.text}>{props.text.toUpperCase()}</Text>
+		<View style={{ ...styles.container, ...style }}>
+			<Text style={styles.text}>{text.toUpperCase()}</Text>
 			<LinearGradient
 				colors={COLORS.GRADIENT2}
 				useAngle={true}
@@ -21,12 +27,12 @@ const ProgressBar = props => {
 					angle={180}
 					style={{
 						...styles.innerBar,
-						width: precise(props.value) + '%',
+						width: precise(value) + '%',
 					}}
 				/>
 			</LinearGradient>
-			<Text style={styles.textSubtitle}>{precise(props.value)}%</Text>
-			<Text style={styles.textSubtitle2}>CONFIDENCE</Text>
+			<Text style={styles.textSubtitle}>{precise(value)}%</Text>
+			{enableSubText && <Text style={styles.textSubtitle2}>{subText}</Text>}
 		</View>
 	);
 };
@@ -39,6 +45,8 @@ ProgressBar.propTypes = {
 	text: PropTypes.string.isRequired,
 	value: PropTypes.number.isRequired,
 	style: PropTypes.object,
+	subText: PropTypes.string,
+	enableSubText: PropTypes.bool,
 };
 
 export default ProgressBar;

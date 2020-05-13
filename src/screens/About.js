@@ -1,26 +1,17 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
-import {
-	View,
-	Image,
-	StyleSheet,
-	StatusBar,
-	TouchableNativeFeedback,
-} from 'react-native';
+import { View, Image, StatusBar, TouchableNativeFeedback } from 'react-native';
 import Text from 'react-native-text';
 import RNRestart from 'react-native-restart';
 import { Grid, Row, Col } from 'react-native-easy-grid';
-import { COLORS, FONTS, ICONS } from '../config';
+import { COLORS, ICONS } from '../config';
 import AsyncStorage from '@react-native-community/async-storage';
 import { version } from '../../package.json';
 import { Navigation } from '../components';
-import {
-	heightPercentageToDP,
-	widthPercentageToDP,
-} from 'react-native-responsive-screen';
 import { Icon, Spinner, Button } from 'native-base';
 import Modal from 'react-native-modal';
 import { Avatar, BgSvg } from '../icon';
+import { listStyles, styles, modalStyles } from './About.style';
 
 const MODEL_TYPE = {
 	checking: 0,
@@ -28,12 +19,12 @@ const MODEL_TYPE = {
 	updated: 2,
 };
 
-function About(props) {
+function About({ navigation }) {
 	const [modelName, setModelName] = useState();
 	const [modelNameTemp, setModelNameTemp] = useState();
 	const [modalType, setModalType] = useState(MODEL_TYPE.checking);
 	const [modalIsVisible, setModalVisible] = useState(false);
-	//sgetet model to storage
+	//set model to storage
 	storeModelName = async name => {
 		try {
 			await AsyncStorage.setItem('@model_name', name);
@@ -50,7 +41,7 @@ function About(props) {
 			console.log('AsyncStorage', e);
 		}
 	};
-
+	//showing update modal and check model for update
 	function handleUpdate() {
 		setModalVisible(true);
 		setModalType(MODEL_TYPE.checking);
@@ -66,7 +57,7 @@ function About(props) {
 				}
 			});
 	}
-
+	//handle button click from update modal
 	function handleModelButton(type) {
 		if (type) {
 			storeModelName(modelNameTemp + '.tflite').then(() => {
@@ -86,7 +77,7 @@ function About(props) {
 	return (
 		<Grid>
 			<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
-			<Navigation {...props} back />
+			<Navigation {...navigation} back />
 			<Row size={3} style={styles.rOne}>
 				<Col style={styles.rOneCol}>
 					<Image
@@ -136,117 +127,46 @@ function About(props) {
 function UpdateModal(props) {
 	return (
 		<Modal style={{}} isVisible={props.visible}>
-			<View
-				style={{
-					backgroundColor: COLORS.PRIMARY_LIGHT,
-					padding: widthPercentageToDP('4%'),
-					justifyContent: 'center',
-					alignItems: 'center',
-				}}>
+			<View style={modalStyles.modalView}>
 				{props.type === MODEL_TYPE.checking && (
 					<>
 						<Spinner color={COLORS.PRIMARY_DARK} />
-						<Text
-							style={{
-								fontFamily: FONTS.BOLD,
-								fontSize: 16,
-								color: COLORS.PRIMARY_DARK,
-							}}>
-							Cek versi model
-						</Text>
+						<Text style={modalStyles.text}>Cek versi model</Text>
 					</>
 				)}
 				{props.type === MODEL_TYPE.updated && (
 					<>
-						<Icon
-							style={{ fontSize: 48, color: COLORS.PRIMARY_DARK }}
-							{...ICONS.UPDATED}
-						/>
-						<Text
-							style={{
-								fontFamily: FONTS.BOLD,
-								fontSize: 16,
-								color: COLORS.PRIMARY_DARK,
-							}}>
-							Versi Model Sudah Paling Baru
-						</Text>
+						<Icon style={modalStyles.icon} {...ICONS.UPDATED} />
+						<Text style={modalStyles.text}>Versi Model Sudah Paling Baru</Text>
 					</>
 				)}
 				{props.type === MODEL_TYPE.updating && (
 					<>
-						<Icon
-							style={{ fontSize: 48, color: COLORS.PRIMARY_DARK }}
-							{...ICONS.UPDATE}
-						/>
-						<Text
-							style={{
-								fontFamily: FONTS.BOLD,
-								fontSize: 16,
-								color: COLORS.PRIMARY_DARK,
-							}}>
-							Versi Model Terbaru
-						</Text>
-						<Text
-							style={{
-								fontFamily: FONTS.BOLD_ITALIC,
-								fontSize: 16,
-								color: COLORS.PRIMARY_DARK,
-							}}>
-							{props.newModel}
-						</Text>
+						<Icon style={modalStyles.icon} {...ICONS.UPDATE} />
+						<Text style={modalStyles.text}>Versi Model Terbaru</Text>
+						<Text style={modalStyles.textItalic}>{props.newModel}</Text>
 					</>
 				)}
 			</View>
-			<View
-				style={{
-					backgroundColor: COLORS.PRIMARY_LIGHT,
-					alignItems: 'center',
-					justifyContent: 'space-evenly',
-					flexDirection: 'row',
-
-					padding: widthPercentageToDP('4%'),
-				}}>
+			<View style={modalStyles.buttonContainer}>
 				<Button
-					style={{
-						backgroundColor: COLORS.PRIMARY_DARK,
-						width: '30%',
-						justifyContent: 'center',
-					}}
+					style={modalStyles.button}
 					rounded
 					small
 					block
 					onPress={() => props.onPress(false)}
 					androidRippleColor={COLORS.PRIMARY_LIGHT}>
-					<Text
-						style={{
-							fontFamily: FONTS.BOLD,
-							fontSize: 16,
-							color: COLORS.PRIMARY_LIGHT,
-						}}>
-						Batal
-					</Text>
+					<Text style={modalStyles.textButton}>Batal</Text>
 				</Button>
 				{props.type === MODEL_TYPE.updating && (
 					<Button
-						style={{
-							backgroundColor: COLORS.PRIMARY_DARK,
-							marginLeft: 10,
-							width: '30%',
-							justifyContent: 'center',
-						}}
+						style={[modalStyles.button, { marginLeft: 10 }]}
 						rounded
 						block
 						onPress={() => props.onPress(true)}
 						small
 						androidRippleColor={COLORS.PRIMARY_LIGHT}>
-						<Text
-							style={{
-								fontFamily: FONTS.BOLD,
-								fontSize: 16,
-								color: COLORS.PRIMARY_LIGHT,
-							}}>
-							Update
-						</Text>
+						<Text style={modalStyles.textButton}>Update</Text>
 					</Button>
 				)}
 			</View>
@@ -283,102 +203,5 @@ function AboutList(props) {
 		</View>
 	);
 }
-
-const listStyles = StyleSheet.create({
-	container: {
-		width: '80%',
-		marginBottom: heightPercentageToDP('2%'),
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'center',
-		height: heightPercentageToDP('10%'),
-		backgroundColor: COLORS.PRIMARY_DARK,
-		borderRadius: widthPercentageToDP('50%'),
-	},
-	iconLeft: {
-		color: COLORS.PRIMARY_LIGHT,
-	},
-	left: {
-		width: '25%',
-		alignItems: 'center',
-	},
-	center: { width: '50%' },
-	centerTextTop: {
-		fontFamily: FONTS.REGULAR,
-		fontSize: 18,
-		color: COLORS.PRIMARY_LIGHT,
-	},
-	centerTextBottom: {
-		fontFamily: FONTS.LIGHT,
-		fontSize: 16,
-		opacity: 0.7,
-		color: COLORS.PRIMARY_LIGHT,
-	},
-	right: {
-		width: '25%',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	rightIconView: { borderRadius: 100, padding: 8, overflow: 'hidden' },
-	rightIcon: {
-		color: COLORS.PRIMARY_LIGHT,
-		marginLeft: 0,
-		marginRight: 0,
-	},
-});
-
-const styles = StyleSheet.create({
-	rOne: {
-		backgroundColor: COLORS.PRIMARY_DARK,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	rOneCol: {
-		padding: 5,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	rOneColImg: {
-		height: widthPercentageToDP('35%'),
-		width: widthPercentageToDP('35%'),
-		borderRadius: widthPercentageToDP('17.5%'),
-	},
-	rThree: {
-		backgroundColor: COLORS.PRIMARY_LIGHT,
-		justifyContent: 'flex-start',
-		alignItems: 'center',
-		flexDirection: 'column',
-		paddingTop: heightPercentageToDP('8%'),
-	},
-	nameText: {
-		fontFamily: FONTS.BOLD,
-		marginBottom: heightPercentageToDP('0.5%'),
-		fontSize: 18,
-		color: COLORS.PRIMARY_LIGHT,
-	},
-	nameSubText: {
-		fontFamily: FONTS.LIGHT,
-		fontSize: 16,
-		color: COLORS.PRIMARY_LIGHT,
-		opacity: 0.5,
-	},
-	listPrimaryText: {
-		fontFamily: FONTS.BOLD,
-		marginBottom: heightPercentageToDP('0.5%'),
-		fontSize: 18,
-		color: COLORS.PRIMARY_DARK,
-	},
-	listSecondaryText: {
-		fontFamily: FONTS.CONDENSED,
-		fontSize: 18,
-		color: COLORS.PRIMARY_DARK,
-		opacity: 0.7,
-	},
-	viewBackground: {
-		width: '100%',
-		height: '100%',
-		backgroundColor: COLORS.PRIMARY_LIGHT,
-	},
-});
 
 export default About;

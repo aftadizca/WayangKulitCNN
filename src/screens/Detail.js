@@ -103,7 +103,7 @@ export default class Detail extends Component {
 						span
 						androidStatusBarColor={COLORS.PRIMARY_DARK}
 						style={{ backgroundColor: COLORS.PRIMARY_DARK }}>
-						<Navigation {...this.props} back />
+						<Navigation {...this.props.navigation} back />
 						{this.state.index > WayangId.YUDISTIRA ? (
 							<View style={styles.headerContainer}>
 								<Button
@@ -137,10 +137,10 @@ export default class Detail extends Component {
 								</Button>
 							</View>
 						) : (
-								<View style={styles.headerContainer}>
-									<Text style={styles.headerText}>{this.state.data.nama}</Text>
-								</View>
-							)}
+							<View style={styles.headerContainer}>
+								<Text style={styles.headerText}>{this.state.data.nama}</Text>
+							</View>
+						)}
 					</Header>
 					<Tabs
 						tabBarUnderlineStyle={{ backgroundColor: 'transparent' }}

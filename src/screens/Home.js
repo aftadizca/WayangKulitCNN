@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import {
 	View,
 	StyleSheet,
@@ -8,6 +8,7 @@ import {
 	StatusBar,
 } from 'react-native';
 import Text from 'react-native-text';
+import { useFocusEffect } from '@react-navigation/native';
 import { COLORS, FONTS } from '../config';
 import { Container } from 'native-base';
 import { ButtonMenu } from '../components';
@@ -18,35 +19,33 @@ import { widthPercentageToDP } from 'react-native-responsive-screen';
 import { BgSvg, GallerySvg, WayangSvg, CameraSvg, InfoSvg } from '../icon';
 
 export default function Home(props) {
-	// timer = undefined;
-	// useEffect(() => {
-	// 	const backAction = () => {
-	// 		if (!timer) {
-	// 			ToastAndroid.showWithGravityAndOffset(
-	// 				'Tekan tombol kembali sekali lagi untuk keluar',
-	// 				ToastAndroid.SHORT,
-	// 				ToastAndroid.BOTTOM,
-	// 				25,
-	// 				50
-	// 			);
-	// 			timer = setTimeout(() => {
-	// 				clearTimeout(timer);
-	// 				timer = undefined;
-	// 			}, 2500);
-	// 		} else {
-	// 			BackHandler.exitApp();
-	// 		}
-	// 		return true;
-	// 	};
-	// 	const backHandler = BackHandler.addEventListener(
-	// 		'hardwareBackPress',
-	// 		backAction
-	// 	);
-
-	// 	return () => {
-	// 		backHandler.remove();
-	// 	};
-	// });
+	//handle back exit
+	timer = undefined;
+	useFocusEffect(
+		useCallback(() => {
+			const onBackPress = () => {
+				if (!timer) {
+					ToastAndroid.showWithGravityAndOffset(
+						'Tekan tombol kembali sekali lagi untuk keluar',
+						ToastAndroid.SHORT,
+						ToastAndroid.BOTTOM,
+						25,
+						50
+					);
+					timer = setTimeout(() => {
+						clearTimeout(timer);
+						timer = undefined;
+					}, 2500);
+				} else {
+					BackHandler.exitApp();
+				}
+				return true;
+			};
+			BackHandler.addEventListener('hardwareBackPress', onBackPress);
+			return () =>
+				BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+		}, [])
+	);
 
 	//Open native gallery to select image
 	openImagePicker = () => {

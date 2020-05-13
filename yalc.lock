@@ -6,7 +6,7 @@
       "file": true
     },
     "tflite-react-native": {
-      "signature": "fae7348620d7e11f7163b549545e9918",
+      "signature": "06d69ce82bf6dcbd8c5cafd56fc89617",
       "file": true,
       "replaced": "^0.0.5"
     },

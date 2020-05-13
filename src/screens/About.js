@@ -19,7 +19,7 @@ const MODEL_TYPE = {
 	updated: 2,
 };
 
-function About({ navigation }) {
+function About({ navigation, store }) {
 	const [modelName, setModelName] = useState();
 	const [modelNameTemp, setModelNameTemp] = useState();
 	const [modalType, setModalType] = useState(MODEL_TYPE.checking);
@@ -45,7 +45,7 @@ function About({ navigation }) {
 	function handleUpdate() {
 		setModalVisible(true);
 		setModalType(MODEL_TYPE.checking);
-		props.store
+		store
 			.ref('model')
 			.listAll()
 			.then(res => {

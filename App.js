@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import { View, StatusBar, Text } from 'react-native';
@@ -111,7 +112,6 @@ export default function App() {
 				}
 			});
 		}
-		console.log('Effect : Check model');
 	}, [isDownloadModel]);
 
 	//Downloading Model
@@ -119,7 +119,6 @@ export default function App() {
 		if (isDownloadModel) {
 			downloadModel();
 		}
-		console.log('Effect : DL model');
 	}, [isDownloadModel]);
 
 	if (isLoading) {

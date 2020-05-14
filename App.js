@@ -9,11 +9,12 @@ import RNFetchBlob from 'rn-fetch-blob';
 import Tflite from 'tflite-react-native';
 //local
 import { Camera, Home, ShowPic, About, Detail } from './src/screens';
-import { screenOptions, COLORS, FONTS, pathJoin } from './src/config';
+import { screenOptions, COLORS, pathJoin } from './src/config';
 import { WayangSvg } from './src/icon';
 //Firebase
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
+import { styles } from './App.style';
 //Navigation
 const Stack = createStackNavigator();
 
@@ -125,36 +126,14 @@ export default function App() {
 		return (
 			<>
 				<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
-				<View
-					style={{
-						flex: 1,
-						justifyContent: 'center',
-						alignItems: 'center',
-						backgroundColor: COLORS.PRIMARY_DARK,
-						flexDirection: 'column',
-					}}>
-					<View style={{ width: '40%', height: '30%' }}>
+				<View style={styles.loadingContainer}>
+					<View style={styles.imageView}>
 						<WayangSvg />
 					</View>
 					{isDownloadModel && (
-						<View style={{ alignItems: 'center' }}>
-							<Text
-								style={{
-									fontFamily: FONTS.BOLD,
-									color: COLORS.PRIMARY_LIGHT,
-									fontSize: 18,
-									marginBottom: 10,
-								}}>
-								Downloading CNN Model
-							</Text>
-							<Text
-								style={{
-									fontFamily: FONTS.CONDENSED,
-									color: COLORS.PRIMARY_LIGHT,
-									fontSize: 60,
-								}}>
-								{downloadProgress} %
-							</Text>
+						<View style={styles.textView}>
+							<Text style={styles.downloadText}>Downloading CNN Model</Text>
+							<Text style={styles.progressText}>{downloadProgress} %</Text>
 						</View>
 					)}
 				</View>

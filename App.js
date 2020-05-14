@@ -33,7 +33,7 @@ export default function App() {
 		try {
 			await AsyncStorage.setItem('@model_name', modelName);
 		} catch (e) {
-			console.log('AsyncStorage', e);
+			null;
 		}
 	};
 

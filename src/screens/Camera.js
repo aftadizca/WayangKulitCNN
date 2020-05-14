@@ -11,6 +11,8 @@ import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
 import { Container, Icon } from 'native-base';
 import { COLORS, ICONS } from '../config';
+import { Navigation } from '../components';
+import { widthPercentageToDP } from 'react-native-responsive-screen';
 
 export default class Camera extends Component {
 	constructor(props) {
@@ -72,13 +74,7 @@ export default class Camera extends Component {
 	componentWillUnmount() {
 		RNFetchBlob.fs
 			.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera')
-			.catch(err => {
-				console.log('err', err);
-			});
-	}
-
-	componentDidMount() {
-		console.log('Mounting Camera');
+			.catch(() => null);
 	}
 
 	_onPressFlashMode = () => {
@@ -146,6 +142,7 @@ export default class Camera extends Component {
 					/>
 				</TouchableOpacity>
 				<View
+					// eslint-disable-next-line react-native/no-inline-styles
 					style={{
 						top: this.state.focusLocation.y,
 						left: this.state.focusLocation.x,
@@ -155,6 +152,7 @@ export default class Camera extends Component {
 						...styles.focusBox,
 					}}
 				/>
+				<Navigation defaultOpacity={0.5} {...this.props.navigation} back />
 			</Container>
 		);
 	}
@@ -201,17 +199,18 @@ const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 32,
 		alignSelf: 'center',
+		marginLeft: 6,
+		marginRight: 6,
 	},
 	flashIconTO: {
 		flex: 1,
 		position: 'absolute',
-		right: 20,
-		top: 20,
+		top: widthPercentageToDP('2%'),
+		right: widthPercentageToDP('2%'),
 		borderRadius: 100,
-		width: 60,
-		height: 60,
 		justifyContent: 'center',
 		overflow: 'hidden',
+		height: 45,
 	},
 	focusBox: {
 		width: 50,

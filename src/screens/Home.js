@@ -52,11 +52,11 @@ export default function Home({ navigation }) {
 		};
 		ImagePicker.launchImageLibrary(options, response => {
 			if (response.didCancel) {
-				//console.log('User cancelled image picker');
+				//console.warn('User cancelled image picker');
 			} else if (response.error) {
-				//console.log('ImagePicker Error: ', response.error);
+				//console.warn('ImagePicker Error: ', response.error);
 			} else if (response.customButton) {
-				//console.log('User tapped custom button: ', response.customButton);
+				//console.warn('User tapped custom button: ', response.customButton);
 			} else {
 				navigation.navigate('Pic', { uri: response.path });
 			}

@@ -33,7 +33,7 @@ export default function App() {
 		try {
 			await AsyncStorage.setItem('@model_name', modelName);
 		} catch (e) {
-			null;
+			console.warn(e);
 		}
 	};
 
@@ -43,7 +43,7 @@ export default function App() {
 			const value = await AsyncStorage.getItem('@model_name');
 			return value;
 		} catch (e) {
-			console.log('AsyncStorage', e);
+			console.warn(e);
 		}
 	};
 
@@ -84,10 +84,10 @@ export default function App() {
 						.then(downloadRes => {
 							storeModelName(modelName).then(() => {
 								setIsDownloadModel(false);
-								console.log('The file saved to ', downloadRes.path());
+								//console.warn('The file saved to ', downloadRes.path());
 							});
 						})
-						.catch(err => console.log('Download Error : ', err));
+						.catch(err => console.warn('Download Error : ', err));
 				});
 			});
 	}
@@ -102,10 +102,9 @@ export default function App() {
 						.then(res => {
 							setModel(res);
 							setIsLoading(false);
-							console.log('Model detected:', x);
 						})
 						.catch(err => {
-							console.log(err);
+							console.warn(err);
 							setIsDownloadModel(true);
 						});
 				} else {

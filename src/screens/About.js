@@ -30,7 +30,7 @@ function About({ navigation, store }) {
 		try {
 			await AsyncStorage.setItem('@model_name', name);
 		} catch (e) {
-			console.log('AsyncStorage', e);
+			console.warn('AsyncStorage', e);
 		}
 	};
 	//get model from storage
@@ -39,7 +39,7 @@ function About({ navigation, store }) {
 			const value = await AsyncStorage.getItem('@model_name');
 			return value;
 		} catch (e) {
-			console.log('AsyncStorage', e);
+			console.warn('AsyncStorage', e);
 		}
 	};
 	//showing update modal and check model for update
@@ -75,7 +75,7 @@ function About({ navigation, store }) {
 					});
 				})
 				.catch(err => {
-					console.log('err', err);
+					console.warn('err', err);
 				});
 		} else {
 			setModalVisible(false);

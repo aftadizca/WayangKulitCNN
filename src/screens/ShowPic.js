@@ -25,7 +25,7 @@ export default function ShowPic(props) {
 				},
 				(err, res) => {
 					if (err) {
-						console.log(err);
+						console.warn(err);
 					} else {
 						if (res.length !== 0) {
 							resolve(res);

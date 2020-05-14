@@ -74,7 +74,7 @@ export default class Camera extends Component {
 	componentWillUnmount() {
 		RNFetchBlob.fs
 			.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera')
-			.catch(() => null);
+			.catch(e => console.warn(e));
 	}
 
 	_onPressFlashMode = () => {

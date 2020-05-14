@@ -51,7 +51,7 @@ export default class Camera extends Component {
 					this.setState({ focusPointChange: false });
 				}, 3000);
 			},
-			onPanResponderMove: (evt, gestureState) => { },
+			onPanResponderMove: (evt, gestureState) => {},
 			onPanResponderTerminationRequest: (evt, gestureState) => true,
 			onPanResponderRelease: (evt, gestureState) => {
 				// The user has released all touches while this view is the
@@ -72,13 +72,13 @@ export default class Camera extends Component {
 	componentWillUnmount() {
 		RNFetchBlob.fs
 			.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera')
-			.catch((err) => {
+			.catch(err => {
 				console.log('err', err);
 			});
 	}
 
 	componentDidMount() {
-		console.log("Mounting Camera")
+		console.log('Mounting Camera');
 	}
 
 	_onPressFlashMode = () => {
@@ -104,7 +104,7 @@ export default class Camera extends Component {
 		return (
 			<Container style={styles.container}>
 				<RNCamera
-					ref={(ref) => {
+					ref={ref => {
 						this.camera = ref;
 					}}
 					style={styles.preview}
@@ -161,7 +161,7 @@ export default class Camera extends Component {
 }
 
 const flashModeCycle = {
-	next: function (num) {
+	next: function(num) {
 		switch (num) {
 			case RNCamera.Constants.FlashMode.off:
 				return RNCamera.Constants.FlashMode.on;

@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image, StatusBar, TouchableNativeFeedback } from 'react-native';
 import Text from 'react-native-text';
+import RNFetchBlob from 'rn-fetch-blob';
 import RNRestart from 'react-native-restart';
 import { Grid, Row, Col } from 'react-native-easy-grid';
-import { COLORS, ICONS } from '../config';
+import { COLORS, ICONS, pathJoin } from '../config';
 import AsyncStorage from '@react-native-community/async-storage';
 import { version } from '../../package.json';
 import { Navigation } from '../components';
@@ -60,9 +61,22 @@ function About({ navigation, store }) {
 	//handle button click from update modal
 	function handleModelButton(type) {
 		if (type) {
-			storeModelName(modelNameTemp + '.tflite').then(() => {
-				RNRestart.Restart();
-			});
+			RNFetchBlob.fs
+				.unlink(
+					pathJoin([
+						RNFetchBlob.fs.dirs.MainBundleDir,
+						'model',
+						modelName + '.tflite',
+					])
+				)
+				.then(() => {
+					storeModelName(modelNameTemp + '.tflite').then(() => {
+						RNRestart.Restart();
+					});
+				})
+				.catch(err => {
+					console.log('err', err);
+				});
 		} else {
 			setModalVisible(false);
 		}

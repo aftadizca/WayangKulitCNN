@@ -22,6 +22,7 @@ export default class Camera extends Component {
 			focusLocation: { x: 0, y: 0 },
 			focusPointChange: false,
 			flashMode: RNCamera.Constants.FlashMode.off,
+			cameraVisible: false,
 		};
 
 		const w = Dimensions.get('screen').width;
@@ -31,13 +32,14 @@ export default class Camera extends Component {
 		this._panResponder = PanResponder.create({
 			// Ask to be the responder:
 			onStartShouldSetPanResponder: (evt, gestureState) => true,
-			onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
-			onMoveShouldSetPanResponder: (evt, gestureState) => true,
-			onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+			onStartShouldSetPanResponderCapture: (evt, gestureState) => false,
+			onMoveShouldSetPanResponder: (evt, gestureState) => false,
+			onMoveShouldSetPanResponderCapture: (evt, gestureState) => false,
 			onPanResponderGrant: (evt, gestureState) => {
 				const x0 = evt.nativeEvent.locationX / w;
 				const y0 = evt.nativeEvent.locationY / h;
 				this.setState({
+					focusPointChange: true,
 					focusPoint: {
 						x: y0,
 						y: -x0 + 1,
@@ -46,7 +48,6 @@ export default class Camera extends Component {
 						x: evt.nativeEvent.locationX - 25,
 						y: evt.nativeEvent.locationY - 25,
 					},
-					focusPointChange: true,
 				});
 				clearTimeout(timerId);
 				timerId = setTimeout(() => {
@@ -71,7 +72,26 @@ export default class Camera extends Component {
 		});
 	}
 
+	_setCameraVisble = value => {
+		setTimeout(() => {
+			this.setState({
+				cameraVisible: value,
+			});
+		}, 300); // Delay 300 ms
+	};
+
+	componentDidMount() {
+		this._inFocus = this.props.navigation.addListener('focus', () => {
+			this._setCameraVisble(true);
+		});
+		this._outFocus = this.props.navigation.addListener('blur', () => {
+			this._setCameraVisble(false);
+		});
+	}
+
 	componentWillUnmount() {
+		this._inFocus();
+		this._outFocus();
 		RNFetchBlob.fs
 			.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera')
 			.catch(e => console.warn(e));
@@ -99,24 +119,26 @@ export default class Camera extends Component {
 	render() {
 		return (
 			<Container style={styles.container}>
-				<RNCamera
-					ref={ref => {
-						this.camera = ref;
-					}}
-					style={styles.preview}
-					ratio="16:9"
-					type={RNCamera.Constants.Type.back}
-					autoFocusPointOfInterest={this.state.focusPoint}
-					autoFocus={RNCamera.Constants.AutoFocus.on}
-					flashMode={this.state.flashMode}
-					captureAudio={false}
-					androidCameraPermissionOptions={{
-						title: 'Permission to use camera',
-						message: 'We need your permission to use your camera',
-						buttonPositive: 'Ok',
-						buttonNegative: 'Cancel',
-					}}
-				/>
+				{this.state.cameraVisible && (
+					<RNCamera
+						ref={ref => {
+							this.camera = ref;
+						}}
+						style={styles.preview}
+						ratio="16:9"
+						type={RNCamera.Constants.Type.back}
+						autoFocusPointOfInterest={this.state.focusPoint}
+						autoFocus={RNCamera.Constants.AutoFocus.on}
+						flashMode={this.state.flashMode}
+						captureAudio={false}
+						androidCameraPermissionOptions={{
+							title: 'Permission to use camera',
+							message: 'We need your permission to use your camera',
+							buttonPositive: 'Ok',
+							buttonNegative: 'Cancel',
+						}}
+					/>
+				)}
 				<View style={styles.touchFocus} {...this._panResponder.panHandlers} />
 
 				<TouchableNativeFeedback

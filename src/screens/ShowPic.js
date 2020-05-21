@@ -20,7 +20,7 @@ export default function ShowPic(props) {
 					imageMean: 0, // defaults to 127.5
 					imageStd: 255, // defaults to 127.5
 					numResults: 4, // defaults to 5
-					threshold: 0.5, // defaults to 0.1
+					threshold: 0.1, // defaults to 0.1
 					numThreads: 4,
 				},
 				(err, res) => {
@@ -28,6 +28,7 @@ export default function ShowPic(props) {
 						console.warn(err);
 					} else {
 						if (res.length !== 0) {
+							console.log(res);
 							resolve(res);
 						}
 					}
@@ -35,6 +36,7 @@ export default function ShowPic(props) {
 			);
 		});
 	}
+
 	//hide/show modal whwn screen on focus / in background
 	useFocusEffect(
 		React.useCallback(() => {
@@ -68,7 +70,10 @@ export default function ShowPic(props) {
 				isVisible={isModalVisible}
 				style={styles.modal}
 				hasBackdrop={false}
-				animationInTiming={300}
+				animationInTiming={500}
+				animationOutTiming={500}
+				hideModalContentWhileAnimating
+				coverScreen={false}
 				useNativeDriver={true}
 				onBackButtonPress={() => navigation.goBack()}>
 				<Navigation {...navigation} back />
@@ -96,7 +101,7 @@ function ModalContent(props) {
 					text={props.prediction[0].label}
 					value={props.prediction[0].confidence}
 				/>
-				{props.prediction[0].index !== 3 ? (
+				{props.prediction[0].index !== 4 ? (
 					<MyButton
 						onPress={() =>
 							props.navigate('Detail', {

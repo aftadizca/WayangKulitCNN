@@ -70,7 +70,7 @@ export default function ShowPic(props) {
 				isVisible={isModalVisible}
 				style={styles.modal}
 				hasBackdrop={false}
-				animationInTiming={500}
+				animationInTiming={1000}
 				animationOutTiming={500}
 				hideModalContentWhileAnimating
 				coverScreen={false}

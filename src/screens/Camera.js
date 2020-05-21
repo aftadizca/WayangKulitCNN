@@ -84,14 +84,10 @@ export default class Camera extends Component {
 		this._inFocus = this.props.navigation.addListener('focus', () => {
 			this._setCameraVisble(true);
 		});
-		this._outFocus = this.props.navigation.addListener('blur', () => {
-			this._setCameraVisble(false);
-		});
 	}
 
 	componentWillUnmount() {
 		this._inFocus();
-		this._outFocus();
 		RNFetchBlob.fs
 			.unlink(RNFetchBlob.fs.dirs.CacheDir + '/Camera')
 			.catch(e => console.warn(e));
@@ -111,9 +107,9 @@ export default class Camera extends Component {
 				writeExif: false,
 			};
 			const data = await this.camera.takePictureAsync(options);
+			this.setState({ focusPointChange: false, cameraVisible: false });
 			this.props.navigation.navigate('Pic', { uri: data.uri });
 		}
-		this.setState({ focusPointChange: false });
 	};
 
 	render() {

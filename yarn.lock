@@ -6213,8 +6213,9 @@ react-native-asset@^2.0.0:
     sha1-file "^1.0.4"
     xcode "^2.0.0"
 
-"react-native-camera@file:.yalc/react-native-camera":
-  version "3.22.1-0fd90192"
+"react-native-camera@git+https://git@github.com/react-native-community/react-native-camera.git":
+  version "3.26.0"
+  resolved "git+https://git@github.com/react-native-community/react-native-camera.git#e55893bf4b6e030b9b705fa04c9967f3f46e24c0"
   dependencies:
     prop-types "^15.6.2"
 
@@ -7387,7 +7388,7 @@ text-table@^0.2.0:
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
 "tflite-react-native@file:.yalc/tflite-react-native":
-  version "0.0.6-fae73486"
+  version "0.0.6-06d69ce8"
 
 throat@^4.0.0, throat@^4.1.0:
   version "4.1.0"

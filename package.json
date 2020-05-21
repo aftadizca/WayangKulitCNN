@@ -31,7 +31,7 @@
 		"react": "16.11.0",
 		"react-native": "0.62.2",
 		"react-native-asset": "^2.0.0",
-		"react-native-camera": "file:.yalc/react-native-camera",
+		"react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera.git",
 		"react-native-easy-grid": "^0.2.2",
 		"react-native-gesture-handler": "^1.6.0",
 		"react-native-image-picker": "^2.3.1",

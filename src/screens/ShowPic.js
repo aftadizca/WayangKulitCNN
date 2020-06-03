@@ -20,7 +20,7 @@ export default function ShowPic(props) {
 					imageMean: 0, // defaults to 127.5
 					imageStd: 255, // defaults to 127.5
 					numResults: 4, // defaults to 5
-					threshold: 0.1, // defaults to 0.1
+					threshold: 0.55, // defaults to 0.1
 					numThreads: 4,
 				},
 				(err, res) => {
@@ -75,7 +75,8 @@ export default function ShowPic(props) {
 				hideModalContentWhileAnimating
 				coverScreen={false}
 				useNativeDriver={true}
-				onBackButtonPress={() => navigation.goBack()}>
+				onBackButtonPress={() => navigation.goBack()}
+			>
 				<Navigation {...navigation} back />
 				<ModalContent {...navigation} prediction={prediction} />
 			</Modal>
@@ -107,7 +108,8 @@ function ModalContent(props) {
 							props.navigate('Detail', {
 								wayangId: props.prediction[0].index,
 							})
-						}>
+						}
+					>
 						Tampilkan Detail
 					</MyButton>
 				) : null}

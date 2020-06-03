@@ -24,15 +24,9 @@ DerivedData
 # Android/IntelliJ
 #
 build/
-android/
-!android/app/src/*
 ios/
 models/
 .idea
-!build.gradle
-!gradle.properties
-wayangkulitcnn.keystore
-google-services.json
 .gradle
 local.properties
 *.iml
@@ -67,7 +61,17 @@ buck-out/
 /ios/Pods/
 
 #yalc
+#
 .yalc/
 yalc.lock
 yarn.lock
 
+#Android folder
+#
+android/build
+*.hprof
+
+#Private
+#
+*.keystore
+google-services.json

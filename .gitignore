@@ -25,9 +25,14 @@ DerivedData
 #
 build/
 android/
+!android/app/src/*
 ios/
 models/
 .idea
+!build.gradle
+!gradle.properties
+wayangkulitcnn.keystore
+google-services.json
 .gradle
 local.properties
 *.iml

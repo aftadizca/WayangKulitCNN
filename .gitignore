@@ -30,6 +30,7 @@ models/
 .gradle
 local.properties
 *.iml
+seeds.txt
 
 # node.js
 #

@@ -12,12 +12,14 @@ function ButtonMenu(props) {
 		<TouchableNativeFeedback
 			background={TouchableNativeFeedback.Ripple(COLORS.PRIMARY, false)}
 			useForeground={true}
-			onPress={props.onPress}>
+			onPress={props.onPress}
+		>
 			<LinearGradient
 				colors={COLORS.GRADIENT}
 				useAngle={true}
-				angle={180}
-				style={styles.viewMenu}>
+				angle={95}
+				style={styles.viewMenu}
+			>
 				<View style={styles.iconView}>{props.icon}</View>
 				<View style={styles.textView}>
 					<Text style={styles.textPrimary}>{props.text}</Text>

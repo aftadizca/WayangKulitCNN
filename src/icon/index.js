@@ -1,4 +1,4 @@
-export { default as BgSvg } from './bg2.svg';
+export { default as BgSvg } from './bg2.js';
 export { default as CameraSvg } from './camera.svg';
 export { default as GallerySvg } from './folder.svg';
 export { default as InfoSvg } from './survey.svg';

@@ -65,7 +65,7 @@ export default function Home({ navigation }) {
 
 	return (
 		<Container>
-			<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
+			<StatusBar backgroundColor={COLORS.BG} />
 			<Grid>
 				<Row style={styles.rowTop}>
 					<Col style={styles.rowTopCol}>

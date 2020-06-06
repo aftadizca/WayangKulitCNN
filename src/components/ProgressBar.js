@@ -15,24 +15,23 @@ const ProgressBar = ({
 }) => {
 	return (
 		<View style={{ ...styles.container, ...style }}>
-			<Text style={styles.text}>{text.toUpperCase()}</Text>
 			<LinearGradient
-				colors={COLORS.GRADIENT2}
+				colors={COLORS.GRADIENT}
 				useAngle={true}
-				angle={360}
-				style={styles.outerBar}>
-				<LinearGradient
-					colors={COLORS.GRADIENT}
-					useAngle={true}
-					angle={180}
-					style={{
-						...styles.innerBar,
-						width: precise(value) + '%',
-					}}
-				/>
+				angle={90}
+				style={styles.linearGradienText}
+			>
+				<Text style={styles.text}>{text.toUpperCase()}</Text>
 			</LinearGradient>
-			<Text style={styles.textSubtitle}>{precise(value)}%</Text>
-			{enableSubText && <Text style={styles.textSubtitle2}>{subText}</Text>}
+			<LinearGradient
+				colors={COLORS.GRADIENT}
+				useAngle={true}
+				angle={90}
+				style={styles.linearGradienText}
+			>
+				<Text style={styles.textSubtitle}>{precise(value)}%</Text>
+				{enableSubText && <Text style={styles.textSubtitle2}>{subText}</Text>}
+			</LinearGradient>
 		</View>
 	);
 };

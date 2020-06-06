@@ -14,11 +14,9 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-evenly',
 		borderRadius: widthPercentageToDP('50%'),
-		borderColor: COLORS.PRIMARY_DARK,
+		borderColor: COLORS.BG,
 		overflow: 'hidden',
 		elevation: 10,
-		borderWidth: 1,
-		backgroundColor: COLORS.PRIMARY_DARK,
 	},
 	iconView: {
 		width: '46%',

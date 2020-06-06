@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
 	image: {
 		width: '100%',
 		height: '100%',
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG,
 	},
 	modal: {
 		justifyContent: 'flex-end',
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
 	renderContent: {
 		padding: widthPercentageToDP('5%'),
 		backgroundColor: COLORS.PRIMARY_LIGHT,
-		borderWidth: 1,
+		borderWidth: 0,
 		alignItems: 'center',
 	},
 	title: {

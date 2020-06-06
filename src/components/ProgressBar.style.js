@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
 		marginBottom: 5,
 	},
 	outerBar: {
-		height: heightPercentageToDP('1.5%'),
+		height: heightPercentageToDP('2.5%'),
 		width: '100%',
 		borderRadius: 10,
 		overflow: 'hidden',
@@ -23,6 +23,13 @@ export const styles = StyleSheet.create({
 	innerBar: {
 		height: '100%',
 		borderRadius: 10,
+	},
+	linearGradienText: {
+		alignItems: 'center',
+		borderRadius: 10,
+		borderColor: COLORS.BG,
+		marginTop: 5,
+		padding: 5,
 	},
 	textSubtitle: {
 		fontFamily: FONTS.CONDENSED,

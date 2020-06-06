@@ -6,13 +6,13 @@ export const styles = StyleSheet.create({
 	headerTitle: {
 		fontFamily: FONTS.BOLD,
 		fontSize: 28,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 		textAlign: 'right',
 	},
 	headerSubtitle: {
 		fontFamily: FONTS.CONDENSED,
 		fontSize: 18,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 		textAlign: 'right',
 	},
 	headerHome: {
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'flex-start',
 	},
 	rowTop: {
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG,
 		flex: 2,
 		flexDirection: 'row',
 		alignItems: 'center',
@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
 		flex: 2,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG,
 	},
 	rowMenu: {
 		backgroundColor: COLORS.PRIMARY_LIGHT,

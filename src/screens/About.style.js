@@ -13,11 +13,11 @@ export const listStyles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		height: heightPercentageToDP('10%'),
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG,
 		borderRadius: widthPercentageToDP('50%'),
 	},
 	iconLeft: {
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 	},
 	left: {
 		width: '25%',
@@ -27,13 +27,13 @@ export const listStyles = StyleSheet.create({
 	centerTextTop: {
 		fontFamily: FONTS.REGULAR,
 		fontSize: 18,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 	},
 	centerTextBottom: {
 		fontFamily: FONTS.LIGHT,
 		fontSize: 16,
 		opacity: 0.7,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 	},
 	right: {
 		width: '25%',
@@ -42,7 +42,7 @@ export const listStyles = StyleSheet.create({
 	},
 	rightIconView: { borderRadius: 100, padding: 8, overflow: 'hidden' },
 	rightIcon: {
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 		marginLeft: 0,
 		marginRight: 0,
 	},
@@ -50,7 +50,7 @@ export const listStyles = StyleSheet.create({
 
 export const styles = StyleSheet.create({
 	rOne: {
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
@@ -59,10 +59,17 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	rOneColImg: {
+	rOneColView: {
 		height: widthPercentageToDP('35%'),
 		width: widthPercentageToDP('35%'),
+		borderWidth: 3,
+		overflow: 'hidden',
+		borderColor: COLORS.PRIMARY_DARK,
 		borderRadius: widthPercentageToDP('17.5%'),
+	},
+	rOneColViewImg: {
+		height: widthPercentageToDP('35%'),
+		width: widthPercentageToDP('35%'),
 	},
 	rThree: {
 		backgroundColor: COLORS.PRIMARY_LIGHT,
@@ -75,12 +82,12 @@ export const styles = StyleSheet.create({
 		fontFamily: FONTS.BOLD,
 		marginBottom: heightPercentageToDP('0.5%'),
 		fontSize: 18,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 	},
 	nameSubText: {
-		fontFamily: FONTS.LIGHT,
+		fontFamily: FONTS.REGULAR,
 		fontSize: 16,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 		opacity: 0.5,
 	},
 	listPrimaryText: {
@@ -104,10 +111,11 @@ export const styles = StyleSheet.create({
 
 export const modalStyles = StyleSheet.create({
 	modalView: {
-		backgroundColor: COLORS.PRIMARY_LIGHT,
 		padding: widthPercentageToDP('4%'),
 		justifyContent: 'center',
 		alignItems: 'center',
+		borderTopLeftRadius: 30,
+		borderTopRightRadius: 30,
 	},
 	text: {
 		fontFamily: FONTS.BOLD,
@@ -122,18 +130,20 @@ export const modalStyles = StyleSheet.create({
 	textButton: {
 		fontFamily: FONTS.BOLD,
 		fontSize: 16,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 	},
-	icon: { fontSize: 48, color: COLORS.PRIMARY_DARK },
+	icon: { fontSize: 128, color: COLORS.PRIMARY_DARK },
 	buttonContainer: {
 		backgroundColor: COLORS.PRIMARY_LIGHT,
 		alignItems: 'center',
 		justifyContent: 'space-evenly',
 		flexDirection: 'row',
 		padding: widthPercentageToDP('4%'),
+		borderBottomLeftRadius: 30,
+		borderBottomRightRadius: 30,
 	},
 	button: {
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG,
 		width: '30%',
 		justifyContent: 'center',
 	},

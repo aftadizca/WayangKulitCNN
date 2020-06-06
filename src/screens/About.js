@@ -12,6 +12,7 @@ import { Navigation } from '../components';
 import { Icon, Spinner, Button } from 'native-base';
 import Modal from 'react-native-modal';
 import { Avatar, BgSvg } from '../icon';
+import LinearGradient from 'react-native-linear-gradient';
 import { listStyles, styles, modalStyles } from './About.style';
 
 const MODEL_TYPE = {
@@ -90,16 +91,18 @@ function About({ navigation, store }) {
 
 	return (
 		<Grid>
-			<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
+			<StatusBar backgroundColor={COLORS.BG} />
 			<Navigation {...navigation} back />
 			<Row size={3} style={styles.rOne}>
 				<Col style={styles.rOneCol}>
-					<Image
-						source={Avatar}
-						resizeMethod="resize"
-						resizeMode="stretch"
-						style={styles.rOneColImg}
-					/>
+					<View style={styles.rOneColView}>
+						<Image
+							style={styles.rOneColViewImg}
+							source={Avatar}
+							resizeMethod="resize"
+							resizeMode="cover"
+						/>
+					</View>
 				</Col>
 				<Col>
 					<Text adjustsFontSizeToFit style={styles.nameText}>
@@ -169,7 +172,8 @@ function UpdateModal(props) {
 					small
 					block
 					onPress={() => props.onPress(false)}
-					androidRippleColor={COLORS.PRIMARY_LIGHT}>
+					androidRippleColor={COLORS.PRIMARY_LIGHT}
+				>
 					<Text style={modalStyles.textButton}>Batal</Text>
 				</Button>
 				{props.type === MODEL_TYPE.updating && (
@@ -179,7 +183,8 @@ function UpdateModal(props) {
 						block
 						onPress={() => props.onPress(true)}
 						small
-						androidRippleColor={COLORS.PRIMARY_LIGHT}>
+						androidRippleColor={COLORS.PRIMARY_LIGHT}
+					>
 						<Text style={modalStyles.textButton}>Update</Text>
 					</Button>
 				)}
@@ -191,7 +196,12 @@ function UpdateModal(props) {
 function AboutList(props) {
 	const { iconLeft, iconRight, title, desc } = props;
 	return (
-		<View style={listStyles.container}>
+		<LinearGradient
+			colors={COLORS.GRADIENT}
+			useAngle={true}
+			angle={95}
+			style={listStyles.container}
+		>
 			<View style={listStyles.left}>
 				<Icon style={listStyles.iconLeft} {...iconLeft} />
 			</View>
@@ -207,14 +217,15 @@ function AboutList(props) {
 							false
 						)}
 						onPress={props.iconRightOnPress}
-						useForeground={true}>
+						useForeground={true}
+					>
 						<View style={listStyles.rightIconView}>
 							<Icon style={listStyles.rightIcon} {...iconRight} />
 						</View>
 					</TouchableNativeFeedback>
 				)}
 			</View>
-		</View>
+		</LinearGradient>
 	);
 }
 

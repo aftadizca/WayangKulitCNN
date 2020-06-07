@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, Dimensions } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Image, View } from 'react-native';
 import Text from 'react-native-text';
@@ -10,9 +10,9 @@ import { COLORS } from '../config';
 import { styles } from './ShowPic.style';
 
 export default function ShowPic(props) {
+	const { navigation, tflite, route } = props;
 	const [prediction, setPrediction] = useState(undefined);
 	const [isModalVisible, setModalVisible] = useState(true);
-	const { navigation, tflite, route } = props;
 
 	//identify image with cnn
 	function onIdentify(img) {
@@ -40,6 +40,16 @@ export default function ShowPic(props) {
 		});
 	}
 
+	function hideModel(value) {
+		setModalVisible(value);
+	}
+
+	function onModelHide(value) {
+		navigation.navigate('Detail', {
+			wayangId: prediction[0].index,
+		});
+	}
+
 	//hide/show modal whwn screen on focus / in background
 	useFocusEffect(
 		React.useCallback(() => {
@@ -49,7 +59,7 @@ export default function ShowPic(props) {
 			return () => {
 				//Do something when the screen is unfocused
 				//Useful for cleanup functions
-				setModalVisible(false);
+				//setModalVisible(false);
 			};
 		}, [])
 	);
@@ -63,7 +73,7 @@ export default function ShowPic(props) {
 
 	return (
 		<View style={styles.container}>
-			<StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} />
+			{/* <StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} /> */}
 			<Image
 				resizeMode="contain"
 				source={{
@@ -74,17 +84,23 @@ export default function ShowPic(props) {
 			<Modal
 				isVisible={isModalVisible}
 				style={styles.modal}
-				hasBackdrop={false}
+				hasBackdrop={true}
+				backdropOpacity={0.3}
+				onModalHide={() => onModelHide()}
 				animationInTiming={1000}
 				animationOutTiming={500}
-				hideModalContentWhileAnimating
+				deviceHeight={Dimensions.get('screen').height}
 				coverScreen={false}
 				useNativeDriver={true}
 				onBackButtonPress={() => navigation.goBack()}
 			>
-				<Navigation {...navigation} back />
-				<ModalContent {...navigation} prediction={prediction} />
+				<ModalContent
+					{...navigation}
+					prediction={prediction}
+					detailsOnPress={() => hideModel(false)}
+				/>
 			</Modal>
+			<Navigation {...navigation} back />
 		</View>
 	);
 }
@@ -115,11 +131,12 @@ function ModalContent(props) {
 				/>
 				{props.prediction[0].index !== 4 ? (
 					<MyButton
-						onPress={() =>
-							props.navigate('Detail', {
-								wayangId: props.prediction[0].index,
-							})
-						}
+						onPress={props.detailsOnPress}
+						// onPress={() =>
+						// 	props.navigate('Detail', {
+						// 		wayangId: props.prediction[0].index,
+						// 	})
+						// }
 					>
 						Tampilkan Detail
 					</MyButton>

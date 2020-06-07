@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ScrollView, Image } from 'react-native';
 import { Navigation } from '../components';
+import LinearGradient from 'react-native-linear-gradient';
 import Text from 'react-native-text';
 import {
 	Container,
@@ -23,21 +24,13 @@ import {
 	widthPercentageToDP,
 } from 'react-native-responsive-screen';
 import shortid from 'shortid';
-//this.props.route.params.wayangId
-export default class Detail extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			index: this.props.route.params.wayangId,
-			data: null,
-			loading: true,
-			img: null,
-		};
-	}
 
-	componentDidMount() {
-		this.getData(this.state.index);
-	}
+//this.props.route.params.wayangId
+export default function Detail(props) {
+	const [index, setIndex] = useState(props.route.params.wayangId);
+	const [data, setData] = useState();
+	const [img, setImg] = useState();
+	const [loading, setLoading] = useState(true);
 
 	//get url from Cloud Storage Firebase
 	getImgUrl = ref => {
@@ -45,33 +38,32 @@ export default class Detail extends Component {
 	};
 
 	getData = index => {
-		this.setState({ loading: true }, () => {
-			this.props.db
-				.doc(index.toString())
-				.get()
-				.then(dbData => {
-					this.props.store
-						.ref('wayang' + index)
-						.listAll()
-						.then(resultList => {
-							this.getImgUrl(resultList).then(url => {
-								this.setState({
-									data: dbData.data(),
-									index: index,
-									img: url,
-									loading: false,
-								});
-							});
-						});
-				});
-		});
+		setLoading(true);
+		props.db
+			.doc(index.toString())
+			.get()
+			.then(dbData => {
+				props.store
+					.ref('wayang' + index)
+					.listAll()
+					.then(resultList => {
+						getImgUrl(resultList)
+							.then(url => {
+								setData(dbData.data());
+								setIndex(index);
+								setImg(url);
+								setLoading(false);
+							})
+							.catch(err => console.warn(err));
+					});
+			});
 	};
 
 	prevIndex = () => {
-		this.getData(WayangId.NAKULA);
+		getData(WayangId.NAKULA);
 	};
 	nextIndex = () => {
-		this.getData(WayangId.SADEWA);
+		getData(WayangId.SADEWA);
 	};
 
 	tabProps = {
@@ -82,119 +74,136 @@ export default class Detail extends Component {
 		activeTextStyle: { ...styles.activeTabTextStyle },
 	};
 
-	render() {
-		if (this.state.loading) {
-			return (
-				<Container
-					style={{
-						flex: 1,
-						justifyContent: 'center',
-						alignItems: 'center',
-						backgroundColor: COLORS.BG,
-					}}
-				>
-					<Spinner color={COLORS.PRIMARY_DARK} />
-				</Container>
-			);
-		} else {
-			return (
-				<>
-					<Header
-						hasTabs
-						span
-						androidStatusBarColor={COLORS.PRIMARY_DARK}
-						style={{ backgroundColor: COLORS.BG }}
-					>
-						<Navigation {...this.props.navigation} back />
-						{this.state.index > WayangId.YUDISTIRA ? (
-							<View style={styles.headerContainer}>
-								<Button
-									rounded
-									disabled={this.state.index === WayangId.NAKULA}
-									transparent
-									onPress={this.prevIndex}
-									style={{ backgroundColor: COLORS.PRIMARY_DARK }}
-								>
-									<Icon
-										style={{
-											color: COLORS.PRIMARY_LIGHT,
-											opacity: this.state.index === WayangId.NAKULA ? 0 : 1,
-										}}
-										{...ICONS.ARROW_LEFT_CYCLE}
-									/>
-								</Button>
-								<Text style={styles.headerText}>{this.state.data.nama}</Text>
-								<Button
-									rounded
-									disabled={this.state.index === WayangId.SADEWA}
-									transparent
-									onPress={this.nextIndex}
-									style={{ backgroundColor: COLORS.PRIMARY_DARK }}
-								>
-									<Icon
-										style={{
-											color: COLORS.PRIMARY_LIGHT,
-											opacity: this.state.index === WayangId.SADEWA ? 0 : 1,
-										}}
-										{...ICONS.ARROW_RIGHT_CYCLE}
-									/>
-								</Button>
-							</View>
-						) : (
-							<View style={styles.headerContainer}>
-								<Text style={styles.headerText}>{this.state.data.nama}</Text>
-							</View>
-						)}
-					</Header>
-					<Tabs
-						tabBarUnderlineStyle={{ backgroundColor: 'transparent' }}
-						initialPage={0}
-						renderTabBar={() => (
-							<ScrollableTab backgroundColor={COLORS.PRIMARY_DARK} />
-						)}
-					>
-						<Tab heading={'BENTUK WAYANG'} {...this.tabProps}>
-							<ScrollView contentContainerStyle={styles.scrollView}>
-								{this.state.img &&
-									this.state.img.map(x => (
-										<Card key={shortid.generate()}>
-											<CardItem cardBody style={styles.cardItem}>
-												<Image
-													style={{
-														width: '100%',
-														height: undefined,
-														aspectRatio: 9 / 16,
-													}}
-													resizeMode="stretch"
-													source={{
-														uri: x,
-													}}
-												/>
-											</CardItem>
-										</Card>
-									))}
-							</ScrollView>
-						</Tab>
-						<Tab heading="NAMA LAIN" {...this.tabProps}>
-							<NamaTab data={this.state.data} />
-						</Tab>
+	//get data
+	useEffect(() => {
+		getData(index);
+	}, []);
 
-						<Tab heading={'SILSILAH'} {...this.tabProps}>
-							<SilsilahTab data={this.state.data} />
-						</Tab>
-						<Tab heading="SIFAT" {...this.tabProps}>
-							<SifatTab data={this.state.data} />
-						</Tab>
-						<Tab heading="KESAKTIAN" {...this.tabProps}>
-							<KesaktianTab data={this.state.data} />
-						</Tab>
-						<Tab heading="KISAH" {...this.tabProps}>
-							<KisahTab data={this.state.data} />
-						</Tab>
-					</Tabs>
-				</>
-			);
-		}
+	if (loading) {
+		return (
+			<Container
+				style={{
+					flex: 1,
+					justifyContent: 'center',
+					alignItems: 'center',
+					backgroundColor: COLORS.BG,
+				}}
+			>
+				<Spinner color={COLORS.PRIMARY_DARK} />
+			</Container>
+		);
+	} else {
+		return (
+			<>
+				<LinearGradient
+					//hasTabs
+					//span
+					//translucent
+					//androidStatusBarColor={COLORS.BG}
+					colors={COLORS.GRADIENT}
+					useAngle={true}
+					angle={10}
+					start={{ x: 0.0, y: 0.0 }}
+					end={{ x: 0.5, y: 0.5 }}
+					angleCenter={{ x: 0.7, y: 0.7 }}
+					style={{ flex: 1 }}
+				>
+					<Navigation {...props.navigation} back />
+					{index > WayangId.YUDISTIRA ? (
+						<View style={styles.headerContainer}>
+							<Button
+								rounded
+								disabled={index === WayangId.NAKULA}
+								transparent
+								onPress={prevIndex}
+								style={{
+									backgroundColor: COLORS.TRANSPARENT,
+									alignSelf: 'center',
+								}}
+							>
+								<Icon
+									style={{
+										color: COLORS.PRIMARY_DARK,
+										opacity: index === WayangId.NAKULA ? 0 : 1,
+									}}
+									{...ICONS.ARROW_LEFT_CYCLE}
+								/>
+							</Button>
+							<View>
+								<Text style={styles.headerText}>{data.nama}</Text>
+							</View>
+							<Button
+								rounded
+								disabled={index === WayangId.SADEWA}
+								transparent
+								onPress={nextIndex}
+								style={{
+									backgroundColor: COLORS.TRANSPARENT,
+									alignSelf: 'center',
+								}}
+							>
+								<Icon
+									style={{
+										color: COLORS.PRIMARY_DARK,
+										opacity: index === WayangId.SADEWA ? 0 : 1,
+									}}
+									{...ICONS.ARROW_RIGHT_CYCLE}
+								/>
+							</Button>
+						</View>
+					) : (
+						<View style={styles.headerContainer}>
+							<Text style={styles.headerText}>{data.nama}</Text>
+						</View>
+					)}
+				</LinearGradient>
+				<Tabs
+					style={{ flex: 5 }}
+					tabBarUnderlineStyle={{ backgroundColor: 'transparent' }}
+					initialPage={0}
+					renderTabBar={() => <ScrollableTab />}
+				>
+					<Tab heading={'BENTUK WAYANG'} {...tabProps}>
+						<ScrollView contentContainerStyle={styles.scrollView}>
+							{img &&
+								img.map(x => (
+									<Card key={shortid.generate()}>
+										<CardItem cardBody style={styles.cardItem}>
+											<Image
+												style={{
+													width: '100%',
+													height: undefined,
+													aspectRatio: 9 / 16,
+												}}
+												resizeMode="stretch"
+												source={{
+													uri: x,
+												}}
+											/>
+										</CardItem>
+									</Card>
+								))}
+						</ScrollView>
+					</Tab>
+					<Tab heading="NAMA LAIN" {...tabProps}>
+						<NamaTab data={data} />
+					</Tab>
+
+					<Tab heading={'SILSILAH'} {...tabProps}>
+						<SilsilahTab data={data} />
+					</Tab>
+					<Tab heading="SIFAT" {...tabProps}>
+						<SifatTab data={data} />
+					</Tab>
+					<Tab heading="KESAKTIAN" {...tabProps}>
+						<KesaktianTab data={data} />
+					</Tab>
+					<Tab heading="KISAH" {...tabProps}>
+						<KisahTab data={data} />
+					</Tab>
+				</Tabs>
+			</>
+		);
 	}
 }
 
@@ -233,7 +242,7 @@ function SilsilahTab(props) {
 				<ListItem noIndent style={styles.listItem}>
 					<Icon
 						{...ICONS.BULLET}
-						style={{ ...styles.listTextPrimary, marginRight: 5 }}
+						style={{ ...styles.listTextPrimary, marginRight: 10 }}
 					/>
 					<Body>
 						<Text style={styles.listTextPrimary}>{orangTua.Ibu}</Text>
@@ -243,7 +252,7 @@ function SilsilahTab(props) {
 				<ListItem noIndent style={styles.listItem}>
 					<Icon
 						{...ICONS.BULLET}
-						style={{ ...styles.listTextPrimary, marginRight: 5 }}
+						style={{ ...styles.listTextPrimary, marginRight: 10 }}
 					/>
 					<Body>
 						<Text style={styles.listTextPrimary}>{orangTua.Ayah}</Text>
@@ -258,7 +267,7 @@ function SilsilahTab(props) {
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}
-								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+								style={{ ...styles.listTextPrimary, marginRight: 10 }}
 							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>
@@ -278,7 +287,7 @@ function SilsilahTab(props) {
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}
-								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+								style={{ ...styles.listTextPrimary, marginRight: 10 }}
 							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>
@@ -298,7 +307,7 @@ function SilsilahTab(props) {
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}
-								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+								style={{ ...styles.listTextPrimary, marginRight: 10 }}
 							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>
@@ -391,7 +400,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 	},
 	headerText: {
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 		fontFamily: FONTS.BOLD,
 		fontSize: 30,
 	},
@@ -402,14 +411,14 @@ const styles = StyleSheet.create({
 	activeTabTextStyle: {
 		fontFamily: FONTS.BOLD,
 		color: COLORS.PRIMARY_DARK,
-		backgroundColor: COLORS.PRIMARY_LIGHT,
+		backgroundColor: COLORS.BG2,
 		padding: widthPercentageToDP('1.5%'),
 		paddingLeft: widthPercentageToDP('5%'),
 		paddingRight: widthPercentageToDP('5%'),
 		borderRadius: widthPercentageToDP('10%'),
 		overflow: 'hidden',
 	},
-	tabTextStyle: { fontFamily: FONTS.BOLD, color: COLORS.PRIMARY_LIGHT },
+	tabTextStyle: { fontFamily: FONTS.BOLD, color: COLORS.PRIMARY_DARK },
 	activeTabStyle: {
 		backgroundColor: COLORS.BG,
 	},
@@ -424,6 +433,7 @@ const styles = StyleSheet.create({
 	},
 	textBody: {
 		fontFamily: FONTS.REGULAR,
+		color: '#000',
 		fontSize: 18,
 		textAlign: 'justify',
 	},
@@ -432,17 +442,17 @@ const styles = StyleSheet.create({
 	},
 	listItem: { borderBottomColor: COLORS.PRIMARY_DARK },
 	listDivider: {
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG2,
 		borderRadius: widthPercentageToDP('10%'),
 		marginTop: heightPercentageToDP('3%'),
 	},
 	listTextHeader: {
 		fontFamily: FONTS.BOLD,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 	},
 	listTextPrimary: {
-		fontFamily: FONTS.BOLD,
-		color: COLORS.PRIMARY_DARK,
+		fontFamily: FONTS.REGULAR,
+		color: '#000',
 		fontSize: 16,
 	},
 	listTextSecondary: {

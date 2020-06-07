@@ -5,7 +5,7 @@ import { ICONS } from '../config';
 import { styles } from './Navigation.style';
 
 export default function Navigation(props) {
-	const { defaultOpacity = 0.1 } = props;
+	const { defaultOpacity = 0.5 } = props;
 	const [opacity, setOpacity] = useState(defaultOpacity);
 	function handleOpacity(bool) {
 		if (bool) {
@@ -22,7 +22,8 @@ export default function Navigation(props) {
 				onPress={() => props.goBack()}
 				onPressIn={() => handleOpacity(true)}
 				onPressOut={() => handleOpacity(false)}
-				style={{ opacity: opacity }}>
+				style={{ opacity: opacity }}
+			>
 				<Icon style={styles.icon} {...ICONS.NAVIGATION_BACK} />
 			</Button>
 		</View>

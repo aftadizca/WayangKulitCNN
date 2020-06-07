@@ -1,6 +1,12 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
-import { View, Image, StatusBar, TouchableNativeFeedback } from 'react-native';
+import {
+	View,
+	Image,
+	StatusBar,
+	TouchableNativeFeedback,
+	Dimensions,
+} from 'react-native';
 import Text from 'react-native-text';
 import RNFetchBlob from 'rn-fetch-blob';
 import RNRestart from 'react-native-restart';
@@ -8,7 +14,7 @@ import { Grid, Row, Col } from 'react-native-easy-grid';
 import { COLORS, ICONS, pathJoin } from '../config';
 import AsyncStorage from '@react-native-community/async-storage';
 import { version } from '../../package.json';
-import { Navigation } from '../components';
+import { Navigation, MyButton } from '../components';
 import { Icon, Spinner, Button } from 'native-base';
 import Modal from 'react-native-modal';
 import { Avatar, BgSvg } from '../icon';
@@ -91,7 +97,7 @@ function About({ navigation, store }) {
 
 	return (
 		<Grid>
-			<StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} />
+			{/* <StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} /> */}
 			<Navigation {...navigation} back />
 			<LinearGradient
 				colors={COLORS.GRADIENT}
@@ -147,8 +153,18 @@ function About({ navigation, store }) {
 
 function UpdateModal(props) {
 	return (
-		<Modal style={{}} isVisible={props.visible}>
-			<View style={modalStyles.modalView}>
+		<Modal
+			deviceHeight={Dimensions.get('screen').height}
+			coverScreen={false}
+			isVisible={props.visible}
+		>
+			<LinearGradient
+				colors={COLORS.GRADIENT}
+				useAngle={true}
+				angle={10}
+				angleCenter={{ x: 0.7, y: 0.3 }}
+				style={modalStyles.modalView}
+			>
 				{props.type === MODEL_TYPE.checking && (
 					<>
 						<Spinner color={COLORS.PRIMARY_DARK} />
@@ -168,29 +184,16 @@ function UpdateModal(props) {
 						<Text style={modalStyles.textItalic}>{props.newModel}</Text>
 					</>
 				)}
-			</View>
+			</LinearGradient>
 			<View style={modalStyles.buttonContainer}>
-				<Button
-					style={modalStyles.button}
-					rounded
-					small
-					block
-					onPress={() => props.onPress(false)}
-					androidRippleColor={COLORS.PRIMARY_LIGHT}
-				>
-					<Text style={modalStyles.textButton}>Batal</Text>
-				</Button>
+				<MyButton onPress={() => props.onPress(false)}>Batal</MyButton>
 				{props.type === MODEL_TYPE.updating && (
-					<Button
-						style={[modalStyles.button, { marginLeft: 10 }]}
-						rounded
-						block
+					<MyButton
+						style={{ marginLeft: 10 }}
 						onPress={() => props.onPress(true)}
-						small
-						androidRippleColor={COLORS.PRIMARY_LIGHT}
 					>
-						<Text style={modalStyles.textButton}>Update</Text>
-					</Button>
+						Update
+					</MyButton>
 				)}
 			</View>
 		</Modal>

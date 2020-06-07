@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 	},
 	icon: {
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 		fontSize: 32,
 		marginLeft: 6,
 		marginRight: 6,

@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG,
 		flexDirection: 'column',
 	},
 	textView: { alignItems: 'center' },

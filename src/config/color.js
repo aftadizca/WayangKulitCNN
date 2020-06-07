@@ -4,6 +4,8 @@ export default (COLOR = {
 	PRIMARY_DARK: '#402D26',
 	PRIMARY_LIGHT: '#8D6E63',
 	BG: '#ff512f',
+	BG2: '#f09819',
+	STATUS_BAR: '#eb3d1b',
 	CAMERA_FOCUS_BOX: '#11fc29',
 	GRADIENT: ['#ff512f', '#f09819'],
 	GRADIENT2: ['#8C6D62', '#402D26'],

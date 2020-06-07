@@ -108,7 +108,9 @@ export default function App() {
 					loadModel(pathJoin([modelDirs, x]))
 						.then(res => {
 							setModel(res);
-							setIsLoading(false);
+							setTimeout(() => {
+								setIsLoading(false);
+							}, 1000);
 						})
 						.catch(err => {
 							console.warn(err);
@@ -131,7 +133,7 @@ export default function App() {
 	if (isLoading) {
 		return (
 			<>
-				<StatusBar backgroundColor={COLORS.PRIMARY_DARK} />
+				<StatusBar backgroundColor={COLORS.STATUS_BAR} />
 				<View style={styles.loadingContainer}>
 					<View style={styles.imageView}>
 						<WayangSvg />
@@ -148,6 +150,8 @@ export default function App() {
 	} else {
 		return (
 			<NavigationContainer>
+				<StatusBar backgroundColor={COLORS.STATUS_BAR} />
+				{/* <StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} /> */}
 				<Stack.Navigator>
 					<Stack.Screen name="Home" component={Home} options={screenOptions} />
 					<Stack.Screen

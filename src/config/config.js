@@ -2,9 +2,10 @@ import { TransitionPresets } from '@react-navigation/stack';
 
 export const screenOptions = {
 	headerMode: 'none',
-	gestureDirection: 'horizontal',
+	//gestureDirection: 'horizontal',
 	headerShown: false,
 	...TransitionPresets.SlideFromRightIOS,
+	cardStyle: { backgroundColor: '#8D6E63' },
 };
 
 export const DEFAULT_RATIO = '16:9';

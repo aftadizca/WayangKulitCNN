@@ -119,6 +119,7 @@ export const modalStyles = StyleSheet.create({
 		alignItems: 'center',
 		borderTopLeftRadius: 30,
 		borderTopRightRadius: 30,
+		backgroundColor: COLORS.PRIMARY_LIGHT,
 	},
 	text: {
 		fontFamily: FONTS.BOLD,
@@ -137,17 +138,11 @@ export const modalStyles = StyleSheet.create({
 	},
 	icon: { fontSize: 128, color: COLORS.PRIMARY_DARK },
 	buttonContainer: {
-		backgroundColor: COLORS.PRIMARY_LIGHT,
+		backgroundColor: COLORS.BG,
 		alignItems: 'center',
 		justifyContent: 'space-evenly',
 		flexDirection: 'row',
-		padding: widthPercentageToDP('4%'),
 		borderBottomLeftRadius: 30,
 		borderBottomRightRadius: 30,
-	},
-	button: {
-		backgroundColor: COLORS.BG,
-		width: '30%',
-		justifyContent: 'center',
 	},
 });

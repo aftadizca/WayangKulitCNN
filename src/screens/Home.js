@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useCallback } from 'react';
-import { View, BackHandler, ToastAndroid, StatusBar } from 'react-native';
+import { View, BackHandler, ToastAndroid } from 'react-native';
 import Text from 'react-native-text';
 import { useFocusEffect } from '@react-navigation/native';
 import { COLORS } from '../config';
@@ -66,7 +66,6 @@ export default function Home({ navigation }) {
 
 	return (
 		<Container>
-			<StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} />
 			<Grid>
 				<LinearGradient
 					colors={COLORS.GRADIENT}

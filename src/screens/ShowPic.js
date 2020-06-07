@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { StatusBar } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Image, View } from 'react-native';
 import Text from 'react-native-text';
 import { MyButton, ProgressBar, Navigation } from '../components';
+import LinearGradient from 'react-native-linear-gradient';
 import Modal from 'react-native-modal';
+import { COLORS } from '../config';
 import { styles } from './ShowPic.style';
 
 export default function ShowPic(props) {
@@ -28,7 +31,7 @@ export default function ShowPic(props) {
 						console.warn(err);
 					} else {
 						if (res.length !== 0) {
-							console.log(res);
+							console.warn(res);
 							resolve(res);
 						}
 					}
@@ -38,18 +41,19 @@ export default function ShowPic(props) {
 	}
 
 	//hide/show modal whwn screen on focus / in background
-	useFocusEffect(
-		React.useCallback(() => {
-			// Do something when the screen is focused
-			setModalVisible(true);
+	// useFocusEffect(
+	// 	React.useCallback(() => {
+	// Do something when the screen is focused
+	//setModalVisible(true);
 
-			return () => {
-				// Do something when the screen is unfocused
-				// Useful for cleanup functions
-				setModalVisible(false);
-			};
-		}, [])
-	);
+	// 		return () => {
+	// Do something when the screen is unfocused
+	// Useful for cleanup functions
+	//setModalVisible(true);
+	// 		};
+	// 	}, [])
+	// );
+
 	//identify image
 	useEffect(() => {
 		onIdentify(route.params.uri).then(res => {
@@ -59,6 +63,7 @@ export default function ShowPic(props) {
 
 	return (
 		<View style={styles.container}>
+			<StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} />
 			<Image
 				resizeMode="contain"
 				source={{
@@ -97,7 +102,13 @@ function ModalContent(props) {
 	} else {
 		//Tampilan jika prediksi sukses
 		return (
-			<View style={styles.renderContent}>
+			<LinearGradient
+				colors={COLORS.GRADIENT}
+				useAngle={true}
+				angle={10}
+				angleCenter={{ x: 0.7, y: 0.3 }}
+				style={styles.renderContent}
+			>
 				<ProgressBar
 					text={props.prediction[0].label}
 					value={props.prediction[0].confidence}
@@ -113,7 +124,7 @@ function ModalContent(props) {
 						Tampilkan Detail
 					</MyButton>
 				) : null}
-			</View>
+			</LinearGradient>
 		);
 	}
 }

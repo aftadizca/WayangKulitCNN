@@ -8,6 +8,7 @@ import { Container } from 'native-base';
 import { ButtonMenu } from '../components';
 import { Row, Grid, Col } from 'react-native-easy-grid';
 import ImagePicker from 'react-native-image-picker';
+import LinearGradient from 'react-native-linear-gradient';
 import { styles } from './Home.style';
 //icon
 import { BgSvg, GallerySvg, WayangSvg, CameraSvg, InfoSvg } from '../icon';
@@ -65,9 +66,15 @@ export default function Home({ navigation }) {
 
 	return (
 		<Container>
-			<StatusBar backgroundColor={COLORS.BG} />
+			<StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} />
 			<Grid>
-				<Row style={styles.rowTop}>
+				<LinearGradient
+					colors={COLORS.GRADIENT}
+					useAngle={true}
+					angle={10}
+					angleCenter={{ x: 0.7, y: 0.3 }}
+					style={styles.rowTop}
+				>
 					<Col style={styles.rowTopCol}>
 						<Text style={styles.headerTitle}>SIDANGKU</Text>
 						<Text style={styles.headerSubtitle}>
@@ -77,7 +84,7 @@ export default function Home({ navigation }) {
 					<Col>
 						<WayangSvg />
 					</Col>
-				</Row>
+				</LinearGradient>
 				<Row style={styles.rowBackground}>
 					<View style={styles.viewBackground}>
 						<BgSvg />

@@ -3,13 +3,11 @@ export default (COLOR = {
 	PRIMARY: '#8C6D62',
 	PRIMARY_DARK: '#402D26',
 	PRIMARY_LIGHT: '#8D6E63',
-	SECONDARY: '#3e2723',
-	SECONDARY_DARK: '#204039',
-	SECONDARY_LIGHT: '#628C84',
-	BG: '#E65C00',
+	BG: '#ff512f',
 	CAMERA_FOCUS_BOX: '#11fc29',
-	GRADIENT: ['#E65C00', '#F9D423'],
+	GRADIENT: ['#ff512f', '#f09819'],
 	GRADIENT2: ['#8C6D62', '#402D26'],
+	TRANSPARENT: 'transparent',
 });
 
 // export default COLOR = {

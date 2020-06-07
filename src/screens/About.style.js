@@ -15,6 +15,7 @@ export const listStyles = StyleSheet.create({
 		height: heightPercentageToDP('10%'),
 		backgroundColor: COLORS.BG,
 		borderRadius: widthPercentageToDP('50%'),
+		elevation: 10,
 	},
 	iconLeft: {
 		color: COLORS.PRIMARY_DARK,
@@ -53,6 +54,8 @@ export const styles = StyleSheet.create({
 		backgroundColor: COLORS.BG,
 		justifyContent: 'center',
 		alignItems: 'center',
+		flexDirection: 'row',
+		flex: 3,
 	},
 	rOneCol: {
 		padding: 5,

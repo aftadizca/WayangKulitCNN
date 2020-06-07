@@ -12,6 +12,8 @@ export const styles = StyleSheet.create({
 		backgroundColor: COLORS.PRIMARY_DARK,
 		overflow: 'hidden',
 		elevation: 5,
+		borderColor: COLORS.PRIMARY_DARK,
+		borderWidth: 0.7,
 	},
 	text: {
 		fontFamily: FONTS.BOLD,

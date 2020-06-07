@@ -90,8 +90,9 @@ export default class Detail extends Component {
 						flex: 1,
 						justifyContent: 'center',
 						alignItems: 'center',
-						backgroundColor: COLORS.PRIMARY_LIGHT,
-					}}>
+						backgroundColor: COLORS.BG,
+					}}
+				>
 					<Spinner color={COLORS.PRIMARY_DARK} />
 				</Container>
 			);
@@ -102,7 +103,8 @@ export default class Detail extends Component {
 						hasTabs
 						span
 						androidStatusBarColor={COLORS.PRIMARY_DARK}
-						style={{ backgroundColor: COLORS.PRIMARY_DARK }}>
+						style={{ backgroundColor: COLORS.BG }}
+					>
 						<Navigation {...this.props.navigation} back />
 						{this.state.index > WayangId.YUDISTIRA ? (
 							<View style={styles.headerContainer}>
@@ -111,7 +113,8 @@ export default class Detail extends Component {
 									disabled={this.state.index === WayangId.NAKULA}
 									transparent
 									onPress={this.prevIndex}
-									style={{ backgroundColor: COLORS.PRIMARY_DARK }}>
+									style={{ backgroundColor: COLORS.PRIMARY_DARK }}
+								>
 									<Icon
 										style={{
 											color: COLORS.PRIMARY_LIGHT,
@@ -126,7 +129,8 @@ export default class Detail extends Component {
 									disabled={this.state.index === WayangId.SADEWA}
 									transparent
 									onPress={this.nextIndex}
-									style={{ backgroundColor: COLORS.PRIMARY_DARK }}>
+									style={{ backgroundColor: COLORS.PRIMARY_DARK }}
+								>
 									<Icon
 										style={{
 											color: COLORS.PRIMARY_LIGHT,
@@ -147,7 +151,8 @@ export default class Detail extends Component {
 						initialPage={0}
 						renderTabBar={() => (
 							<ScrollableTab backgroundColor={COLORS.PRIMARY_DARK} />
-						)}>
+						)}
+					>
 						<Tab heading={'BENTUK WAYANG'} {...this.tabProps}>
 							<ScrollView contentContainerStyle={styles.scrollView}>
 								{this.state.img &&
@@ -263,7 +268,8 @@ function SilsilahTab(props) {
 						key={shortid.generate()}
 						itemDivider
 						first
-						style={styles.listDivider}>
+						style={styles.listDivider}
+					>
 						<Text style={styles.listTextHeader}>PUTRA</Text>
 					</ListItem>
 				)}
@@ -282,7 +288,8 @@ function SilsilahTab(props) {
 						key={shortid.generate()}
 						itemDivider
 						first
-						style={styles.listDivider}>
+						style={styles.listDivider}
+					>
 						<Text style={styles.listTextHeader}>PUTRI</Text>
 					</ListItem>
 				)}
@@ -330,7 +337,8 @@ function KesaktianTab(props) {
 						key={shortid.generate()}
 						itemDivider
 						first
-						style={styles.listDivider}>
+						style={styles.listDivider}
+					>
 						<Text style={styles.listTextHeader}>AJI</Text>
 					</ListItem>
 				)}
@@ -349,7 +357,8 @@ function KesaktianTab(props) {
 						key={shortid.generate()}
 						itemDivider
 						first
-						style={styles.listDivider}>
+						style={styles.listDivider}
+					>
 						<Text style={styles.listTextHeader}>PUSAKA</Text>
 					</ListItem>
 				)}
@@ -387,7 +396,7 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 	},
 	tabStyle: {
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG,
 		overflow: 'hidden',
 	},
 	activeTabTextStyle: {

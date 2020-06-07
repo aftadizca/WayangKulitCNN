@@ -91,9 +91,15 @@ function About({ navigation, store }) {
 
 	return (
 		<Grid>
-			<StatusBar backgroundColor={COLORS.BG} />
+			<StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} />
 			<Navigation {...navigation} back />
-			<Row size={3} style={styles.rOne}>
+			<LinearGradient
+				colors={COLORS.GRADIENT}
+				useAngle={true}
+				angle={10}
+				angleCenter={{ x: 0.7, y: 0.3 }}
+				style={styles.rOne}
+			>
 				<Col style={styles.rOneCol}>
 					<View style={styles.rOneColView}>
 						<Image
@@ -105,13 +111,11 @@ function About({ navigation, store }) {
 					</View>
 				</Col>
 				<Col>
-					<Text adjustsFontSizeToFit style={styles.nameText}>
-						Afta Dizca Wahana
-					</Text>
+					<Text style={styles.nameText}>Afta Dizca Wahana</Text>
 					<Text style={styles.nameSubText}>Teknik Informatika</Text>
 					<Text style={styles.nameSubText}>UMAHA</Text>
 				</Col>
-			</Row>
+			</LinearGradient>
 			<Row size={2}>
 				<View style={styles.viewBackground}>
 					<BgSvg />

@@ -41,18 +41,18 @@ export default function ShowPic(props) {
 	}
 
 	//hide/show modal whwn screen on focus / in background
-	// useFocusEffect(
-	// 	React.useCallback(() => {
-	// Do something when the screen is focused
-	//setModalVisible(true);
+	useFocusEffect(
+		React.useCallback(() => {
+			//Do something when the screen is focused
+			setModalVisible(true);
 
-	// 		return () => {
-	// Do something when the screen is unfocused
-	// Useful for cleanup functions
-	//setModalVisible(true);
-	// 		};
-	// 	}, [])
-	// );
+			return () => {
+				//Do something when the screen is unfocused
+				//Useful for cleanup functions
+				setModalVisible(false);
+			};
+		}, [])
+	);
 
 	//identify image
 	useEffect(() => {

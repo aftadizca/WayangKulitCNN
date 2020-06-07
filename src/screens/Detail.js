@@ -411,7 +411,7 @@ const styles = StyleSheet.create({
 	},
 	tabTextStyle: { fontFamily: FONTS.BOLD, color: COLORS.PRIMARY_LIGHT },
 	activeTabStyle: {
-		backgroundColor: COLORS.PRIMARY_DARK,
+		backgroundColor: COLORS.BG,
 	},
 	tabContent: {
 		backgroundColor: COLORS.PRIMARY_LIGHT,

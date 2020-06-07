@@ -325,7 +325,7 @@ function NamaTab(props) {
 					<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 						<Icon
 							{...ICONS.BULLET}
-							style={{ ...styles.listTextPrimary, marginRight: 5 }}
+							style={{ ...styles.listTextPrimary, marginRight: 10 }}
 						/>
 						<Text style={styles.listTextPrimary}>{x}</Text>
 					</ListItem>
@@ -356,7 +356,7 @@ function KesaktianTab(props) {
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}
-								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+								style={{ ...styles.listTextPrimary, marginRight: 10 }}
 							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>
@@ -376,7 +376,7 @@ function KesaktianTab(props) {
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 							<Icon
 								{...ICONS.BULLET}
-								style={{ ...styles.listTextPrimary, marginRight: 5 }}
+								style={{ ...styles.listTextPrimary, marginRight: 10 }}
 							/>
 							<Text style={styles.listTextPrimary}>{x}</Text>
 						</ListItem>

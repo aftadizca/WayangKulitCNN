@@ -93,11 +93,11 @@ export default function App() {
 	}
 
 	//close model when exit app
-	useEffect(() => {
-		return () => {
-			model.close();
-		};
-	}, []);
+	// useEffect(() => {
+	// 	return () => {
+	// 		model.close();
+	// 	};
+	// }, []);
 
 	//check modelPath
 	useEffect(() => {

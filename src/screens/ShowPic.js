@@ -78,7 +78,8 @@ export default function ShowPic(props) {
 			<Modal
 				isVisible={isModalVisible}
 				style={styles.modal}
-				hasBackdrop={false}
+				hasBackdrop={true}
+				backdropOpacity={0.3}
 				animationInTiming={1000}
 				animationOutTiming={500}
 				deviceHeight={Dimensions.get('screen').height}

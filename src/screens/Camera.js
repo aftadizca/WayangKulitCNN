@@ -6,6 +6,7 @@ import {
 	Dimensions,
 	TouchableOpacity,
 	TouchableNativeFeedback,
+	StatusBar,
 } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import { RNCamera } from 'react-native-camera';
@@ -140,7 +141,8 @@ export default class Camera extends Component {
 				<TouchableNativeFeedback
 					background={TouchableNativeFeedback.Ripple(COLORS.PRIMARY, false)}
 					useForeground={true}
-					onPress={this._onPressFlashMode}>
+					onPress={this._onPressFlashMode}
+				>
 					<View style={styles.flashIconTO}>
 						<Icon
 							style={styles.flashIcon}
@@ -152,7 +154,8 @@ export default class Camera extends Component {
 				<TouchableOpacity
 					transparent
 					style={styles.captureButton}
-					onPress={this._takePicture.bind(this)}>
+					onPress={this._takePicture.bind(this)}
+				>
 					<Icon
 						style={styles.captureIcon}
 						name={ICONS.CAPTURE_ICON.name}
@@ -170,7 +173,12 @@ export default class Camera extends Component {
 						...styles.focusBox,
 					}}
 				/>
-				<Navigation defaultOpacity={0.5} {...this.props.navigation} back />
+				<Navigation
+					defaultOpacity={1}
+					{...this.props.navigation}
+					icon_color={{ color: 'white' }}
+					back
+				/>
 			</Container>
 		);
 	}
@@ -222,6 +230,7 @@ const styles = StyleSheet.create({
 	},
 	flashIconTO: {
 		flex: 1,
+		marginTop: StatusBar.currentHeight,
 		position: 'absolute',
 		top: widthPercentageToDP('2%'),
 		right: widthPercentageToDP('2%'),

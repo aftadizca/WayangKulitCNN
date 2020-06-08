@@ -15,6 +15,7 @@ import { WayangSvg } from './src/icon';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import { styles } from './App.style';
+import LinearGradient from 'react-native-linear-gradient';
 //Navigation
 const Stack = createStackNavigator();
 
@@ -134,7 +135,14 @@ export default function App() {
 		return (
 			<>
 				<StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} />
-				<View style={styles.loadingContainer}>
+				<LinearGradient
+					colors={COLORS.GRADIENT}
+					useAngle={true}
+					angle={10}
+					locations={[0.5, 1]}
+					angleCenter={{ x: 0.7, y: 0.7 }}
+					style={styles.loadingContainer}
+				>
 					<View style={styles.imageView}>
 						<WayangSvg />
 					</View>
@@ -144,7 +152,7 @@ export default function App() {
 							<Text style={styles.progressText}>{downloadProgress} %</Text>
 						</View>
 					)}
-				</View>
+				</LinearGradient>
 			</>
 		);
 	} else {

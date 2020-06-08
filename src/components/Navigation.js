@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { View, StatusBar } from 'react-native';
 import { Button, Icon } from 'native-base';
-import { ICONS } from '../config';
+import { ICONS, COLORS } from '../config';
 import { styles } from './Navigation.style';
 
 export default function Navigation(props) {
-	const { defaultOpacity = 0.5, translucentStatusBar = true } = props;
+	const {
+		defaultOpacity = 0.5,
+		translucentStatusBar = true,
+		icon_color = COLORS.PRIMARY_DARK,
+	} = props;
 	const [opacity, setOpacity] = useState(defaultOpacity);
 	const statusBarHeight = StatusBar.currentHeight;
 	function handleOpacity(bool) {
@@ -30,7 +34,10 @@ export default function Navigation(props) {
 				onPressOut={() => handleOpacity(false)}
 				style={{ opacity: opacity }}
 			>
-				<Icon style={styles.icon} {...ICONS.NAVIGATION_BACK} />
+				<Icon
+					style={{ ...styles.icon, ...props.icon_color }}
+					{...ICONS.NAVIGATION_BACK}
+				/>
 			</Button>
 		</View>
 	);

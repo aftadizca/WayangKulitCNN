@@ -2,7 +2,7 @@
 export default (COLOR = {
 	PRIMARY: '#8C6D62',
 	PRIMARY_DARK: '#402D26',
-	PRIMARY_LIGHT: '#8D6E63',
+	PRIMARY_LIGHT: '#a1887f',
 	BG: '#ff512f',
 	BG2: '#f09819',
 	STATUS_BAR: '#ff512f',

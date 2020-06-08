@@ -1,4 +1,5 @@
 import { TransitionPresets } from '@react-navigation/stack';
+import COLORS from './color';
 
 export const screenOptions = {
 	headerMode: 'none',
@@ -6,7 +7,7 @@ export const screenOptions = {
 	headerShown: false,
 	...TransitionPresets.FadeFromBottomAndroid,
 	cardStyle: {
-		backgroundColor: '#8D6E63',
+		backgroundColor: COLORS.PRIMARY_LIGHT,
 		opacity: 0.99,
 	},
 };

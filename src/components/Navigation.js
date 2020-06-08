@@ -5,7 +5,7 @@ import { ICONS } from '../config';
 import { styles } from './Navigation.style';
 
 export default function Navigation(props) {
-	const { defaultOpacity = 0.5, translucentStatusBar = false } = props;
+	const { defaultOpacity = 0.5, translucentStatusBar = true } = props;
 	const [opacity, setOpacity] = useState(defaultOpacity);
 	const statusBarHeight = StatusBar.currentHeight;
 	function handleOpacity(bool) {

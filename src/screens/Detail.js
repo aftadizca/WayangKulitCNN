@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Image } from 'react-native';
+import { View, ScrollView, Image, StatusBar } from 'react-native';
 import { Navigation } from '../components';
 import LinearGradient from 'react-native-linear-gradient';
 import Text from 'react-native-text';
 import { styles } from './Detail.style';
 import {
 	Container,
-	Header,
 	Tab,
 	Tabs,
 	ScrollableTab,
@@ -68,7 +67,7 @@ export default function Detail(props) {
 	};
 
 	tabProps = {
-		tabStyle: { ...styles.tabStyle },
+		//tabStyle: { ...styles.tabStyle },
 		textStyle: { ...styles.tabTextStyle },
 		activeTabStyle: { ...styles.activeTabStyle },
 		style: { ...styles.tabContent },
@@ -99,11 +98,10 @@ export default function Detail(props) {
 				<LinearGradient
 					colors={COLORS.GRADIENT}
 					useAngle={true}
-					angle={10}
-					start={{ x: 0.0, y: 0.0 }}
-					end={{ x: 0.5, y: 0.5 }}
+					angle={20}
+					locations={[0.9, 1]}
 					angleCenter={{ x: 0.7, y: 0.7 }}
-					style={{ flex: 1 }}
+					style={{ flex: 1, paddingTop: StatusBar.currentHeight }}
 				>
 					<Navigation {...props.navigation} back />
 					{index > WayangId.YUDISTIRA ? (
@@ -153,52 +151,53 @@ export default function Detail(props) {
 							<Text style={styles.headerText}>{data.nama}</Text>
 						</View>
 					)}
-				</LinearGradient>
-				<Tabs
-					style={{ flex: 5 }}
-					tabBarUnderlineStyle={{ backgroundColor: 'transparent' }}
-					initialPage={0}
-					renderTabBar={() => <ScrollableTab />}
-				>
-					<Tab heading={'BENTUK WAYANG'} {...tabProps}>
-						<ScrollView contentContainerStyle={styles.scrollView}>
-							{img &&
-								img.map(x => (
-									<Card key={shortid.generate()}>
-										<CardItem cardBody style={styles.cardItem}>
-											<Image
-												style={{
-													width: '100%',
-													height: undefined,
-													aspectRatio: 9 / 16,
-												}}
-												resizeMode="stretch"
-												source={{
-													uri: x,
-												}}
-											/>
-										</CardItem>
-									</Card>
-								))}
-						</ScrollView>
-					</Tab>
-					<Tab heading="NAMA LAIN" {...tabProps}>
-						<NamaTab data={data} />
-					</Tab>
+					<Tabs
+						style={{ flex: 10 }}
+						tabBarBackgroundColor={{ backgroundColor: 'transparent' }}
+						tabBarUnderlineStyle={{ backgroundColor: 'transparent' }}
+						initialPage={0}
+						renderTabBar={() => <ScrollableTab backgroundColor={'#fff'} />}
+					>
+						<Tab heading={'BENTUK WAYANG'} {...tabProps}>
+							<ScrollView contentContainerStyle={styles.scrollView}>
+								{img &&
+									img.map(x => (
+										<Card key={shortid.generate()}>
+											<CardItem cardBody style={styles.cardItem}>
+												<Image
+													style={{
+														width: '100%',
+														height: undefined,
+														aspectRatio: 9 / 16,
+													}}
+													resizeMode="stretch"
+													source={{
+														uri: x,
+													}}
+												/>
+											</CardItem>
+										</Card>
+									))}
+							</ScrollView>
+						</Tab>
+						<Tab heading="NAMA LAIN" {...tabProps}>
+							<NamaTab data={data} />
+						</Tab>
 
-					<Tab heading={'SILSILAH'} {...tabProps}>
-						<SilsilahTab data={data} />
-					</Tab>
-					<Tab heading="SIFAT" {...tabProps}>
-						<SifatTab data={data} />
-					</Tab>
-					<Tab heading="KESAKTIAN" {...tabProps}>
-						<KesaktianTab data={data} />
-					</Tab>
-					<Tab heading="KISAH" {...tabProps}>
-						<KisahTab data={data} />
-					</Tab>
-				</Tabs>
+						<Tab heading={'SILSILAH'} {...tabProps}>
+							<SilsilahTab data={data} />
+						</Tab>
+						<Tab heading="SIFAT" {...tabProps}>
+							<SifatTab data={data} />
+						</Tab>
+						<Tab heading="KESAKTIAN" {...tabProps}>
+							<KesaktianTab data={data} />
+						</Tab>
+						<Tab heading="KISAH" {...tabProps}>
+							<KisahTab data={data} />
+						</Tab>
+					</Tabs>
+				</LinearGradient>
 			</>
 		);
 	}

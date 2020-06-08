@@ -7,7 +7,7 @@ import { COLORS, FONTS } from '../config';
 
 export const styles = StyleSheet.create({
 	headerContainer: {
-		flex: 1,
+		flex: 2,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-evenly',
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
 		fontSize: 30,
 	},
 	tabStyle: {
-		backgroundColor: COLORS.BG,
+		backgroundColor: COLORS.TRANSPARENT,
 		overflow: 'hidden',
 	},
 	activeTabTextStyle: {
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
 	},
 	tabTextStyle: { fontFamily: FONTS.BOLD, color: COLORS.PRIMARY_DARK },
 	activeTabStyle: {
-		backgroundColor: COLORS.BG,
+		backgroundColor: COLORS.TRANSPARENT,
 	},
 	tabContent: {
 		backgroundColor: COLORS.PRIMARY_LIGHT,

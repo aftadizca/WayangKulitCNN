@@ -13,6 +13,7 @@ export default function ShowPic(props) {
 	const { navigation, tflite, route } = props;
 	const [prediction, setPrediction] = useState(undefined);
 	const [isModalVisible, setModalVisible] = useState(true);
+	//const [isModalRender, setModalRender] = useState(true);
 
 	//identify image with cnn
 	function onIdentify(img) {
@@ -40,26 +41,18 @@ export default function ShowPic(props) {
 		});
 	}
 
-	function hideModel(value) {
-		setModalVisible(value);
-	}
-
-	function onModelHide(value) {
-		navigation.navigate('Detail', {
-			wayangId: prediction[0].index,
-		});
-	}
-
 	//hide/show modal whwn screen on focus / in background
 	useFocusEffect(
 		React.useCallback(() => {
 			//Do something when the screen is focused
 			setModalVisible(true);
+			//setModalRender(true);
 
 			return () => {
 				//Do something when the screen is unfocused
 				//Useful for cleanup functions
-				//setModalVisible(false);
+				setModalVisible(false);
+				//setModalRender(false);
 			};
 		}, [])
 	);
@@ -79,13 +72,13 @@ export default function ShowPic(props) {
 				source={{
 					uri: 'file://' + route.params.uri,
 				}}
-				style={styles.image}
+				style={{ ...styles.image, opacity: isModalVisible ? 1 : 0 }}
 			/>
+
 			<Modal
 				isVisible={isModalVisible}
 				style={styles.modal}
 				hasBackdrop={false}
-				onModalHide={() => onModelHide()}
 				animationInTiming={1000}
 				animationOutTiming={500}
 				deviceHeight={Dimensions.get('screen').height}
@@ -93,12 +86,9 @@ export default function ShowPic(props) {
 				useNativeDriver={true}
 				onBackButtonPress={() => navigation.goBack()}
 			>
-				<ModalContent
-					{...navigation}
-					prediction={prediction}
-					detailsOnPress={() => hideModel(false)}
-				/>
+				<ModalContent {...navigation} prediction={prediction} />
 			</Modal>
+
 			<Navigation {...navigation} back />
 		</View>
 	);
@@ -130,12 +120,11 @@ function ModalContent(props) {
 				/>
 				{props.prediction[0].index !== 4 ? (
 					<MyButton
-						onPress={props.detailsOnPress}
-						// onPress={() =>
-						// 	props.navigate('Detail', {
-						// 		wayangId: props.prediction[0].index,
-						// 	})
-						// }
+						onPress={() =>
+							props.navigate('Detail', {
+								wayangId: props.prediction[0].index,
+							})
+						}
 					>
 						Tampilkan Detail
 					</MyButton>

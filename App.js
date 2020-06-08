@@ -133,7 +133,7 @@ export default function App() {
 	if (isLoading) {
 		return (
 			<>
-				<StatusBar backgroundColor={COLORS.STATUS_BAR} />
+				<StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} />
 				<View style={styles.loadingContainer}>
 					<View style={styles.imageView}>
 						<WayangSvg />
@@ -150,8 +150,8 @@ export default function App() {
 	} else {
 		return (
 			<NavigationContainer>
-				<StatusBar backgroundColor={COLORS.STATUS_BAR} />
-				{/* <StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} /> */}
+				{/* <StatusBar backgroundColor={COLORS.STATUS_BAR} /> */}
+				<StatusBar translucent={true} backgroundColor={COLORS.TRANSPARENT} />
 				<Stack.Navigator>
 					<Stack.Screen name="Home" component={Home} options={screenOptions} />
 					<Stack.Screen

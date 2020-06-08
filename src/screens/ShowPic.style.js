@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { widthPercentageToDP } from 'react-native-responsive-screen';
 import { COLORS, FONTS } from '../config';
 
@@ -7,10 +7,12 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+		backgroundColor: COLORS.BG,
 	},
 	image: {
 		width: '100%',
 		height: '100%',
+		marginTop: StatusBar.currentHeight,
 		backgroundColor: COLORS.BG,
 	},
 	modal: {

@@ -4,8 +4,11 @@ export const screenOptions = {
 	headerMode: 'none',
 	//gestureDirection: 'horizontal',
 	headerShown: false,
-	...TransitionPresets.SlideFromRightIOS,
-	cardStyle: { backgroundColor: '#8D6E63' },
+	...TransitionPresets.FadeFromBottomAndroid,
+	cardStyle: {
+		backgroundColor: '#8D6E63',
+		opacity: 0.99,
+	},
 };
 
 export const DEFAULT_RATIO = '16:9';

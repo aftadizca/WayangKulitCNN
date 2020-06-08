@@ -84,8 +84,7 @@ export default function ShowPic(props) {
 			<Modal
 				isVisible={isModalVisible}
 				style={styles.modal}
-				hasBackdrop={true}
-				backdropOpacity={0.3}
+				hasBackdrop={false}
 				onModalHide={() => onModelHide()}
 				animationInTiming={1000}
 				animationOutTiming={500}

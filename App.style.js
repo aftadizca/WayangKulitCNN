@@ -12,13 +12,13 @@ export const styles = StyleSheet.create({
 	textView: { alignItems: 'center' },
 	downloadText: {
 		fontFamily: FONTS.BOLD,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 		fontSize: 18,
 		marginBottom: 10,
 	},
 	progressText: {
 		fontFamily: FONTS.CONDENSED,
-		color: COLORS.PRIMARY_LIGHT,
+		color: COLORS.PRIMARY_DARK,
 		fontSize: 60,
 	},
 	imageView: { width: '40%', height: '30%' },

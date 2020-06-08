@@ -75,3 +75,4 @@ android/build
 #
 *.keystore
 google-services.json
+android/app/seeds.txt

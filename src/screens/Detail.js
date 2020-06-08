@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, ScrollView, Image } from 'react-native';
+import { View, ScrollView, Image } from 'react-native';
 import { Navigation } from '../components';
 import LinearGradient from 'react-native-linear-gradient';
 import Text from 'react-native-text';
+import { styles } from './Detail.style';
 import {
 	Container,
 	Header,
@@ -18,7 +19,7 @@ import {
 	Spinner,
 	Icon,
 } from 'native-base';
-import { COLORS, FONTS, ICONS, WayangId } from '../config';
+import { COLORS, ICONS, WayangId } from '../config';
 import {
 	heightPercentageToDP,
 	widthPercentageToDP,
@@ -96,10 +97,6 @@ export default function Detail(props) {
 		return (
 			<>
 				<LinearGradient
-					//hasTabs
-					//span
-					//translucent
-					//androidStatusBarColor={COLORS.BG}
 					colors={COLORS.GRADIENT}
 					useAngle={true}
 					angle={10}
@@ -385,80 +382,3 @@ function KesaktianTab(props) {
 		</ScrollView>
 	);
 }
-
-const styles = StyleSheet.create({
-	headerContainer: {
-		flex: 1,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-evenly',
-	},
-	headerImage: {
-		flex: 1,
-		resizeMode: 'cover',
-		justifyContent: 'flex-end',
-		width: '100%',
-	},
-	headerText: {
-		color: COLORS.PRIMARY_DARK,
-		fontFamily: FONTS.BOLD,
-		fontSize: 30,
-	},
-	tabStyle: {
-		backgroundColor: COLORS.BG,
-		overflow: 'hidden',
-	},
-	activeTabTextStyle: {
-		fontFamily: FONTS.BOLD,
-		color: COLORS.PRIMARY_DARK,
-		backgroundColor: COLORS.BG2,
-		padding: widthPercentageToDP('1.5%'),
-		paddingLeft: widthPercentageToDP('5%'),
-		paddingRight: widthPercentageToDP('5%'),
-		borderRadius: widthPercentageToDP('10%'),
-		overflow: 'hidden',
-	},
-	tabTextStyle: { fontFamily: FONTS.BOLD, color: COLORS.PRIMARY_DARK },
-	activeTabStyle: {
-		backgroundColor: COLORS.BG,
-	},
-	tabContent: {
-		backgroundColor: COLORS.PRIMARY_LIGHT,
-	},
-	cardHeader: {
-		backgroundColor: COLORS.PRIMARY_DARK,
-	},
-	cardItem: {
-		backgroundColor: COLORS.PRIMARY_LIGHT,
-	},
-	textBody: {
-		fontFamily: FONTS.REGULAR,
-		color: '#000',
-		fontSize: 18,
-		textAlign: 'justify',
-	},
-	scrollView: {
-		padding: widthPercentageToDP('7%'),
-	},
-	listItem: { borderBottomColor: COLORS.PRIMARY_DARK },
-	listDivider: {
-		backgroundColor: COLORS.BG2,
-		borderRadius: widthPercentageToDP('10%'),
-		marginTop: heightPercentageToDP('3%'),
-	},
-	listTextHeader: {
-		fontFamily: FONTS.BOLD,
-		color: COLORS.PRIMARY_DARK,
-	},
-	listTextPrimary: {
-		fontFamily: FONTS.REGULAR,
-		color: '#000',
-		fontSize: 16,
-	},
-	listTextSecondary: {
-		fontFamily: FONTS.REGULAR,
-		color: COLORS.PRIMARY_DARK,
-		fontSize: 16,
-		opacity: 0.7,
-	},
-});

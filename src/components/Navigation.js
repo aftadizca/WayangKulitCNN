@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { ICONS } from '../config';
 import { styles } from './Navigation.style';
 
 export default function Navigation(props) {
-	const { defaultOpacity = 0.5 } = props;
+	const { defaultOpacity = 0.5, translucentStatusBar = false } = props;
 	const [opacity, setOpacity] = useState(defaultOpacity);
+	const statusBarHeight = StatusBar.currentHeight;
 	function handleOpacity(bool) {
 		if (bool) {
 			setOpacity(1);
@@ -15,7 +16,12 @@ export default function Navigation(props) {
 		}
 	}
 	return (
-		<View style={styles.container}>
+		<View
+			style={{
+				...styles.container,
+				marginTop: translucentStatusBar ? statusBarHeight : 0,
+			}}
+		>
 			<Button
 				rounded
 				transparent

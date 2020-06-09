@@ -13,6 +13,7 @@ export const listStyles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		height: heightPercentageToDP('10%'),
+		maxHeight: heightPercentageToDP('20%'),
 		backgroundColor: COLORS.BG,
 		borderRadius: widthPercentageToDP('50%'),
 		elevation: 10,
@@ -31,9 +32,10 @@ export const listStyles = StyleSheet.create({
 		color: COLORS.PRIMARY_DARK,
 	},
 	centerTextBottom: {
-		fontFamily: FONTS.LIGHT,
-		fontSize: 16,
-		opacity: 0.7,
+		fontFamily: FONTS.CONDENSED,
+		fontSize: 15,
+		marginTop: 3,
+		opacity: 1,
 		color: COLORS.PRIMARY_DARK,
 	},
 	right: {

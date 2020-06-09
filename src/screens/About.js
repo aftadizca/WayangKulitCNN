@@ -68,22 +68,25 @@ function About({ navigation, store }) {
 	//handle button click from update modal
 	function handleModelButton(type) {
 		if (type) {
-			RNFetchBlob.fs
-				.unlink(
-					pathJoin([
-						RNFetchBlob.fs.dirs.MainBundleDir,
-						'model',
-						modelName + '.tflite',
-					])
-				)
-				.then(() => {
-					storeModelName(modelNameTemp + '.tflite').then(() => {
+			old_model = modelName;
+			storeModelName(modelNameTemp + '.tflite').then(() => {
+				RNFetchBlob.fs
+					.unlink(
+						pathJoin([
+							RNFetchBlob.fs.dirs.MainBundleDir,
+							'model',
+							old_model + '.tflite',
+						])
+					)
+					.then(() => {
+						console.warn('Model deleted!');
+						RNRestart.Restart();
+					})
+					.catch(err => {
+						console.warn('err', err);
 						RNRestart.Restart();
 					});
-				})
-				.catch(err => {
-					console.warn('err', err);
-				});
+			});
 		} else {
 			setModalVisible(false);
 		}

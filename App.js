@@ -148,7 +148,7 @@ export default function App() {
 					</View>
 					{isDownloadModel && (
 						<View style={styles.textView}>
-							<Text style={styles.downloadText}>Downloading CNN Model</Text>
+							<Text style={styles.downloadText}>MENGUNDUH MODEL CNN</Text>
 							<Text style={styles.progressText}>{downloadProgress} %</Text>
 						</View>
 					)}

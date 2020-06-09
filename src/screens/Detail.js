@@ -219,7 +219,7 @@ function KisahTab(props) {
 		<ScrollView contentContainerStyle={styles.scrollView}>
 			{props.data.kisah.map(x => (
 				<Text key={shortid.generate()} style={styles.textBody}>
-					{'\t\t\t\t\t'}
+					{'\n\t\t\t\t\t'}
 					{x}
 				</Text>
 			))}
@@ -316,7 +316,10 @@ function SilsilahTab(props) {
 function NamaTab(props) {
 	return (
 		<ScrollView contentContainerStyle={styles.scrollView}>
-			<List>
+			<List style={{ marginTop: -widthPercentageToDP('7%') }}>
+				<ListItem itemDivider first style={styles.listDivider}>
+					<Text style={styles.listTextHeader}>NAMA LAIN</Text>
+				</ListItem>
 				{props.data.namaLain.map(x => (
 					<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 						<Icon

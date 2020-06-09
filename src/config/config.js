@@ -5,7 +5,7 @@ export const screenOptions = {
 	headerMode: 'none',
 	//gestureDirection: 'horizontal',
 	headerShown: false,
-	...TransitionPresets.FadeFromBottomAndroid,
+	...TransitionPresets.SlideFromRightIOS,
 	cardStyle: {
 		backgroundColor: COLORS.PRIMARY_LIGHT,
 		opacity: 0.99,

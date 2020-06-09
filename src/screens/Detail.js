@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Image, StatusBar } from 'react-native';
+import {
+	View,
+	ScrollView,
+	Image,
+	StatusBar,
+	ActivityIndicator,
+} from 'react-native';
 import { Navigation } from '../components';
 import LinearGradient from 'react-native-linear-gradient';
 import Text from 'react-native-text';
 import { styles } from './Detail.style';
 import {
-	Container,
 	Tab,
 	Tabs,
 	ScrollableTab,
@@ -15,14 +20,10 @@ import {
 	List,
 	Button,
 	ListItem,
-	Spinner,
 	Icon,
 } from 'native-base';
 import { COLORS, ICONS, WayangId } from '../config';
-import {
-	heightPercentageToDP,
-	widthPercentageToDP,
-} from 'react-native-responsive-screen';
+import { widthPercentageToDP } from 'react-native-responsive-screen';
 import shortid from 'shortid';
 
 //this.props.route.params.wayangId
@@ -81,16 +82,16 @@ export default function Detail(props) {
 
 	if (loading) {
 		return (
-			<Container
-				style={{
-					flex: 1,
-					justifyContent: 'center',
-					alignItems: 'center',
-					backgroundColor: COLORS.BG,
-				}}
+			<LinearGradient
+				colors={COLORS.GRADIENT}
+				useAngle={true}
+				angle={10}
+				locations={[0.5, 1]}
+				angleCenter={{ x: 0.7, y: 0.7 }}
+				style={styles.loading}
 			>
-				<Spinner color={COLORS.PRIMARY_DARK} />
-			</Container>
+				<ActivityIndicator color={COLORS.PRIMARY_DARK} size={60} />
+			</LinearGradient>
 		);
 	} else {
 		return (
@@ -232,9 +233,14 @@ function SilsilahTab(props) {
 	return (
 		<ScrollView contentContainerStyle={styles.scrollView}>
 			<List style={{ marginTop: -widthPercentageToDP('7%') }}>
-				<ListItem itemDivider first style={styles.listDivider}>
+				<LinearGradient
+					colors={COLORS.GRADIENT}
+					useAngle={true}
+					angle={45}
+					style={styles.listDivider}
+				>
 					<Text style={styles.listTextHeader}>ORANG TUA</Text>
-				</ListItem>
+				</LinearGradient>
 				<ListItem noIndent style={styles.listItem}>
 					<Icon
 						{...ICONS.BULLET}
@@ -255,9 +261,14 @@ function SilsilahTab(props) {
 						<Text style={styles.listTextSecondary}>Ayah</Text>
 					</Body>
 				</ListItem>
-				<ListItem itemDivider first style={styles.listDivider}>
+				<LinearGradient
+					colors={COLORS.GRADIENT}
+					useAngle={true}
+					angle={45}
+					style={styles.listDivider}
+				>
 					<Text style={styles.listTextHeader}>ISTRI</Text>
-				</ListItem>
+				</LinearGradient>
 				{istri &&
 					istri.map(x => (
 						<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
@@ -269,14 +280,14 @@ function SilsilahTab(props) {
 						</ListItem>
 					))}
 				{putra.length > 0 && (
-					<ListItem
-						key={shortid.generate()}
-						itemDivider
-						first
+					<LinearGradient
+						colors={COLORS.GRADIENT}
+						useAngle={true}
+						angle={45}
 						style={styles.listDivider}
 					>
 						<Text style={styles.listTextHeader}>PUTRA</Text>
-					</ListItem>
+					</LinearGradient>
 				)}
 				{putra.length > 0 &&
 					putra.map(x => (
@@ -289,14 +300,14 @@ function SilsilahTab(props) {
 						</ListItem>
 					))}
 				{putri.length > 0 && (
-					<ListItem
-						key={shortid.generate()}
-						itemDivider
-						first
+					<LinearGradient
+						colors={COLORS.GRADIENT}
+						useAngle={true}
+						angle={45}
 						style={styles.listDivider}
 					>
 						<Text style={styles.listTextHeader}>PUTRI</Text>
-					</ListItem>
+					</LinearGradient>
 				)}
 				{putri.length > 0 &&
 					putri.map(x => (
@@ -317,9 +328,14 @@ function NamaTab(props) {
 	return (
 		<ScrollView contentContainerStyle={styles.scrollView}>
 			<List style={{ marginTop: -widthPercentageToDP('7%') }}>
-				<ListItem itemDivider first style={styles.listDivider}>
+				<LinearGradient
+					colors={COLORS.GRADIENT}
+					useAngle={true}
+					angle={45}
+					style={styles.listDivider}
+				>
 					<Text style={styles.listTextHeader}>NAMA LAIN</Text>
-				</ListItem>
+				</LinearGradient>
 				{props.data.namaLain.map(x => (
 					<ListItem key={shortid.generate()} noIndent style={styles.listItem}>
 						<Icon
@@ -341,14 +357,14 @@ function KesaktianTab(props) {
 		<ScrollView contentContainerStyle={styles.scrollView}>
 			<List style={{ marginTop: -widthPercentageToDP('7%') }}>
 				{kesaktian.length > 0 && (
-					<ListItem
-						key={shortid.generate()}
-						itemDivider
-						first
+					<LinearGradient
+						colors={COLORS.GRADIENT}
+						useAngle={true}
+						angle={45}
 						style={styles.listDivider}
 					>
 						<Text style={styles.listTextHeader}>AJI</Text>
-					</ListItem>
+					</LinearGradient>
 				)}
 				{kesaktian.length > 0 &&
 					kesaktian.map(x => (
@@ -361,14 +377,14 @@ function KesaktianTab(props) {
 						</ListItem>
 					))}
 				{pusaka.length > 0 && (
-					<ListItem
-						key={shortid.generate()}
-						itemDivider
-						first
+					<LinearGradient
+						colors={COLORS.GRADIENT}
+						useAngle={true}
+						angle={45}
 						style={styles.listDivider}
 					>
 						<Text style={styles.listTextHeader}>PUSAKA</Text>
-					</ListItem>
+					</LinearGradient>
 				)}
 				{pusaka.length > 0 &&
 					pusaka.map(x => (

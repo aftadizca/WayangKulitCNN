@@ -62,6 +62,8 @@ export const styles = StyleSheet.create({
 	listItem: { borderBottomColor: COLORS.PRIMARY_DARK },
 	listDivider: {
 		backgroundColor: COLORS.BG2,
+		padding: widthPercentageToDP('2%'),
+		paddingLeft: widthPercentageToDP('5%'),
 		borderRadius: widthPercentageToDP('10%'),
 		marginTop: heightPercentageToDP('3%'),
 	},
@@ -79,5 +81,11 @@ export const styles = StyleSheet.create({
 		color: COLORS.PRIMARY_DARK,
 		fontSize: 16,
 		opacity: 0.7,
+	},
+	loading: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: COLORS.BG,
 	},
 });

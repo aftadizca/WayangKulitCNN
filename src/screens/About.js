@@ -1,12 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
-import {
-	View,
-	Image,
-	StatusBar,
-	TouchableNativeFeedback,
-	Dimensions,
-} from 'react-native';
+import { View, Image, TouchableNativeFeedback, Dimensions } from 'react-native';
 import Text from 'react-native-text';
 import RNFetchBlob from 'rn-fetch-blob';
 import RNRestart from 'react-native-restart';
@@ -15,7 +9,7 @@ import { COLORS, ICONS, pathJoin } from '../config';
 import AsyncStorage from '@react-native-community/async-storage';
 import { version } from '../../package.json';
 import { Navigation, MyButton } from '../components';
-import { Icon, Spinner, Button } from 'native-base';
+import { Icon, Spinner } from 'native-base';
 import Modal from 'react-native-modal';
 import { Avatar, BgSvg } from '../icon';
 import LinearGradient from 'react-native-linear-gradient';

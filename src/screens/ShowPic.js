@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Image, View } from 'react-native';
 import Text from 'react-native-text';

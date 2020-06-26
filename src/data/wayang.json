@@ -1,0 +1,19 @@
+{
+  "Wayang": {
+    "IdWayang": {
+      "nama": "String",
+      "namaLain": ["Array"],
+      "orangTua": {
+        "Ayah": "String",
+        "Ibu": "String"
+      },
+      "istri": ["Array"],
+      "putra": ["Array"],
+      "putri": ["Array"],
+      "sifat": "String",
+      "kisah": ["Array"],
+      "pusaka": ["Array"],
+      "kesaktian": ["Array"]
+    }
+  }
+}

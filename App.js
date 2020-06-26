@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import RNFetchBlob from 'rn-fetch-blob';
 import Tflite from 'tflite-react-native';
 //local
-import { Camera, Home, ShowPic, About, Detail } from './src/screens';
+import { Camera, Home, Identification, About, Detail } from './src/screens';
 import { screenOptions, COLORS, pathJoin } from './src/config';
 import { WayangSvg } from './src/icon';
 //Firebase
@@ -171,7 +171,7 @@ export default function App() {
 						{props => <About {...props} store={store} />}
 					</Stack.Screen>
 					<Stack.Screen name="Pic" options={screenOptions}>
-						{props => <ShowPic {...props} tflite={model} />}
+						{props => <Identification {...props} tflite={model} />}
 					</Stack.Screen>
 					<Stack.Screen name="Detail" options={screenOptions}>
 						{props => <Detail {...props} db={db} store={store} />}

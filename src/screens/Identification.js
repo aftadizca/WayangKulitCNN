@@ -7,9 +7,9 @@ import { MyButton, ProgressBar, Navigation } from '../components';
 import LinearGradient from 'react-native-linear-gradient';
 import Modal from 'react-native-modal';
 import { COLORS } from '../config';
-import { styles } from './ShowPic.style';
+import { styles } from './Identification.style';
 
-export default function ShowPic(props) {
+export default function Identification(props) {
 	const { navigation, tflite, route } = props;
 	const [prediction, setPrediction] = useState(undefined);
 	const [isModalVisible, setModalVisible] = useState(true);
@@ -99,11 +99,17 @@ function ModalContent(props) {
 	if (typeof props.prediction === 'undefined') {
 		//Tampilan jika prediksi gagal
 		return (
-			<View style={styles.renderContent}>
+			<LinearGradient
+				colors={COLORS.GRADIENT}
+				useAngle={true}
+				angle={10}
+				angleCenter={{ x: 0.7, y: 0.3 }}
+				style={styles.renderContent}
+			>
 				<Text style={styles.title}>KESALAHAN</Text>
 				<Text style={styles.bodyText}>TIDAK DAPAT MEMPROSES GAMBAR</Text>
 				<Text style={styles.bodyText}>MOHON UNTUK MENGAMBIL ULANG GAMBAR</Text>
-			</View>
+			</LinearGradient>
 		);
 	} else {
 		//Tampilan jika prediksi sukses

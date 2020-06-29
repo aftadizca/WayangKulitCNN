@@ -14,6 +14,7 @@ import Modal from 'react-native-modal';
 import { Avatar, BgSvg } from '../icon';
 import LinearGradient from 'react-native-linear-gradient';
 import { listStyles, styles, modalStyles } from './About.style';
+import { MODEL_EXT } from '../config/config';
 
 const MODEL_TYPE = {
 	checking: 0,
@@ -51,11 +52,11 @@ function About({ navigation, store }) {
 			.ref('model')
 			.listAll()
 			.then(res => {
-				if (res.items[0].name.replace('.tflite', '') === modelName) {
+				if (res.items[0].name.replace(MODEL_EXT, '') === modelName) {
 					setModalType(MODEL_TYPE.updated);
 				} else {
 					setModalType(MODEL_TYPE.updating);
-					setModelNameTemp(res.items[0].name.replace('.tflite', ''));
+					setModelNameTemp(res.items[0].name.replace(MODEL_EXT, ''));
 				}
 			});
 	}
@@ -63,13 +64,13 @@ function About({ navigation, store }) {
 	function handleModelButton(type) {
 		if (type) {
 			old_model = modelName;
-			storeModelName(modelNameTemp + '.tflite').then(() => {
+			storeModelName(modelNameTemp + MODEL_EXT).then(() => {
 				RNFetchBlob.fs
 					.unlink(
 						pathJoin([
 							RNFetchBlob.fs.dirs.MainBundleDir,
 							'model',
-							old_model + '.tflite',
+							old_model + MODEL_EXT,
 						])
 					)
 					.then(() => {
@@ -88,7 +89,7 @@ function About({ navigation, store }) {
 	//effect model version
 	useEffect(() => {
 		getModelName().then(res => {
-			setModelName(res.replace('.tflite', ''));
+			setModelName(res.replace(MODEL_EXT, ''));
 		});
 	}, []);
 

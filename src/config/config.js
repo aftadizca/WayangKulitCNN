@@ -13,6 +13,7 @@ export const screenOptions = {
 };
 
 export const DEFAULT_RATIO = '16:9';
+export const MODEL_EXT = '';
 
 export function pathJoin(parts, sep) {
 	const separator = sep || '/';

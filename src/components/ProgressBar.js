@@ -23,7 +23,7 @@ const ProgressBar = ({
 };
 
 function precise(x) {
-	return Number.parseFloat(x * 100).toPrecision(3);
+	return Number.parseFloat(x * 100).toPrecision(4);
 }
 
 ProgressBar.propTypes = {
